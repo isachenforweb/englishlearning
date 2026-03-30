@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Isa 英文學習</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fcf9fa;--sf:#f5f0f3;--cd:#ffffff;--bd:#e8dde3;
+  --tx:#3a3138;--mu:#6b5d66;--lt:#9c8d96;
+  --ms:#a8e6cf;--mr:#ffaaa5;--mb:#bce6eb;--mt:#fce89d;--ml:#cbaacb;--mo:#ffb7b2;
+}
+body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.6}
+/* NAV */
+nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;display:flex;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:100;gap:2px}
+.brand{font-size:13px;font-weight:700;color:var(--mu);padding:10px 12px 10px 0;border-right:1px solid var(--bd);margin-right:6px;white-space:nowrap}
+.nb{background:none;border:none;padding:10px 9px;font-size:12px;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit}
+.nb.active{color:var(--tx);border-bottom-color:var(--mr)}
+.nb:hover{color:var(--tx)}
+/* PAGES */
+.page{display:none;padding:18px 16px;max-width:860px;margin:0 auto}
+.page.active{display:block}
+/* CARD */
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
+.card-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--mu);margin-bottom:10px;text-transform:uppercase}
+/* BUTTONS */
+.btn{border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-family:inherit;cursor:pointer;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn-blue{background:var(--mb);color:var(--tx)}
+.btn-pink{background:var(--mr);color:var(--tx)}
+.btn-green{background:var(--ms);color:var(--tx)}
+.btn-lav{background:var(--ml);color:var(--tx)}
+.btn-yellow{background:var(--mt);color:var(--tx)}
+.btn-outline{background:none;border:1px solid var(--bd);color:var(--mu)}
+.btn-sm{padding:5px 12px;font-size:11px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+/* HOME */
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.skill-tile{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:16px;cursor:pointer;text-align:center;transition:border-color .2s,transform .1s}
+.skill-tile:hover{border-color:var(--mr);transform:translateY(-2px)}
+.tile-icon{font-size:30px;margin-bottom:6px}
+.tile-name{font-size:12px;font-weight:700;color:var(--tx)}
+.tile-sub{font-size:10px;color:var(--lt);margin-top:3px}
+.tile-bar{height:5px;border-radius:5px;background:var(--sf);margin-top:8px;overflow:hidden}
+.tile-fill{height:100%;border-radius:5px;background:var(--mr)}
+/* BADGES */
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.badge-streak{background:var(--mt);color:#7a6000}
+.badge-xp{background:var(--ms);color:#2a7a5a}
+.badge-level{background:var(--mb);color:#2a6a7a}
+/* SUB TABS */
+.sub-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.sub-tab{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer;color:var(--mu);font-family:inherit}
+.sub-tab.active{background:var(--mr);border-color:var(--mr);color:var(--tx)}
+.sub-panel{display:none}.sub-panel.active{display:block}
+/* EXERCISE */
+.ex-box{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px;margin-bottom:12px}
+.q-text{font-size:15px;color:var(--tx);margin-bottom:14px;line-height:1.8;font-family:'Verdana','Tahoma',sans-serif}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{background:var(--cd);border:2px solid var(--bd);border-radius:8px;padding:10px 14px;font-size:13px;font-family:inherit;color:var(--tx);cursor:pointer;text-align:left;transition:border-color .15s}
+.opt:hover:not(:disabled){border-color:var(--mb)}
+.opt.correct{border-color:var(--ms);background:#f0fdf8}
+.opt.wrong{border-color:var(--mr);background:#fff5f4}
+.opt:disabled{cursor:default}
+.ex-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.ex-counter{font-size:11px;color:var(--lt)}
+/* FLASHCARD */
+.fc-wrap{perspective:1000px;margin:0 auto 16px;max-width:360px;height:190px;cursor:pointer}
+.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s;border-radius:14px}
+.fc.flipped{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;inset:0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;padding:20px}
+.fc-front{background:var(--ml);border:2px solid #b899b8}
+.fc-back{background:var(--ms);border:2px solid #8ecfb6;transform:rotateY(180deg)}
+.fc-word{font-size:30px;font-weight:700;color:var(--tx);font-family:'Verdana',sans-serif}
+.fc-ph{font-size:12px;color:var(--mu);margin-top:5px}
+.fc-meaning{font-size:22px;color:var(--tx);text-align:center}
+.fc-ex{font-size:11px;color:var(--mu);margin-top:8px;font-style:italic;text-align:center;font-family:'Verdana',sans-serif}
+.fc-hint{font-size:10px;color:var(--lt);text-align:center;margin-top:8px}
+.fc-btns{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
+/* MATCHING */
+.match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.match-col{display:flex;flex-direction:column;gap:7px}
+.m-item{background:var(--cd);border:2px solid var(--bd);border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer;text-align:center;font-family:inherit;transition:border-color .15s}
+.m-item:hover:not(.matched):not(.wrong-m){border-color:var(--mb)}
+.m-item.selected{border-color:var(--ml);background:#f7f0ff}
+.m-item.matched{border-color:var(--ms);background:#f0fdf8;cursor:default;color:var(--mu)}
+.m-item.wrong-m{border-color:var(--mr);background:#fff5f4}
+/* FILL IN BLANK */
+.fill-sent{font-size:15px;color:var(--tx);line-height:2.2;font-family:'Verdana',sans-serif}
+.blank-inp{display:inline-block;border:none;border-bottom:2px solid var(--ml);background:transparent;font-size:15px;font-family:'Verdana',sans-serif;color:var(--tx);padding:0 4px;min-width:90px;outline:none;text-align:center}
+.blank-inp.ok{border-bottom-color:var(--ms);color:#2a7a5a}
+.blank-inp.fail{border-bottom-color:var(--mr);color:#c0392b}
+/* READING */
+.read-text{font-size:14px;line-height:2;color:var(--tx);background:var(--sf);border-radius:10px;padding:16px;margin-bottom:14px;font-family:'Verdana','Tahoma',sans-serif;white-space:pre-wrap}
+/* LISTENING */
+.res-item{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px}
+.res-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.res-info{flex:1}
+.res-title{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:2px}
+.res-sub{font-size:11px;color:var(--lt)}
+.res-link{font-size:11px;color:#5b9bd5;text-decoration:none;display:block;margin-top:4px}
+.res-link:hover{text-decoration:underline}
+.log-row{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.log-date{font-size:10px;color:var(--lt)}
+/* SPEAKING */
+.phrase-box{font-size:22px;font-weight:700;color:var(--tx);text-align:center;padding:22px;background:var(--sf);border-radius:10px;margin-bottom:6px;font-family:'Verdana',sans-serif}
+.phrase-ph{font-size:13px;color:var(--mu);text-align:center;margin-bottom:16px}
+.phrase-tip{font-size:11px;color:var(--lt);text-align:center;margin-bottom:14px;line-height:1.6}
+.rec-btn{width:68px;height:68px;border-radius:50%;border:3px solid var(--mr);background:var(--cd);font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.rec-btn.recording{background:var(--mr);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.transcript-box{background:var(--sf);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--mu);margin-top:8px;min-height:40px;font-style:italic;font-family:'Verdana',sans-serif;text-align:center}
+.score-bar{height:10px;border-radius:10px;background:var(--sf);margin:10px 0;overflow:hidden}
+.score-fill{height:100%;border-radius:10px;background:var(--ms);transition:width .6s}
+/* WRITING */
+.prompt-box{background:var(--sf);border:1px dashed var(--ml);border-radius:10px;padding:14px;margin-bottom:10px}
+.prompt-text{font-size:14px;color:var(--tx);line-height:1.7}
+.prompt-guide{font-size:11px;color:var(--lt);margin-top:6px;line-height:1.5}
+textarea.write-area{width:100%;border:1px solid var(--bd);border-radius:8px;padding:12px;font-size:14px;font-family:'Verdana','Tahoma',sans-serif;color:var(--tx);background:var(--cd);resize:vertical;min-height:130px;outline:none;line-height:1.8}
+textarea.write-area:focus{border-color:var(--mb)}
+.feedback-box{background:var(--sf);border-left:3px solid var(--ml);border-radius:0 8px 8px 0;padding:12px 14px;font-size:12px;color:var(--tx);margin-top:10px;line-height:1.8}
+.feedback-box .fb-good{color:#2a7a5a;font-weight:600}
+.feedback-box .fb-fix{color:#b04040;font-weight:600}
+.write-history{max-height:200px;overflow-y:auto}
+.wh-item{background:var(--sf);border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:11px;color:var(--mu);cursor:pointer}
+.wh-item:hover{border:1px solid var(--bd)}
+/* PROGRESS */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.stat-box{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center}
+.stat-n{font-size:28px;font-weight:700;color:var(--ml)}
+.stat-l{font-size:10px;color:var(--lt);margin-top:2px}
+.cal-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.cal-day{width:26px;height:26px;border-radius:5px;background:var(--sf);border:1px solid var(--bd);font-size:9px;display:flex;align-items:center;justify-content:center;color:var(--lt)}
+.cal-day.done{background:var(--ms);border-color:#8ecfb6;color:#2a7a5a}
+.cal-day.today{border:2px solid var(--mr)}
+.skill-prog-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sp-label{width:40px;font-size:11px;color:var(--mu)}
+.sp-bar{flex:1;height:8px;border-radius:8px;background:var(--sf);overflow:hidden}
+.sp-fill{height:100%;border-radius:8px}
+.sp-pct{font-size:11px;color:var(--lt);width:32px;text-align:right}
+/* SETTINGS */
+.set-row{display:flex;align-items:flex-start;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--bd);gap:12px}
+.set-label{font-size:12px;color:var(--tx);font-weight:600}
+.set-sub{font-size:10px;color:var(--lt);margin-top:3px;line-height:1.5}
+.set-inp{border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--tx);background:var(--cd);font-family:inherit;outline:none;width:220px}
+.set-inp:focus{border-color:var(--mb)}
+/* LOADING */
+.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ml);margin:0 2px;animation:bounce .8s infinite}
+.dots span:nth-child(2){animation-delay:.15s}
+.dots span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+/* RESULT */
+.result-msg{text-align:center;padding:14px;border-radius:10px;margin-top:10px;font-size:13px}
+.result-msg.pass{background:var(--ms)}
+.result-msg.ok{background:var(--mt)}
+.result-msg.retry{background:var(--sf);color:var(--mu)}
+/* PROG BAR TOP */
+.prog-top{height:5px;border-radius:5px;background:var(--sf);margin-bottom:12px;overflow:hidden}
+.prog-top-fill{height:100%;border-radius:5px;background:var(--mr);transition:width .4s}
+/* SEC HEADER */
+.sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sec-title{font-size:16px;font-weight:700;color:var(--tx)}
+.lv-tag{font-size:10px;padding:3px 9px;border-radius:12px;font-weight:700;background:var(--mb);color:var(--tx)}
+/* MISSIONS */
+.mission-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.mission-row:last-child{border:none}
+.mission-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.mission-check.done{background:var(--ms);border-color:var(--ms)}
+.mission-text{font-size:12px;color:var(--tx);flex:1}
+.mission-xp{font-size:10px;color:var(--mu);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">📚 英文學習</div>
+  <button class="nb active" onclick="showPage('home')">🏠 首頁</button>
+  <button class="nb" onclick="showPage('vocab')">📝 單字</button>
+  <button class="nb" onclick="showPage('reading')">📖 閱讀</button>
+  <button class="nb" onclick="showPage('listening')">🎧 聽力</button>
+  <button class="nb" onclick="showPage('speaking')">🗣️ 口說</button>
+  <button class="nb" onclick="showPage('writing')">✍️ 寫作</button>
+  <button class="nb" onclick="showPage('progress')">📊 進度</button>
+  <button class="nb" onclick="showPage('settings')">⚙️ 設定</button>
+</nav>
+
+<!-- ======== 首頁 ======== -->
+<div class="page active" id="page-home">
+  <div class="badges">
+    <span class="badge badge-streak">🔥 <span id="home-streak">0</span> 天連續</span>
+    <span class="badge badge-xp">⭐ <span id="home-xp">0</span> XP 今日</span>
+    <span class="badge badge-level">📶 <span id="home-level">A2</span></span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">今日任務</div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-vocab">○</div>
+      <div class="mission-text">完成 5 個單字練習</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-read">○</div>
+      <div class="mission-text">閱讀一篇文章並答題</div>
+      <div class="mission-xp">+15 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-listen">○</div>
+      <div class="mission-text">記錄一次聽力練習</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-speak">○</div>
+      <div class="mission-text">練習 3 句口說</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-write">○</div>
+      <div class="mission-text">完成一個寫作練習</div>
+      <div class="mission-xp">+20 XP</div>
+    </div>
+  </div>
+
+  <div class="home-grid">
+    <div class="skill-tile" onclick="showPage('vocab')">
+      <div class="tile-icon">📝</div>
+      <div class="tile-name">單字</div>
+      <div class="tile-sub">閃卡 · 配對 · 填空</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-vocab" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('reading')">
+      <div class="tile-icon">📖</div>
+      <div class="tile-name">閱讀</div>
+      <div class="tile-sub">文章理解 · 選擇題</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-read" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('listening')">
+      <div class="tile-icon">🎧</div>
+      <div class="tile-name">聽力</div>
+      <div class="tile-sub">資源推薦 · 練習記錄</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-listen" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('speaking')">
+      <div class="tile-icon">🗣️</div>
+      <div class="tile-name">口說</div>
+      <div class="tile-sub">發音練習 · 語音辨識</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-speak" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:0">
+    <div class="card-title">學習提示</div>
+    <p style="font-size:12px;color:var(--mu);line-height:1.8" id="home-tip">每天只需 20 分鐘，按順序完成今日任務。遇到困難的題目直接跳過，先建立信心再回來。</p>
+  </div>
+</div>
+
+<!-- ======== 單字 ======== -->
+<div class="page" id="page-vocab">
+  <div class="sec-h">
+    <div class="sec-title">📝 單字練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="switchVocab('flash')">🃏 閃卡</button>
+    <button class="sub-tab" onclick="switchVocab('match')">🔗 配對</button>
+    <button class="sub-tab" onclick="switchVocab('fill')">✏️ 填空</button>
+    <button class="sub-tab" onclick="switchVocab('list')">📋 單字表</button>
+  </div>
+
+  <!-- 閃卡 -->
+  <div class="sub-panel active" id="vp-flash">
+    <div class="card-title" style="text-align:center;margin-bottom:8px">點擊卡片翻面看中文 · <span id="fc-idx">1</span> / <span id="fc-total">30</span></div>
+    <div class="prog-top"><div class="prog-top-fill" id="fc-prog"></div></div>
+    <div class="fc-wrap" onclick="flipCard()">
+      <div class="fc" id="flashcard">
+        <div class="fc-front">
+          <div class="fc-word" id="fc-word"></div>
+          <div class="fc-ph" id="fc-ph"></div>
+          <div class="fc-hint">點我翻面</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-meaning" id="fc-meaning"></div>
+          <div class="fc-ex" id="fc-ex"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-btns">
+      <button class="btn btn-outline btn-sm" onclick="fcNav(-1)">← 上一個</button>
+      <button class="btn btn-pink btn-sm" onclick="fcMark('hard')">😓 還不熟</button>
+      <button class="btn btn-green btn-sm" onclick="fcMark('easy')">✓ 記住了</button>
+      <button class="btn btn-outline btn-sm" onclick="fcNav(1)">下一個 →</button>
+    </div>
+    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:4px">
+      ✓ 已記住 <span id="fc-known">0</span> 個 · 😓 還不熟 <span id="fc-hard">0</span> 個
+    </div>
+  </div>
+
+  <!-- 配對 -->
+  <div class="sub-panel" id="vp-match">
+    <div class="card-title">將英文與中文配對 · 組數 <span id="match-set">1</span> / 3</div>
+    <div class="prog-top"><div class="prog-top-fill" id="match-prog"></div></div>
+    <div class="match-wrap">
+      <div class="match-col" id="match-left"></div>
+      <div class="match-col" id="match-right"></div>
+    </div>
+    <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--lt)" id="match-msg"></div>
+    <div style="text-align:center;margin-top:10px">
+      <button class="btn btn-blue btn-sm" onclick="nextMatchSet()" id="match-next-btn" style="display:none">下一組 →</button>
+    </div>
+  </div>
+
+  <!-- 填空 -->
+  <div class="sub-panel" id="vp-fill">
+    <div class="card-title">填入正確的英文單字 · <span id="fill-idx">1</span> / 5</div>
+    <div class="prog-top"><div class="prog-top-fill" id="fill-prog"></div></div>
+    <div class="ex-box">
+      <div class="fill-sent" id="fill-sent"></div>
+      <div style="margin-top:10px;font-size:11px;color:var(--lt)">提示：<span id="fill-hint"></span></div>
+    </div>
+    <div class="ex-nav">
+      <button class="btn btn-outline btn-sm" onclick="checkFill()">確認答案</button>
+      <button class="btn btn-blue btn-sm" onclick="nextFill()" id="fill-next-btn" style="display:none">下一題 →</button>
+    </div>
+    <div id="fill-result" style="margin-top:8px;font-size:12px;color:var(--mu)"></div>
+  </div>
+
+  <!-- 單字表 -->
+  <div class="sub-panel" id="vp-list">
+    <div class="card-title">A2 核心單字表</div>
+    <div id="vocab-list-grid" class="word-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
+  </div>
+</div>
+
+<!-- ======== 閱讀 ======== -->
+<div class="page" id="page-reading">
+  <div class="sec-h">
+    <div class="sec-title">📖 閱讀理解</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="sub-tabs" id="read-tabs"></div>
+  <div id="read-content"></div>
+</div>
+
+<!-- ======== 聽力 ======== -->
+<div class="page" id="page-listening">
+  <div class="sec-h">
+    <div class="sec-title">🎧 聽力練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="card" style="background:var(--sf)">
+    <p style="font-size:12px;color:var(--mu);line-height:1.8">
+      📌 <strong>使用方式：</strong>點連結開啟影片，慢速聽 1-2 次，再回來記錄今天聽了什麼、聽懂幾成。<br>
+      建議：第一遍不看字幕，第二遍開中文字幕，第三遍開英文字幕。
+    </p>
+  </div>
+
+  <div class="card-title" style="margin-bottom:10px">推薦資源（A2 適合）</div>
+  <div id="listen-resources"></div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">今日聽力記錄</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <select id="listen-sel" style="flex:1;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)">
+        <option value="">選擇今天聽了哪個資源...</option>
+      </select>
+      <select id="listen-pct" style="border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)">
+        <option value="20">聽懂約 20%</option>
+        <option value="40">聽懂約 40%</option>
+        <option value="60">聽懂約 60%</option>
+        <option value="80">聽懂約 80%</option>
+      </select>
+      <button class="btn btn-green btn-sm" onclick="addListenLog()">記錄 ✓</button>
+    </div>
+    <div id="listen-log"></div>
+  </div>
+</div>
+
+<!-- ======== 口說 ======== -->
+<div class="page" id="page-speaking">
+  <div class="sec-h">
+    <div class="sec-title">🗣️ 口說練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="card" style="background:var(--sf)">
+    <p style="font-size:12px;color:var(--mu);line-height:1.8">
+      📌 <strong>使用方式：</strong>看句子，朗讀 2-3 次，再點麥克風按鈕讓瀏覽器辨識你的發音。<br>
+      需要使用 Chrome 或 Edge 瀏覽器才能啟動語音辨識。
+    </p>
+  </div>
+  <div class="card">
+    <div class="card-title">練習句 <span id="sp-idx">1</span> / <span id="sp-total">12</span></div>
+    <div class="prog-top"><div class="prog-top-fill" id="sp-prog"></div></div>
+    <div class="phrase-box" id="sp-phrase"></div>
+    <div class="phrase-ph" id="sp-ph"></div>
+    <div class="phrase-tip" id="sp-tip"></div>
+    <button class="rec-btn" id="rec-btn" onclick="toggleRecord()">🎤</button>
+    <div class="transcript-box" id="transcript">點麥克風開始錄音...</div>
+    <div id="sp-score-area" style="margin-top:8px;display:none">
+      <div style="font-size:11px;color:var(--mu);margin-bottom:4px">相似度</div>
+      <div class="score-bar"><div class="score-fill" id="score-fill"></div></div>
+      <div style="font-size:11px;color:var(--lt)" id="score-label"></div>
+    </div>
+    <div class="ex-nav" style="margin-top:14px">
+      <button class="btn btn-outline btn-sm" onclick="spNav(-1)">← 上一句</button>
+      <button class="btn btn-lav btn-sm" onclick="markSpeak()">✓ 練習完成</button>
+      <button class="btn btn-outline btn-sm" onclick="spNav(1)">下一句 →</button>
+    </div>
+    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:8px">已練習 <span id="sp-done">0</span> / <span id="sp-done-total">12</span> 句</div>
+  </div>
+</div>
+
+<!-- ======== 寫作 ======== -->
+<div class="page" id="page-writing">
+  <div class="sec-h">
+    <div class="sec-title">✍️ 寫作練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="sub-tabs" id="write-tabs"></div>
+  <div id="write-content"></div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">過去的練習</div>
+    <div id="write-history" class="write-history">
+      <div style="font-size:11px;color:var(--lt);padding:8px 0">還沒有練習記錄</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== 進度 ======== -->
+<div class="page" id="page-progress">
+  <div class="sec-h">
+    <div class="sec-title">📊 學習進度</div>
+    <span class="lv-tag" id="prog-level-tag">A2</span>
+  </div>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-n" id="p-streak">0</div><div class="stat-l">🔥 連續天數</div></div>
+    <div class="stat-box"><div class="stat-n" id="p-xp-total">0</div><div class="stat-l">⭐ 總 XP</div></div>
+    <div class="stat-box"><div class="stat-n" id="p-vocab-k">0</div><div class="stat-l">📝 已記單字</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">各技能進度</div>
+    <div class="skill-prog-row"><div class="sp-label">單字</div><div class="sp-bar"><div class="sp-fill" id="spf-vocab" style="width:0%;background:var(--ml)"></div></div><div class="sp-pct" id="spp-vocab">0%</div></div>
+    <div class="skill-prog-row"><div class="sp-label">閱讀</div><div class="sp-bar"><div class="sp-fill" id="spf-read" style="width:0%;background:var(--mb)"></div></div><div class="sp-pct" id="spp-read">0%</div></div>
+    <div class="skill-prog-row"><div class="sp-label">聽力</div><div class="sp-bar"><div class="sp-fill" id="spf-listen" style="width:0%;background:var(--ms)"></div></div><div class="sp-pct" id="spp-listen">0%</div></div>
+    <div class="skill-prog-row"><div class="sp-label">口說</div><div class="sp-bar"><div class="sp-fill" id="spf-speak" style="width:0%;background:var(--mr)"></div></div><div class="sp-pct" id="spp-speak">0%</div></div>
+    <div class="skill-prog-row"><div class="sp-label">寫作</div><div class="sp-bar"><div class="sp-fill" id="spf-write" style="width:0%;background:var(--mt)"></div></div><div class="sp-pct" id="spp-write">0%</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">過去 30 天出勤</div>
+    <div class="cal-wrap" id="streak-cal"></div>
+  </div>
+</div>
+
+<!-- ======== 設定 ======== -->
+<div class="page" id="page-settings">
+  <div class="sec-h"><div class="sec-title">⚙️ 設定</div></div>
+  <div class="card">
+    <div class="set-row">
+      <div><div class="set-label">Gemini API Key</div><div class="set-sub">用於寫作回饋與口說評分<br>前往 aistudio.google.com 取得免費 API Key</div></div>
+      <input type="password" class="set-inp" id="api-key-inp" placeholder="AIza..." oninput="saveSettings()">
+    </div>
+    <div class="set-row">
+      <div><div class="set-label">目前程度</div><div class="set-sub">影響練習題難度與顯示</div></div>
+      <select class="set-inp" id="cefr-sel" onchange="saveSettings()" style="width:120px">
+        <option value="A2">A2（初級）</option>
+        <option value="B1">B1（中初級）</option>
+        <option value="B2">B2（中級）</option>
+      </select>
+    </div>
+    <div class="set-row">
+      <div><div class="set-label">清除所有進度</div><div class="set-sub">重置 XP、連續天數、練習記錄</div></div>
+      <button class="btn btn-outline btn-sm" onclick="clearProgress()">清除</button>
+    </div>
+  </div>
+  <div class="card" style="background:var(--sf)">
+    <div class="card-title">使用說明</div>
+    <p style="font-size:12px;color:var(--mu);line-height:1.9">
+      ① 設定 Gemini API Key 後，寫作練習可獲得 AI 回饋<br>
+      ② 所有進度儲存於瀏覽器（localStorage），換瀏覽器需重新設定<br>
+      ③ 口說辨識需要 Chrome 或 Edge，且需允許麥克風權限<br>
+      ④ 建議每天固定一個時段使用，完成今日任務即可
+    </p>
+  </div>
+</div>
+
+<script>
+// ===== 資料 =====
+const VOCAB = [
+  {en:'coffee',zh:'咖啡',ph:'/ˈkɒfi/',ex:'I drink coffee every morning.'},
+  {en:'breakfast',zh:'早餐',ph:'/ˈbrekfəst/',ex:'I eat breakfast at 8 am.'},
+  {en:'office',zh:'辦公室',ph:'/ˈɒfɪs/',ex:'She works in an office downtown.'},
+  {en:'meeting',zh:'會議',ph:'/ˈmiːtɪŋ/',ex:'We have a meeting at noon.'},
+  {en:'weather',zh:'天氣',ph:'/ˈweðər/',ex:'The weather is nice today.'},
+  {en:'hungry',zh:'飢餓的',ph:'/ˈhʌŋɡri/',ex:'I am hungry. Let\'s eat something.'},
+  {en:'tired',zh:'疲倦的',ph:'/ˈtaɪərd/',ex:'She is tired after a long day.'},
+  {en:'restaurant',zh:'餐廳',ph:'/ˈrestrɒnt/',ex:'Let\'s go to that new restaurant.'},
+  {en:'supermarket',zh:'超市',ph:'/ˈsuːpəmɑːkɪt/',ex:'I buy food at the supermarket.'},
+  {en:'appointment',zh:'預約',ph:'/əˈpɔɪntmənt/',ex:'I have a doctor\'s appointment today.'},
+  {en:'station',zh:'車站',ph:'/ˈsteɪʃən/',ex:'Meet me at the train station.'},
+  {en:'ticket',zh:'票',ph:'/ˈtɪkɪt/',ex:'I need a ticket for the bus.'},
+  {en:'weekend',zh:'週末',ph:'/ˈwiːkend/',ex:'What do you do at the weekend?'},
+  {en:'hobby',zh:'嗜好',ph:'/ˈhɒbi/',ex:'Reading is my favourite hobby.'},
+  {en:'exercise',zh:'運動',ph:'/ˈeksəsaɪz/',ex:'I exercise three times a week.'},
+  {en:'friendly',zh:'友善的',ph:'/ˈfrendli/',ex:'Everyone here is very friendly.'},
+  {en:'busy',zh:'忙碌的',ph:'/ˈbɪzi/',ex:'I am very busy this week.'},
+  {en:'early',zh:'早',ph:'/ˈɜːli/',ex:'I wake up early every day.'},
+  {en:'shopping',zh:'購物',ph:'/ˈʃɒpɪŋ/',ex:'She loves shopping on weekends.'},
+  {en:'colleague',zh:'同事',ph:'/ˈkɒliːɡ/',ex:'My colleagues are very helpful.'},
+  {en:'department',zh:'部門',ph:'/dɪˈpɑːtmənt/',ex:'She works in the marketing department.'},
+  {en:'salary',zh:'薪水',ph:'/ˈsæləri/',ex:'The salary is quite good.'},
+  {en:'reservation',zh:'預訂',ph:'/ˌrezəˈveɪʃən/',ex:'Do you have a reservation?'},
+  {en:'menu',zh:'菜單',ph:'/ˈmenjuː/',ex:'Can I see the menu, please?'},
+  {en:'comfortable',zh:'舒適的',ph:'/ˈkʌmftəbəl/',ex:'This sofa is very comfortable.'},
+  {en:'available',zh:'有空的/可用的',ph:'/əˈveɪləbəl/',ex:'Are you available on Friday?'},
+  {en:'information',zh:'資訊',ph:'/ˌɪnfəˈmeɪʃən/',ex:'Where can I get more information?'},
+  {en:'directions',zh:'方向/路線',ph:'/dɪˈrekʃənz/',ex:'Can you give me directions to the station?'},
+  {en:'recommend',zh:'推薦',ph:'/ˌrekəˈmend/',ex:'Can you recommend a good café?'},
+  {en:'journey',zh:'旅程',ph:'/ˈdʒɜːni/',ex:'It was a long journey by train.'},
+];
+
+const READINGS = [
+  {
+    id:'r1',title:'My Morning Routine',
+    text:`My name is Anna. I wake up at 7 o'clock every morning. First, I go to the bathroom and wash my face. Then I make breakfast. I usually eat toast and drink coffee. I leave home at 8:30 and take the bus to work.\n\nI work in an office in the city centre. My office starts at 9 o'clock. In the morning, I check my emails and go to meetings. I have lunch at 12:30. I usually eat in the office cafeteria with my colleagues. In the afternoon, I write reports and answer phone calls. I finish work at 6 pm and go home.`,
+    qs:[
+      {q:'What time does Anna wake up?',opts:['6 o\'clock','7 o\'clock','8 o\'clock','9 o\'clock'],a:1},
+      {q:'How does Anna go to work?',opts:['by car','by train','by bus','she walks'],a:2},
+      {q:'What does Anna eat for breakfast?',opts:['eggs and juice','cereal and milk','toast and coffee','fruit and tea'],a:2},
+      {q:'Where does Anna have lunch?',opts:['at home','in a restaurant','in the park','in the office cafeteria'],a:3},
+    ]
+  },
+  {
+    id:'r2',title:'A Weekend Plan (Email)',
+    text:`Hi Sarah,\n\nHow are you? I'm writing to tell you about my plans for this weekend. On Saturday morning, I'm going to the supermarket with my mum. In the afternoon, we're meeting Tom and Linda for coffee. They want to go to the new café on Green Street.\n\nOn Sunday, I'm going to stay home and relax. Maybe I'll watch a film or read a book. It sounds boring, but I really need some rest after this busy week!\n\nWould you like to join us on Saturday afternoon? The café looks really nice and the cakes are supposed to be great!\n\nSee you soon,\nMia`,
+    qs:[
+      {q:'What is Mia doing on Saturday morning?',opts:['going to a café','visiting friends','going to the supermarket','staying at home'],a:2},
+      {q:'Where are they meeting for coffee?',opts:['at Mia\'s home','in the office','at the new café on Green Street','in a park'],a:2},
+      {q:'What does Mia plan to do on Sunday?',opts:['go shopping','meet friends','stay home and relax','go to the café'],a:2},
+      {q:'What does Mia invite Sarah to do?',opts:['help her cook','join them at the café on Saturday','go shopping on Sunday','watch a film together'],a:1},
+    ]
+  },
+  {
+    id:'r3',title:'At the Restaurant',
+    text:`Waiter: Good evening! Do you have a reservation?\nCustomer: Yes, the name is Chen. A table for two.\nWaiter: Of course. Please follow me. Here is your table. Can I get you something to drink?\nCustomer: A glass of water, please. And can I see the menu?\nWaiter: Of course. Here you are. Today's special is grilled salmon with vegetables.\nCustomer: That sounds delicious! I'd like the salmon, please.\nWaiter: Excellent choice. And would you like a starter?\nCustomer: No, thank you. Just the main course.\nWaiter: No problem. I'll bring your water right away.\nCustomer: Thank you very much.`,
+    qs:[
+      {q:'Does the customer have a reservation?',opts:['Yes','No','Maybe','Not mentioned'],a:0},
+      {q:'How many people is the table for?',opts:['one','two','three','four'],a:1},
+      {q:"What is today's special?",opts:['chicken pasta','grilled salmon','beef steak','vegetable soup'],a:1},
+      {q:'Does the customer order a starter?',opts:['Yes, soup','Yes, salad','No','Yes, bread'],a:2},
+    ]
+  },
+  {
+    id:'r4',title:'My Hobby: Photography',
+    text:`My name is James and my favourite hobby is photography. I started taking photos five years ago. I got my first camera as a birthday present from my parents. Now I have three different cameras!\n\nI usually take photos of nature — trees, flowers, and animals. Sometimes I go to the park early in the morning to photograph birds. The light is beautiful at that time of day.\n\nI also like street photography. I walk around the city and take photos of interesting people and buildings. I love to capture everyday moments.\n\nI have a website where I share my photos. Many people follow my website and leave nice comments. Photography makes me very happy and helps me to see the world in a different way.`,
+    qs:[
+      {q:"What is James's hobby?",opts:['painting','cooking','photography','cycling'],a:2},
+      {q:'How long has James been taking photos?',opts:['two years','three years','five years','ten years'],a:2},
+      {q:'Why does James go to the park early in the morning?',opts:['to exercise','to meet friends','to photograph birds','to buy coffee'],a:2},
+      {q:'Where does James share his photos?',opts:['on Instagram','in a gallery','on a website','in a magazine'],a:2},
+    ]
+  },
+  {
+    id:'r5',title:'A New Job',
+    text:`Last month, I started a new job at a marketing company. The office is near the city centre, so I take the MRT to work every day. My working hours are from 9 am to 6 pm, Monday to Friday.\n\nMy boss is very kind and patient. The team is also friendly — there are twelve people in my department. My job is to write social media posts and help plan events for our clients.\n\nThe work is sometimes stressful, especially before big events. But I enjoy what I do. The salary is good, and the company provides free lunch every day. I also get 15 days of annual leave.\n\nOverall, I feel very lucky to have this job. I am learning a lot and meeting interesting people every day.`,
+    qs:[
+      {q:'What type of company does the writer work at?',opts:['a restaurant','a school','a marketing company','a hospital'],a:2},
+      {q:'How does the writer get to work?',opts:['by bus','by MRT','by bike','on foot'],a:1},
+      {q:'What does the writer do at work?',opts:['design logos','write social media posts','teach classes','sell products'],a:1},
+      {q:'What is one benefit the company offers?',opts:['free gym','free transport','free lunch','free housing'],a:2},
+    ]
+  },
+];
+
+const LISTEN_RES = [
+  {icon:'📺',title:'BBC Learning English – 6 Minute English',sub:'每集 6 分鐘，有逐字稿，A2-B1 適合',url:'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english'},
+  {icon:'📻',title:'VOA Learning English – Everyday Grammar',sub:'語速慢、發音清晰，有文字稿',url:'https://learningenglish.voanews.com/z/4381'},
+  {icon:'🎬',title:'EnglishClass101 – Absolute Beginner',sub:'YouTube 頻道，短影片，A1-A2 日常對話',url:'https://www.youtube.com/@EnglishClass101'},
+  {icon:'🌐',title:'Elllo – A2 Listening Lessons',sub:'免費聽力練習網站，有文字稿和測驗',url:'https://www.elllo.org/english/Mixer/'},
+  {icon:'📱',title:'TED-Ed – 短動畫（開字幕）',sub:'有中文字幕，視覺輔助強，從簡單主題開始',url:'https://ed.ted.com/'},
+  {icon:'🎵',title:'Peppa Pig（英文版）',sub:'語速慢、用字簡單，適合聽力初學者練耳朵',url:'https://www.youtube.com/@officialpeppapig'},
+];
+
+const SPEAK_PHRASES = [
+  {p:'Hello! How are you today?',ph:'/həˈloʊ haʊ ɑːr juː təˈdeɪ/',tip:'這是最基本的問候，注意 how are you 要連音，聽起來像 howaryou。'},
+  {p:'I\'m fine, thank you.',ph:'/aɪm faɪn θæŋk juː/',tip:'回答問候的標準句。 fine 的 f 要用上齒咬下唇發音。'},
+  {p:'My name is Isa. Nice to meet you.',ph:'/maɪ neɪm ɪz... naɪs tə miːt juː/',tip:'Nice to meet you 的 to 通常弱讀成 /tə/，聽起來是 nice-tuh-meet-you。'},
+  {p:'Can I have a coffee, please?',ph:'/kæn aɪ hæv ə ˈkɒfi pliːz/',tip:'點餐必學句。please 放最後，語調要上揚再下降，表示禮貌。'},
+  {p:'How much does this cost?',ph:'/haʊ mʌtʃ dʌz ðɪs kɒst/',tip:'購物必學句。does this 連音變成 /dʌzðɪs/，快速說。'},
+  {p:'Where is the train station?',ph:'/wɛr ɪz ðə treɪn ˈsteɪʃən/',tip:'問路必備。Where is 連音說快一點，is 弱讀成 /ɪz/。'},
+  {p:'I would like to make a reservation.',ph:'/aɪ wʊd laɪk tə meɪk ə ˌrezəˈveɪʃən/',tip:'預約用句。would like 比 want 更有禮貌。'},
+  {p:'Could you speak more slowly, please?',ph:'/kʊd juː spiːk mɔːr ˈsloʊli pliːz/',tip:'非常實用！聽不懂時說這句。slowly 重音在第一音節。'},
+  {p:'I don\'t understand. Can you repeat that?',ph:'/aɪ doʊnt ˌʌndərˈstænd kæn juː rɪˈpiːt ðæt/',tip:'也是聽不懂時用。repeat 重音在 pe，不要說成 REpeat。'},
+  {p:'What time does the office open?',ph:'/wɒt taɪm dʌz ðə ˈɒfɪs ˈoʊpən/',tip:'詢問時間常用句。does the 連音。'},
+  {p:'I\'m looking for the supermarket.',ph:'/aɪm ˈlʊkɪŋ fɔːr ðə ˈsuːpərmɑːrkɪt/',tip:'問路時說我在找某個地方。looking for 是重要片語。'},
+  {p:'Have a nice day!',ph:'/hæv ə naɪs deɪ/',tip:'道別常用語。a 弱讀成 /ə/，整句連貫說：hav-uh-nice-day。'},
+];
+
+const WRITE_PROMPTS = [
+  {
+    title:'我的一天',
+    prompt:'Write 4–6 sentences about your typical day. Include: when you wake up, what you eat, how you go to work/school, and what you do in the evening.',
+    guide:'參考用詞：wake up, have breakfast, take the bus/MRT, work on, in the evening, go to bed\n範例開頭：I usually wake up at 7 am. First, I...',
+    minWords:30
+  },
+  {
+    title:'自我介紹',
+    prompt:'Write a short introduction about yourself (4–6 sentences). Include your name, job, where you live, and one hobby.',
+    guide:'參考用詞：My name is, I work at, I live in, My hobby is, I enjoy\n範例開頭：My name is Isa. I work as a marketing planner at...',
+    minWords:30
+  },
+  {
+    title:'我最喜歡的食物',
+    prompt:'Write 4–6 sentences about your favourite food. What is it? When do you eat it? Why do you like it?',
+    guide:'參考用詞：My favourite food is, I usually eat it, I like it because, It tastes\n範例開頭：My favourite food is...',
+    minWords:30
+  },
+  {
+    title:'給朋友的簡訊',
+    prompt:'Write a short message to a friend (4–6 sentences). Invite them to do something this weekend. Suggest a time and place.',
+    guide:'參考用詞：Would you like to, How about, Let\'s meet at, I\'ll be at, See you\n範例開頭：Hi! Are you free this weekend?',
+    minWords:30
+  },
+  {
+    title:'描述我的工作',
+    prompt:'Write 4–6 sentences about your job. What do you do? Where do you work? What do you like or dislike about it?',
+    guide:'參考用詞：I work as, My job is to, My office is, I like/dislike, It is sometimes\n範例開頭：I work as a marketing planner...',
+    minWords:30
+  },
+];
+
+const FILL_EXERCISES = [
+  {sent:'I usually drink ___ every morning before work.',blank:'coffee',hint:'熱飲，早上喝',pos:2},
+  {sent:'She is very ___ — she always smiles and helps everyone.',blank:'friendly',hint:'形容人的個性好',pos:3},
+  {sent:'Can I see the ___, please? I\'d like to order.',blank:'menu',hint:'在餐廳點餐用',pos:2},
+  {sent:'I have a doctor\'s ___ at 3 pm today.',blank:'appointment',hint:'預約看診',pos:3},
+  {sent:'The ___ to work takes about 30 minutes by MRT.',blank:'journey',hint:'通勤的過程',pos:1},
+];
+
+// ===== 狀態 =====
+let ST = {
+  xp: 0, xpToday: 0, streak: 0, lastDate: '',
+  vocabKnown: [], vocabHard: [],
+  readDone: {},
+  listenLog: [],
+  speakDone: [],
+  writeDone: [],
+  missions: {vocab:false, read:false, listen:false, speak:false, write:false},
+  days: [],
+  apiKey: '',
+  level: 'A2',
+};
+
+function loadST() {
+  try { const s = localStorage.getItem('isaEng'); if(s) ST = {...ST,...JSON.parse(s)}; } catch(e){}
+}
+function saveST() {
+  try { localStorage.setItem('isaEng', JSON.stringify(ST)); } catch(e){}
+}
+
+function addXP(n, mission) {
+  const today = new Date().toISOString().slice(0,10);
+  if(ST.lastDate !== today) {
+    ST.xpToday = 0;
+    if(ST.lastDate === new Date(Date.now()-86400000).toISOString().slice(0,10)) ST.streak++;
+    else ST.streak = 1;
+    ST.lastDate = today;
+    if(!ST.days.includes(today)) ST.days.push(today);
+  }
+  ST.xp += n;
+  ST.xpToday += n;
+  if(mission && !ST.missions[mission]) ST.missions[mission] = true;
+  saveST();
+  updateHome();
+}
+
+// ===== 導航 =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const btns = document.querySelectorAll('.nb');
+  const order = ['home','vocab','reading','listening','speaking','writing','progress','settings'];
+  const idx = order.indexOf(id);
+  if(idx>=0) btns[idx].classList.add('active');
+  if(id==='progress') renderProgress();
+  if(id==='settings') loadSettingsUI();
+}
+
+// ===== HOME =====
+function updateHome() {
+  const el = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+  el('home-streak', ST.streak);
+  el('home-xp', ST.xpToday);
+  el('home-level', ST.level);
+  // missions
+  const mk = ['vocab','read','listen','speak','write'];
+  mk.forEach(k => {
+    const el = document.getElementById('m-'+k);
+    if(el) { el.textContent = ST.missions[k]?'✓':'○'; el.className='mission-check'+(ST.missions[k]?' done':''); }
+  });
+  // skill bars
+  const vPct = Math.min(100, Math.round((ST.vocabKnown||[]).length/VOCAB.length*100));
+  const rPct = Math.min(100, Math.round(Object.keys(ST.readDone||{}).length/READINGS.length*100));
+  const lPct = Math.min(100, Math.round(Math.min((ST.listenLog||[]).length,10)/10*100));
+  const sPct = Math.min(100, Math.round((ST.speakDone||[]).length/SPEAK_PHRASES.length*100));
+  const setBar = (id,v) => { const e=document.getElementById(id); if(e) e.style.width=v+'%'; };
+  setBar('hbar-vocab',vPct); setBar('hbar-read',rPct); setBar('hbar-listen',lPct); setBar('hbar-speak',sPct);
+}
+
+// ===== 單字：閃卡 =====
+let fcIdx = 0;
+function renderFlashcard() {
+  const v = VOCAB[fcIdx];
+  document.getElementById('fc-word').textContent = v.en;
+  document.getElementById('fc-ph').textContent = v.ph;
+  document.getElementById('fc-meaning').textContent = v.zh;
+  document.getElementById('fc-ex').textContent = v.ex;
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('fc-idx').textContent = fcIdx+1;
+  document.getElementById('fc-total').textContent = VOCAB.length;
+  document.getElementById('fc-prog').style.width = ((fcIdx+1)/VOCAB.length*100)+'%';
+  document.getElementById('fc-known').textContent = (ST.vocabKnown||[]).length;
+  document.getElementById('fc-hard').textContent = (ST.vocabHard||[]).length;
+}
+function flipCard() { document.getElementById('flashcard').classList.toggle('flipped'); }
+function fcNav(d) { fcIdx = (fcIdx+d+VOCAB.length)%VOCAB.length; renderFlashcard(); }
+function fcMark(type) {
+  const word = VOCAB[fcIdx].en;
+  if(type==='easy') {
+    if(!ST.vocabKnown) ST.vocabKnown=[];
+    if(!ST.vocabKnown.includes(word)) { ST.vocabKnown.push(word); addXP(2,'vocab'); }
+  } else {
+    if(!ST.vocabHard) ST.vocabHard=[];
+    if(!ST.vocabHard.includes(word)) ST.vocabHard.push(word);
+  }
+  saveST();
+  fcNav(1);
+}
+
+// ===== 單字：配對 =====
+let matchSet=0, matchSelected=null, matchPairs=[], matchDone=0;
+const MATCH_SETS = [
+  VOCAB.slice(0,6), VOCAB.slice(6,12), VOCAB.slice(12,18)
+];
+function renderMatch() {
+  const pairs = MATCH_SETS[matchSet]||MATCH_SETS[0];
+  matchPairs = [...pairs];
+  matchDone = 0; matchSelected = null;
+  document.getElementById('match-set').textContent = matchSet+1;
+  document.getElementById('match-prog').style.width = (matchSet/3*100)+'%';
+  document.getElementById('match-msg').textContent = '';
+  document.getElementById('match-next-btn').style.display='none';
+  const shuffle = a=>[...a].sort(()=>Math.random()-.5);
+  const lefts = shuffle(pairs.map(p=>({en:p.en,id:p.en})));
+  const rights = shuffle(pairs.map(p=>({zh:p.zh,id:p.en})));
+  const lCol = document.getElementById('match-left');
+  const rCol = document.getElementById('match-right');
+  lCol.innerHTML=''; rCol.innerHTML='';
+  lefts.forEach(item=>{
+    const b=document.createElement('button');
+    b.className='m-item'; b.textContent=item.en; b.dataset.id=item.id; b.dataset.side='left';
+    b.onclick=()=>selectMatch(b);
+    lCol.appendChild(b);
+  });
+  rights.forEach(item=>{
+    const b=document.createElement('button');
+    b.className='m-item'; b.textContent=item.zh; b.dataset.id=item.id; b.dataset.side='right';
+    b.onclick=()=>selectMatch(b);
+    rCol.appendChild(b);
+  });
+}
+function selectMatch(btn) {
+  if(btn.classList.contains('matched')) return;
+  if(matchSelected===null) {
+    matchSelected=btn; btn.classList.add('selected');
+  } else {
+    if(matchSelected===btn) { matchSelected.classList.remove('selected'); matchSelected=null; return; }
+    if(matchSelected.dataset.side===btn.dataset.side) {
+      matchSelected.classList.remove('selected'); matchSelected=btn; btn.classList.add('selected'); return;
+    }
+    if(matchSelected.dataset.id===btn.dataset.id) {
+      matchSelected.classList.remove('selected'); matchSelected.classList.add('matched'); btn.classList.add('matched');
+      matchSelected=null; matchDone++;
+      if(matchDone===MATCH_SETS[matchSet].length) {
+        document.getElementById('match-msg').textContent='✓ 全部配對成功！';
+        addXP(5,'vocab');
+        if(matchSet<2) document.getElementById('match-next-btn').style.display='';
+      }
+    } else {
+      matchSelected.classList.remove('selected'); matchSelected.classList.add('wrong-m'); btn.classList.add('wrong-m');
+      const s=matchSelected,b2=btn;
+      setTimeout(()=>{ s.classList.remove('wrong-m'); b2.classList.remove('wrong-m'); },700);
+      matchSelected=null;
+    }
+  }
+}
+function nextMatchSet() {
+  matchSet=(matchSet+1)%3; renderMatch();
+}
+
+// ===== 單字：填空 =====
+let fillIdx=0;
+function renderFill() {
+  const ex=FILL_EXERCISES[fillIdx];
+  const sent=ex.sent.replace(ex.blank,'<input class="blank-inp" id="blank-inp" placeholder="___" autocomplete="off">');
+  document.getElementById('fill-sent').innerHTML=sent;
+  document.getElementById('fill-hint').textContent=ex.hint;
+  document.getElementById('fill-idx').textContent=fillIdx+1;
+  document.getElementById('fill-prog').style.width=((fillIdx+1)/FILL_EXERCISES.length*100)+'%';
+  document.getElementById('fill-result').textContent='';
+  document.getElementById('fill-next-btn').style.display='none';
+}
+function checkFill() {
+  const inp=document.getElementById('blank-inp');
+  if(!inp) return;
+  const ans=inp.value.trim().toLowerCase();
+  const correct=FILL_EXERCISES[fillIdx].blank.toLowerCase();
+  if(ans===correct) {
+    inp.classList.add('ok');
+    document.getElementById('fill-result').innerHTML='<span style="color:#2a7a5a">✓ 正確！</span>';
+    addXP(3,'vocab');
+  } else {
+    inp.classList.add('fail');
+    document.getElementById('fill-result').innerHTML='<span style="color:#c0392b">✗ 答案是：'+FILL_EXERCISES[fillIdx].blank+'</span>';
+  }
+  inp.disabled=true;
+  document.getElementById('fill-next-btn').style.display='';
+}
+function nextFill() {
+  fillIdx=(fillIdx+1)%FILL_EXERCISES.length; renderFill();
+}
+
+// ===== 單字表 =====
+function renderVocabList() {
+  const grid=document.getElementById('vocab-list-grid');
+  grid.innerHTML=VOCAB.map(v=>`
+    <div style="background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:9px;${(ST.vocabKnown||[]).includes(v.en)?'border-color:var(--ms);background:#f0fdf8':''}">
+      <div style="font-weight:700;font-size:13px;font-family:Verdana,sans-serif">${v.en} ${(ST.vocabKnown||[]).includes(v.en)?'✓':''}</div>
+      <div style="font-size:11px;color:var(--lt)">${v.ph}</div>
+      <div style="font-size:12px;color:var(--mu);margin-top:3px">${v.zh}</div>
+    </div>`).join('');
+}
+
+function switchVocab(mode) {
+  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-vocab .sub-tab').forEach((t,i)=>{
+    if(['flash','match','fill','list'][i]===mode) t.classList.add('active');
+  });
+  document.querySelectorAll('#page-vocab .sub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('vp-'+mode).classList.add('active');
+  if(mode==='match') renderMatch();
+  if(mode==='fill') renderFill();
+  if(mode==='list') renderVocabList();
+}
+
+// ===== 閱讀 =====
+let readIdx=0, readAnswers=[], readDoneQ=false;
+function renderReadTabs() {
+  const tabs=document.getElementById('read-tabs');
+  tabs.innerHTML=READINGS.map((r,i)=>`
+    <button class="sub-tab ${i===readIdx?'active':''}" onclick="selectRead(${i})">${i+1}. ${r.title.substring(0,10)}...</button>`).join('');
+}
+function selectRead(i) {
+  readIdx=i; readAnswers=[]; readDoneQ=false;
+  renderReadTabs();
+  renderReadContent();
+}
+function renderReadContent() {
+  const r=READINGS[readIdx];
+  const done=ST.readDone&&ST.readDone[r.id];
+  document.getElementById('read-content').innerHTML=`
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="font-size:15px;font-weight:700;color:var(--tx)">${r.title}</div>
+        ${done?'<span style="font-size:11px;color:#2a7a5a">✓ 完成</span>':''}
+      </div>
+      <div class="read-text">${r.text}</div>
+      <div class="card-title" style="margin-top:4px">理解測驗</div>
+      <div id="read-qs"></div>
+      <div id="read-result"></div>
+    </div>`;
+  const qsDiv=document.getElementById('read-qs');
+  qsDiv.innerHTML=r.qs.map((q,qi)=>`
+    <div style="margin-bottom:14px">
+      <div class="q-text" style="font-size:13px">${qi+1}. ${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,oi)=>`<button class="opt" id="rq${qi}o${oi}" onclick="answerRead(${qi},${oi})">${o}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function answerRead(qi,oi) {
+  const r=READINGS[readIdx];
+  if(readAnswers[qi]!==undefined) return;
+  readAnswers[qi]=oi;
+  const correct=r.qs[qi].a;
+  document.querySelectorAll(`[id^="rq${qi}o"]`).forEach(b=>b.disabled=true);
+  document.getElementById(`rq${qi}o${oi}`).classList.add(oi===correct?'correct':'wrong');
+  if(oi!==correct) document.getElementById(`rq${qi}o${correct}`).classList.add('correct');
+  if(readAnswers.filter(a=>a!==undefined).length===r.qs.length && !readDoneQ) {
+    readDoneQ=true;
+    const score=readAnswers.filter((a,i)=>a===r.qs[i].a).length;
+    const pct=Math.round(score/r.qs.length*100);
+    const cls=pct>=75?'pass':pct>=50?'ok':'retry';
+    document.getElementById('read-result').innerHTML=`
+      <div class="result-msg ${cls}">
+        答對 ${score} / ${r.qs.length} 題（${pct}%）
+        ${pct>=75?'🎉 答得很好！':'📌 再讀一次課文，試試看能不能找到答案。'}
+      </div>`;
+    if(!ST.readDone) ST.readDone={};
+    if(!ST.readDone[r.id]) { ST.readDone[r.id]=score; addXP(15,'read'); }
+    renderReadTabs();
+  }
+}
+
+// ===== 聽力 =====
+function renderListenResources() {
+  const div=document.getElementById('listen-resources');
+  const sel=document.getElementById('listen-sel');
+  div.innerHTML=LISTEN_RES.map(r=>`
+    <div class="res-item">
+      <div class="res-icon">${r.icon}</div>
+      <div class="res-info">
+        <div class="res-title">${r.title}</div>
+        <div class="res-sub">${r.sub}</div>
+        <a class="res-link" href="${r.url}" target="_blank">開啟 →</a>
+      </div>
+    </div>`).join('');
+  LISTEN_RES.forEach(r=>{ const o=document.createElement('option'); o.value=r.title; o.textContent=r.title; sel.appendChild(o); });
+  renderListenLog();
+}
+function addListenLog() {
+  const sel=document.getElementById('listen-sel');
+  const pct=document.getElementById('listen-pct');
+  if(!sel.value) return;
+  if(!ST.listenLog) ST.listenLog=[];
+  const today=new Date().toLocaleDateString('zh-TW');
+  ST.listenLog.unshift({title:sel.value,pct:pct.value,date:today});
+  if(ST.listenLog.length>20) ST.listenLog=ST.listenLog.slice(0,20);
+  addXP(10,'listen');
+  renderListenLog();
+}
+function renderListenLog() {
+  const div=document.getElementById('listen-log');
+  if(!ST.listenLog||!ST.listenLog.length) { div.innerHTML='<div style="font-size:11px;color:var(--lt);padding:6px 0">尚無記錄</div>'; return; }
+  div.innerHTML=ST.listenLog.map(l=>`
+    <div class="log-row">
+      <div style="font-size:12px;color:var(--tx)">${l.title}</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;color:var(--mu)">聽懂 ${l.pct}%</span>
+        <span class="log-date">${l.date}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ===== 口說 =====
+let spIdx=0, recognition=null, isRecording=false;
+function renderSpeak() {
+  const ph=SPEAK_PHRASES[spIdx];
+  document.getElementById('sp-phrase').textContent=ph.p;
+  document.getElementById('sp-ph').textContent=ph.ph;
+  document.getElementById('sp-tip').textContent='💡 '+ph.tip;
+  document.getElementById('sp-idx').textContent=spIdx+1;
+  document.getElementById('sp-total').textContent=SPEAK_PHRASES.length;
+  document.getElementById('sp-prog').style.width=((spIdx+1)/SPEAK_PHRASES.length*100)+'%';
+  document.getElementById('transcript').textContent='點麥克風開始錄音...';
+  document.getElementById('sp-score-area').style.display='none';
+  document.getElementById('sp-done').textContent=(ST.speakDone||[]).length;
+  document.getElementById('sp-done-total').textContent=SPEAK_PHRASES.length;
+}
+function toggleRecord() {
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)) {
+    document.getElementById('transcript').textContent='此瀏覽器不支援語音辨識，請使用 Chrome 或 Edge。';
+    return;
+  }
+  if(isRecording) { recognition&&recognition.stop(); return; }
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  recognition=new SR();
+  recognition.lang='en-US'; recognition.continuous=false; recognition.interimResults=true;
+  recognition.onstart=()=>{ isRecording=true; document.getElementById('rec-btn').classList.add('recording'); document.getElementById('transcript').textContent='正在聆聽...'; };
+  recognition.onresult=(e)=>{
+    let t=''; for(let i=0;i<e.results.length;i++) t+=e.results[i][0].transcript;
+    document.getElementById('transcript').textContent=t;
+  };
+  recognition.onend=()=>{
+    isRecording=false; document.getElementById('rec-btn').classList.remove('recording');
+    const transcript=document.getElementById('transcript').textContent;
+    const target=SPEAK_PHRASES[spIdx].p.toLowerCase().replace(/[^a-z\s]/g,'');
+    const heard=transcript.toLowerCase().replace(/[^a-z\s]/g,'');
+    const score=calcSimilarity(target,heard);
+    const scoreArea=document.getElementById('sp-score-area');
+    scoreArea.style.display='';
+    document.getElementById('score-fill').style.width=score+'%';
+    document.getElementById('score-label').textContent=
+      score>=80?'很好！發音清晰':score>=60?'不錯！繼續練習':score>=40?'聽得出來，再試一次':'請再說一次，盡量清晰';
+  };
+  recognition.start();
+}
+function calcSimilarity(a,b) {
+  const wa=a.trim().split(/\s+/), wb=b.trim().split(/\s+/);
+  let match=0;
+  wa.forEach(w=>{ if(wb.includes(w)) match++; });
+  return Math.round(match/wa.length*100);
+}
+function spNav(d) { spIdx=(spIdx+d+SPEAK_PHRASES.length)%SPEAK_PHRASES.length; renderSpeak(); }
+function markSpeak() {
+  const phrase=SPEAK_PHRASES[spIdx].p;
+  if(!ST.speakDone) ST.speakDone=[];
+  if(!ST.speakDone.includes(phrase)) { ST.speakDone.push(phrase); addXP(4,'speak'); }
+  spNav(1);
+}
+
+// ===== 寫作 =====
+let writeIdx=0, writeAILoading=false;
+function renderWriteTabs() {
+  const tabs=document.getElementById('write-tabs');
+  tabs.innerHTML=WRITE_PROMPTS.map((p,i)=>`
+    <button class="sub-tab ${i===writeIdx?'active':''}" onclick="selectWrite(${i})">${p.title}</button>`).join('');
+}
+function selectWrite(i) {
+  writeIdx=i; renderWriteTabs(); renderWriteContent();
+}
+function renderWriteContent() {
+  const pr=WRITE_PROMPTS[writeIdx];
+  const hasKey=!!(ST.apiKey);
+  document.getElementById('write-content').innerHTML=`
+    <div class="card">
+      <div class="prompt-box">
+        <div class="prompt-text">📝 ${pr.prompt}</div>
+        <div class="prompt-guide" style="margin-top:8px;white-space:pre-line">${pr.guide}</div>
+      </div>
+      <textarea class="write-area" id="write-area" placeholder="在這裡用英文寫作...（至少 ${pr.minWords} 個字）"></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn btn-lav" onclick="submitWrite()">${hasKey?'🤖 AI 批改':'儲存練習'}</button>
+        <button class="btn btn-outline btn-sm" onclick="clearWriteArea()">清除</button>
+        ${!hasKey?'<span style="font-size:11px;color:var(--lt);align-self:center">設定 Gemini API Key 可獲得 AI 回饋</span>':''}
+      </div>
+      <div id="write-feedback"></div>
+    </div>`;
+  renderWriteHistory();
+}
+function clearWriteArea() { const a=document.getElementById('write-area'); if(a) a.value=''; }
+async function submitWrite() {
+  const area=document.getElementById('write-area');
+  if(!area) return;
+  const text=area.value.trim();
+  if(!text||text.split(/\s+/).length<5) { document.getElementById('write-feedback').innerHTML='<div class="feedback-box">請先寫至少一個完整的句子。</div>'; return; }
+  if(!ST.writeDone) ST.writeDone=[];
+  const record={prompt:WRITE_PROMPTS[writeIdx].title,text,date:new Date().toLocaleDateString('zh-TW'),feedback:''};
+  if(ST.apiKey) {
+    const fb=document.getElementById('write-feedback');
+    fb.innerHTML='<div class="feedback-box"><div class="dots"><span></span><span></span><span></span></div> AI 正在批改...</div>';
+    try {
+      const res=await callGemini(`You are an encouraging English teacher for an A2-level adult learner. Review this English writing and give feedback in Traditional Chinese. Be warm and encouraging. Structure your feedback as:\n1. ✓ 寫得好的地方（1-2 points）\n2. 📝 可以改進的地方（1-2 corrections max, show corrected version）\n3. 💡 一個建議\nKeep it short. Student's writing:\n\n${text}`);
+      record.feedback=res;
+      fb.innerHTML=`<div class="feedback-box">${res.replace(/\n/g,'<br>')}</div>`;
+    } catch(e) { fb.innerHTML=`<div class="feedback-box" style="border-color:var(--mr)">AI 回饋失敗，請檢查 API Key 是否正確。</div>`; }
+  } else {
+    document.getElementById('write-feedback').innerHTML='<div class="feedback-box" style="border-color:var(--ms)">✓ 練習已儲存！設定 Gemini API Key 可獲得詳細回饋。</div>';
+  }
+  ST.writeDone.unshift(record);
+  if(ST.writeDone.length>10) ST.writeDone=ST.writeDone.slice(0,10);
+  addXP(20,'write');
+  renderWriteHistory();
+}
+async function callGemini(prompt) {
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
+  const body={contents:[{parts:[{text:prompt}]}]};
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const data=await res.json();
+  if(data.error) throw new Error(data.error.message);
+  return data.candidates[0].content.parts[0].text;
+}
+function renderWriteHistory() {
+  const div=document.getElementById('write-history');
+  if(!div) return;
+  if(!ST.writeDone||!ST.writeDone.length) { div.innerHTML='<div style="font-size:11px;color:var(--lt);padding:8px 0">還沒有練習記錄</div>'; return; }
+  div.innerHTML=ST.writeDone.map((r,i)=>`
+    <div class="wh-item" onclick="showWriteRecord(${i})">
+      <div style="display:flex;justify-content:space-between">
+        <strong>${r.prompt}</strong><span class="log-date">${r.date}</span>
+      </div>
+      <div style="margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">${r.text.substring(0,80)}...</div>
+    </div>`).join('');
+}
+function showWriteRecord(i) {
+  const r=ST.writeDone[i];
+  alert(`【${r.prompt}】\n\n${r.text}${r.feedback?'\n\n--- AI 回饋 ---\n'+r.feedback:''}`);
+}
+
+// ===== 進度 =====
+function renderProgress() {
+  const el=(id,v)=>{ const e=document.getElementById(id); if(e) e.textContent=v; };
+  el('p-streak',ST.streak);
+  el('p-xp-total',ST.xp);
+  el('p-vocab-k',(ST.vocabKnown||[]).length);
+  el('prog-level-tag',ST.level);
+  const vPct=Math.min(100,Math.round((ST.vocabKnown||[]).length/VOCAB.length*100));
+  const rPct=Math.min(100,Math.round(Object.keys(ST.readDone||{}).length/READINGS.length*100));
+  const lPct=Math.min(100,Math.round(Math.min((ST.listenLog||[]).length,10)/10*100));
+  const sPct=Math.min(100,Math.round((ST.speakDone||[]).length/SPEAK_PHRASES.length*100));
+  const wPct=Math.min(100,Math.round((ST.writeDone||[]).length/WRITE_PROMPTS.length*20));
+  const setBar=(bar,pct,label)=>{ const b=document.getElementById(bar); const p=document.getElementById(label); if(b){b.style.width=pct+'%'} if(p){p.textContent=pct+'%'} };
+  setBar('spf-vocab',vPct,'spp-vocab');
+  setBar('spf-read',rPct,'spp-read');
+  setBar('spf-listen',lPct,'spp-listen');
+  setBar('spf-speak',sPct,'spp-speak');
+  setBar('spf-write',wPct,'spp-write');
+  // calendar
+  const cal=document.getElementById('streak-cal');
+  cal.innerHTML='';
+  const today=new Date();
+  for(let i=29;i>=0;i--) {
+    const d=new Date(today); d.setDate(d.getDate()-i);
+    const ds=d.toISOString().slice(0,10);
+    const div=document.createElement('div');
+    div.className='cal-day'+(( ST.days||[]).includes(ds)?' done':'')+(i===0?' today':'');
+    div.textContent=d.getDate();
+    cal.appendChild(div);
+  }
+}
+
+// ===== 設定 =====
+function loadSettingsUI() {
+  const k=document.getElementById('api-key-inp'); if(k) k.value=ST.apiKey||'';
+  const s=document.getElementById('cefr-sel'); if(s) s.value=ST.level||'A2';
+}
+function saveSettings() {
+  ST.apiKey=document.getElementById('api-key-inp').value.trim();
+  ST.level=document.getElementById('cefr-sel').value;
+  saveST(); updateHome();
+}
+function clearProgress() {
+  if(!confirm('確定要清除所有進度嗎？')) return;
+  ST={xp:0,xpToday:0,streak:0,lastDate:'',vocabKnown:[],vocabHard:[],readDone:{},listenLog:[],speakDone:[],writeDone:[],missions:{vocab:false,read:false,listen:false,speak:false,write:false},days:[],apiKey:ST.apiKey,level:ST.level};
+  saveST(); updateHome(); alert('進度已清除。');
+}
+
+// ===== 初始化 =====
+function init() {
+  loadST();
+  // 處理今日 xpToday reset
+  const today=new Date().toISOString().slice(0,10);
+  if(ST.lastDate!==today) ST.xpToday=0;
+  updateHome();
+  renderFlashcard();
+  renderListenResources();
+  renderReadTabs();
+  renderReadContent();
+  renderWriteTabs();
+  renderWriteContent();
+  renderSpeak();
+}
+
+init();
+</script>
+</body>
+</html>
