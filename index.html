@@ -172,6 +172,42 @@ textarea.write-area:focus{border-color:var(--mb)}
 .word-card.known{border-color:var(--ms);background:#f0fdf8}
 .word-card .we{font-weight:700;font-size:13px;font-family:Verdana,sans-serif}
 .word-card .wz{font-size:12px;color:var(--mu);margin-top:3px}
+/* YOUTUBE PRACTICE */
+.yt-input-row{display:flex;gap:8px;margin-bottom:14px}
+.yt-input{flex:1;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
+.yt-input:focus{border-color:var(--mb)}
+.yt-player-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px}
+.yt-player-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.yt-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.speed-btns{display:flex;gap:4px;flex-wrap:wrap}
+.speed-btn{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;color:var(--mu)}
+.speed-btn.active{background:var(--mb);border-color:var(--mb);color:var(--tx)}
+.ab-loop{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:11px;color:var(--mu)}
+.mode-desc{background:var(--sf);border-radius:10px;padding:14px;margin-bottom:14px;font-size:12px;color:var(--mu);line-height:1.8}
+.echo-panel{text-align:center;padding:20px}
+.echo-status{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:12px}
+.dict-area{width:100%;border:1px solid var(--bd);border-radius:8px;padding:12px;font-size:14px;font-family:'Verdana','Tahoma',sans-serif;color:var(--tx);background:var(--cd);resize:vertical;min-height:100px;outline:none;line-height:1.8}
+.dict-area:focus{border-color:var(--mb)}
+/* AI TOOLS */
+.ai-input-row{display:flex;gap:8px;margin-bottom:14px}
+.ai-input{flex:1;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
+.ai-input:focus{border-color:var(--mb)}
+.ai-result{background:var(--sf);border-left:3px solid var(--ml);border-radius:0 8px 8px 0;padding:14px;font-size:13px;color:var(--tx);line-height:1.8;min-height:60px;white-space:pre-wrap}
+.chat-box{border:1px solid var(--bd);border-radius:12px;background:var(--cd);padding:14px;max-height:400px;overflow-y:auto;margin-bottom:12px;min-height:200px}
+.chat-msg{margin-bottom:10px;display:flex;gap:8px}
+.chat-msg.user{justify-content:flex-end}
+.chat-msg.user .chat-bubble{background:var(--mb);border-radius:12px 12px 2px 12px}
+.chat-msg.ai .chat-bubble{background:var(--sf);border-radius:12px 12px 12px 2px}
+.chat-bubble{max-width:80%;padding:10px 14px;font-size:13px;line-height:1.7;color:var(--tx)}
+.chat-input-row{display:flex;gap:8px}
+.chat-input{flex:1;border:1px solid var(--bd);border-radius:20px;padding:10px 16px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
+.chat-input:focus{border-color:var(--mb)}
+.ext-link{display:flex;align-items:center;gap:12px;background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:8px;text-decoration:none;color:var(--tx);transition:border-color .2s}
+.ext-link:hover{border-color:var(--mr)}
+.ext-link-icon{font-size:28px}
+.ext-link-info{flex:1}
+.ext-link-title{font-size:13px;font-weight:700}
+.ext-link-sub{font-size:11px;color:var(--lt);margin-top:2px}
 </style>
 </head>
 <body>
@@ -184,6 +220,8 @@ textarea.write-area:focus{border-color:var(--mb)}
   <button class="nb" onclick="showPage('listening')">🎧 聽力</button>
   <button class="nb" onclick="showPage('speaking')">🗣️ 口說</button>
   <button class="nb" onclick="showPage('writing')">✍️ 寫作</button>
+  <button class="nb" onclick="showPage('ytpractice')">🎬 影音練習</button>
+  <button class="nb" onclick="showPage('aitools')">🤖 AI 工具</button>
   <button class="nb" onclick="showPage('progress')">📊 進度</button>
   <button class="nb" onclick="showPage('settings')">⚙️ 設定</button>
 </nav>
@@ -324,6 +362,220 @@ textarea.write-area:focus{border-color:var(--mb)}
   <div class="book-sel" id="write-books"></div>
   <div class="lesson-sel" id="write-lessons"></div>
   <div id="write-content"></div>
+</div>
+
+<!-- YOUTUBE PRACTICE -->
+<div class="page" id="page-ytpractice">
+  <div class="sec-h"><div class="sec-title">🎬 影音練習</div></div>
+  <div class="card">
+    <div class="card-title">貼上 YouTube 連結</div>
+    <div class="yt-input-row">
+      <input type="text" class="yt-input" id="yt-url" placeholder="https://www.youtube.com/watch?v=...">
+      <button class="btn btn-pink" onclick="loadYT()">載入</button>
+    </div>
+    <div class="yt-player-wrap" id="yt-wrap" style="display:none"><div id="yt-player"></div></div>
+  </div>
+  <div id="yt-practice-area" style="display:none">
+    <div class="card">
+      <div class="card-title">播放控制</div>
+      <div class="yt-controls">
+        <button class="btn btn-outline btn-sm" onclick="ytSeek(-5)">⏪ -5s</button>
+        <button class="btn btn-blue btn-sm" onclick="ytToggle()" id="yt-play-btn">▶ 播放</button>
+        <button class="btn btn-outline btn-sm" onclick="ytSeek(5)">⏩ +5s</button>
+        <button class="btn btn-outline btn-sm" onclick="ytSeek(-2)">⏪ -2s</button>
+        <button class="btn btn-outline btn-sm" onclick="ytSeek(2)">⏩ +2s</button>
+      </div>
+      <div class="card-title" style="margin-top:8px">速度</div>
+      <div class="speed-btns" id="speed-btns">
+        <button class="speed-btn" onclick="ytSpeed(0.5)">0.5x</button>
+        <button class="speed-btn" onclick="ytSpeed(0.6)">0.6x</button>
+        <button class="speed-btn" onclick="ytSpeed(0.75)">0.75x</button>
+        <button class="speed-btn active" onclick="ytSpeed(1)">1x</button>
+        <button class="speed-btn" onclick="ytSpeed(1.25)">1.25x</button>
+      </div>
+      <div class="card-title" style="margin-top:10px">A-B 循環</div>
+      <div class="ab-loop">
+        <button class="btn btn-outline btn-sm" onclick="setABPoint('A')">設 A 點</button>
+        <button class="btn btn-outline btn-sm" onclick="setABPoint('B')">設 B 點</button>
+        <button class="btn btn-green btn-sm" onclick="toggleABLoop()" id="ab-loop-btn">🔄 循環</button>
+        <button class="btn btn-outline btn-sm" onclick="clearAB()">✕ 清除</button>
+        <span id="ab-display" style="font-size:11px;color:var(--lt)"></span>
+      </div>
+    </div>
+    <div class="sub-tabs">
+      <button class="sub-tab active" onclick="switchYTMode('shadow')">🗣️ 影子跟讀</button>
+      <button class="sub-tab" onclick="switchYTMode('echo')">🔁 回音法</button>
+      <button class="sub-tab" onclick="switchYTMode('dictation')">✏️ 聽寫</button>
+    </div>
+    <div class="sub-panel active" id="ytp-shadow">
+      <div class="mode-desc">
+        <strong>影子跟讀法 Shadowing</strong><br>
+        在聽的同時立刻跟讀，不暫停、不思考，模仿母語人士的發音、節奏、語調。<br><br>
+        <strong>步驟：</strong><br>
+        ① 先不開字幕看一遍，聽到什麼就說什麼<br>
+        ② 再看一遍，仍不開字幕，聽到就跟讀<br>
+        ③ 打開字幕看一遍，理解內容<br>
+        ④ 開字幕跟讀，盡量同步<br>
+        ⑤ 關字幕，只聽只跟讀，追求完美模仿<br><br>
+        💡 初學者先調 0.6-0.8 倍速，習慣後再加速。每天 10-20 分鐘。
+      </div>
+      <div class="card" style="text-align:center">
+        <button class="btn btn-lav" onclick="ytToggleCC()">字幕 開/關</button>
+        <div style="font-size:11px;color:var(--lt);margin-top:8px">提示：也可直接在 YouTube 播放器上切換字幕</div>
+      </div>
+    </div>
+    <div class="sub-panel" id="ytp-echo">
+      <div class="mode-desc">
+        <strong>回音法 Echoing</strong><br>
+        聽一句 → 暫停 → 在腦中回放聲音 → 模仿說出來。<br><br>
+        <strong>步驟：</strong><br>
+        ① 設定播放秒數（建議 3-8 秒）<br>
+        ② 播放後自動暫停，先在腦中回想剛才的聲音<br>
+        ③ 模仿腦中的「回音」說出來<br>
+        ④ 按「重聽」或「繼續」<br><br>
+        💡 不需要 100% 完美，但要一個字一個字清楚說出來。
+      </div>
+      <div class="card echo-panel">
+        <div style="margin-bottom:12px">
+          <span style="font-size:12px;color:var(--mu)">播放秒數：</span>
+          <select id="echo-dur" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)">
+            <option value="3">3 秒</option>
+            <option value="5" selected>5 秒</option>
+            <option value="8">8 秒</option>
+            <option value="10">10 秒</option>
+            <option value="15">15 秒</option>
+          </select>
+        </div>
+        <div class="echo-status" id="echo-status">準備好了</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <button class="btn btn-blue" onclick="echoPlay()" id="echo-play-btn">▶ 播放</button>
+          <button class="btn btn-outline" onclick="echoReplay()">🔄 重聽</button>
+        </div>
+        <div style="font-size:11px;color:var(--lt);margin-top:10px">已練習 <span id="echo-count">0</span> 句</div>
+      </div>
+    </div>
+    <div class="sub-panel" id="ytp-dictation">
+      <div class="mode-desc">
+        <strong>聽寫訓練 Dictation</strong><br>
+        聽一段 → 暫停 → 寫下聽到的內容。重點練句子結構和連讀辨識。<br><br>
+        <strong>步驟：</strong><br>
+        ① 設定播放秒數，播放後自動暫停<br>
+        ② 在下方輸入框寫下聽到的內容<br>
+        ③ 按「重聽」確認<br>
+        ④ 開啟 YouTube 字幕自己對答案<br><br>
+        💡 建議每週 3-4 次，每次 15 分鐘。
+      </div>
+      <div class="card">
+        <div style="margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <span style="font-size:12px;color:var(--mu)">播放秒數：</span>
+          <select id="dict-dur" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)">
+            <option value="5">5 秒</option>
+            <option value="8" selected>8 秒</option>
+            <option value="10">10 秒</option>
+            <option value="15">15 秒</option>
+          </select>
+          <button class="btn btn-blue btn-sm" onclick="dictPlay()">▶ 播放</button>
+          <button class="btn btn-outline btn-sm" onclick="dictReplay()">🔄 重聽</button>
+        </div>
+        <textarea class="dict-area" id="dict-area" placeholder="在這裡寫下你聽到的內容..."></textarea>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:6px">
+          <button class="btn btn-lav btn-sm" onclick="ytToggleCC()">開字幕對答案</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('dict-area').value=''">清除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI TOOLS -->
+<div class="page" id="page-aitools">
+  <div class="sec-h"><div class="sec-title">🤖 AI 工具</div></div>
+  <div id="ai-no-key" style="display:none">
+    <div class="card" style="background:var(--sf)">
+      <p style="font-size:12px;color:var(--mu);line-height:1.8">⚠️ 請先到「設定」頁面輸入 Gemini API Key 才能使用 AI 功能。<br>
+      <button class="btn btn-outline btn-sm" onclick="showPage('settings')" style="margin-top:6px">前往設定 →</button></p>
+    </div>
+  </div>
+  <div id="ai-tools-content">
+    <div class="sub-tabs">
+      <button class="sub-tab active" onclick="switchAI('word')">📖 查單字</button>
+      <button class="sub-tab" onclick="switchAI('grammar')">📝 查語法</button>
+      <button class="sub-tab" onclick="switchAI('chat')">💬 AI 對話</button>
+      <button class="sub-tab" onclick="switchAI('links')">🔗 外部資源</button>
+    </div>
+    <div class="sub-panel active" id="ai-word">
+      <div class="card">
+        <div class="card-title">輸入英文單字，AI 幫你查</div>
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="ai-word-inp" placeholder="例：accomplish" onkeydown="if(event.key==='Enter')aiLookupWord()">
+          <button class="btn btn-lav" onclick="aiLookupWord()">查詢</button>
+        </div>
+        <div class="ai-result" id="ai-word-result" style="display:none"></div>
+      </div>
+    </div>
+    <div class="sub-panel" id="ai-grammar">
+      <div class="card">
+        <div class="card-title">輸入英文句子，AI 幫你分析文法</div>
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="ai-grammar-inp" placeholder="例：I have been studying English for three years." onkeydown="if(event.key==='Enter')aiCheckGrammar()">
+          <button class="btn btn-blue" onclick="aiCheckGrammar()">分析</button>
+        </div>
+        <div class="ai-result" id="ai-grammar-result" style="display:none"></div>
+      </div>
+    </div>
+    <div class="sub-panel" id="ai-chat">
+      <div class="card">
+        <div class="card-title">AI 英語對話練習</div>
+        <div style="margin-bottom:10px">
+          <span style="font-size:12px;color:var(--mu)">場景：</span>
+          <select id="chat-scene" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)" onchange="resetChat()">
+            <option value="daily">日常閒聊</option>
+            <option value="restaurant">餐廳點餐</option>
+            <option value="travel">旅遊問路</option>
+            <option value="shopping">購物</option>
+            <option value="interview">面試練習</option>
+            <option value="school">校園生活</option>
+            <option value="free">自由對話</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="resetChat()" style="margin-left:6px">重新開始</button>
+        </div>
+        <div class="chat-box" id="chat-box">
+          <div class="chat-msg ai"><div class="chat-bubble">Hi! Choose a scene and start chatting with me in English. I'll help you practice! 😊</div></div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" id="chat-input" placeholder="Type in English..." onkeydown="if(event.key==='Enter')sendChat()">
+          <button class="btn btn-pink" onclick="sendChat()">送出</button>
+        </div>
+        <div style="font-size:10px;color:var(--lt);margin-top:6px">💡 用英文跟 AI 對話，AI 會用簡單英文回覆並幫你修正錯誤</div>
+      </div>
+    </div>
+    <div class="sub-panel" id="ai-links">
+      <div class="card">
+        <div class="card-title">外部學習資源</div>
+        <a class="ext-link" href="https://en.jiaojq.vip/word-list" target="_blank">
+          <div class="ext-link-icon">📚</div>
+          <div class="ext-link-info"><div class="ext-link-title">小語筆記 — 分類詞彙庫</div><div class="ext-link-sub">按主題劃分的英文詞彙庫</div></div>
+          <span style="font-size:12px;color:var(--lt)">→</span>
+        </a>
+        <a class="ext-link" href="https://en.jiaojq.vip/dictation-sentence" target="_blank">
+          <div class="ext-link-icon">🎧</div>
+          <div class="ext-link-info"><div class="ext-link-title">小語筆記 — 真題精聽</div><div class="ext-link-sub">真題精聽解析練習</div></div>
+          <span style="font-size:12px;color:var(--lt)">→</span>
+        </a>
+        <a class="ext-link" href="https://www.teco-lab.com/english" target="_blank">
+          <div class="ext-link-icon">🎬</div>
+          <div class="ext-link-info"><div class="ext-link-title">TEco Lab — YouTube 語料庫</div><div class="ext-link-sub">用 YouTube Vlog 學英文，互動字幕</div></div>
+          <span style="font-size:12px;color:var(--lt)">→</span>
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-title">嵌入預覽（如網站不支援嵌入，請用上方連結）</div>
+        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--bd)">
+          <iframe src="https://en.jiaojq.vip/word-list" style="width:100%;height:500px;border:none" id="embed-iframe"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- PROGRESS -->
@@ -749,13 +1001,15 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const order=['home','vocab','reading','listening','speaking','writing','progress','settings'];
+  const order=['home','vocab','reading','listening','speaking','writing','ytpractice','aitools','progress','settings'];
   const idx=order.indexOf(id);
   if(idx>=0)document.querySelectorAll('.nb')[idx].classList.add('active');
   if(id==='vocab')initVocabPage();
   if(id==='reading')initReadPage();
   if(id==='speaking')initSpeakPage();
   if(id==='writing')initWritePage();
+  if(id==='ytpractice')initYTPractice();
+  if(id==='aitools')initAITools();
   if(id==='progress')renderProgress();
   if(id==='settings')loadSettingsUI();
 }
@@ -1083,6 +1337,188 @@ function clearProgress(){
   const key=ST.apiKey;
   ST={xp:0,xpToday:0,streak:0,lastDate:'',vocabKnown:[],vocabHard:[],readDone:{},listenLog:[],speakDone:[],writeDone:[],missions:{vocab:false,read:false,listen:false,speak:false,write:false},days:[],apiKey:key,curBook:0,curLesson:0};
   saveST();updateHome();alert('進度已清除。');
+}
+
+// ===== YOUTUBE PRACTICE =====
+let ytPlayer=null,ytReady=false,abA=null,abB=null,abInterval=null,abActive=false;
+let echoTimer=null,echoCount=0,dictLastPos=0;
+
+function loadYTAPI(){
+  if(window.YT&&window.YT.Player){ytReady=true;return;}
+  const tag=document.createElement('script');
+  tag.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+}
+window.onYouTubeIframeAPIReady=function(){ytReady=true;};
+
+function getYTID(url){
+  const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([^&?\s#]+)/);
+  return m?m[1]:null;
+}
+function initYTPractice(){loadYTAPI();}
+
+function loadYT(){
+  const url=document.getElementById('yt-url').value.trim();
+  const id=getYTID(url);
+  if(!id){alert('請輸入有效的 YouTube 連結');return;}
+  document.getElementById('yt-wrap').style.display='';
+  document.getElementById('yt-practice-area').style.display='';
+  if(ytPlayer){ytPlayer.loadVideoById(id);}
+  else{
+    ytPlayer=new YT.Player('yt-player',{
+      videoId:id,
+      playerVars:{rel:0,modestbranding:1,cc_load_policy:0,playsinline:1},
+      events:{
+        onReady:function(){ytReady=true;},
+        onStateChange:function(e){
+          document.getElementById('yt-play-btn').textContent=e.data===1?'⏸ 暫停':'▶ 播放';
+        }
+      }
+    });
+  }
+  clearAB();
+}
+
+function ytToggle(){if(!ytPlayer)return;ytPlayer.getPlayerState()===1?ytPlayer.pauseVideo():ytPlayer.playVideo();}
+function ytSeek(d){if(!ytPlayer)return;ytPlayer.seekTo(Math.max(0,ytPlayer.getCurrentTime()+d),true);}
+function ytSpeed(r){
+  if(!ytPlayer)return;ytPlayer.setPlaybackRate(r);
+  document.querySelectorAll('.speed-btn').forEach(b=>{b.classList.toggle('active',b.textContent===r+'x');});
+}
+function ytToggleCC(){
+  if(!ytPlayer)return;
+  try{const o=ytPlayer.getOptions();if(o&&o.includes('captions'))ytPlayer.unloadModule('captions');else ytPlayer.loadModule('captions');}catch(e){}
+}
+
+function setABPoint(p){if(!ytPlayer)return;const t=Math.round(ytPlayer.getCurrentTime()*10)/10;if(p==='A')abA=t;else abB=t;updateABDisplay();}
+function clearAB(){abA=null;abB=null;abActive=false;if(abInterval)clearInterval(abInterval);abInterval=null;updateABDisplay();const b=document.getElementById('ab-loop-btn');if(b)b.textContent='🔄 循環';}
+function updateABDisplay(){
+  const fmt=t=>t===null?'--':Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+  const d=document.getElementById('ab-display');if(d)d.textContent='A: '+fmt(abA)+' → B: '+fmt(abB);
+}
+function toggleABLoop(){
+  if(abA===null||abB===null){alert('請先設定 A 點和 B 點');return;}
+  if(abA>=abB){alert('A 點必須在 B 點之前');return;}
+  abActive=!abActive;
+  document.getElementById('ab-loop-btn').textContent=abActive?'⏹ 停止':'🔄 循環';
+  if(abActive){
+    ytPlayer.seekTo(abA,true);ytPlayer.playVideo();
+    abInterval=setInterval(()=>{if(!ytPlayer||!abActive)return;if(ytPlayer.getCurrentTime()>=abB)ytPlayer.seekTo(abA,true);},200);
+  }else{if(abInterval)clearInterval(abInterval);abInterval=null;}
+}
+
+function switchYTMode(mode){
+  document.querySelectorAll('#page-ytpractice .sub-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-ytpractice .sub-tab').forEach((t,i)=>{if(['shadow','echo','dictation'][i]===mode)t.classList.add('active');});
+  document.querySelectorAll('#page-ytpractice .sub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('ytp-'+mode).classList.add('active');
+}
+
+function echoPlay(){
+  if(!ytPlayer)return;
+  const dur=parseInt(document.getElementById('echo-dur').value);
+  document.getElementById('echo-status').textContent='🎧 聆聽中...';
+  document.getElementById('echo-play-btn').disabled=true;
+  ytPlayer.playVideo();
+  if(echoTimer)clearTimeout(echoTimer);
+  echoTimer=setTimeout(()=>{
+    ytPlayer.pauseVideo();
+    document.getElementById('echo-status').textContent='🧠 回想剛才的聲音，然後說出來！';
+    document.getElementById('echo-play-btn').disabled=false;
+    echoCount++;document.getElementById('echo-count').textContent=echoCount;
+  },dur*1000);
+}
+function echoReplay(){
+  if(!ytPlayer)return;
+  const dur=parseInt(document.getElementById('echo-dur').value);
+  ytPlayer.seekTo(Math.max(0,ytPlayer.getCurrentTime()-dur),true);
+  echoPlay();
+}
+
+function dictPlay(){
+  if(!ytPlayer)return;
+  const dur=parseInt(document.getElementById('dict-dur').value);
+  dictLastPos=ytPlayer.getCurrentTime();
+  document.getElementById('dict-area').focus();
+  ytPlayer.playVideo();
+  setTimeout(()=>{if(ytPlayer)ytPlayer.pauseVideo();},dur*1000);
+}
+function dictReplay(){if(!ytPlayer)return;ytPlayer.seekTo(dictLastPos,true);dictPlay();}
+
+// ===== AI TOOLS =====
+let chatHistory=[];
+
+function initAITools(){
+  const noKey=document.getElementById('ai-no-key'),content=document.getElementById('ai-tools-content');
+  if(!ST.apiKey){noKey.style.display='';content.style.display='none';}
+  else{noKey.style.display='none';content.style.display='';}
+}
+
+function switchAI(mode){
+  document.querySelectorAll('#page-aitools .sub-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-aitools .sub-tab').forEach((t,i)=>{if(['word','grammar','chat','links'][i]===mode)t.classList.add('active');});
+  document.querySelectorAll('#page-aitools .sub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('ai-'+mode).classList.add('active');
+}
+
+async function aiQuery(prompt){
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+  const data=await res.json();
+  if(data.error)throw new Error(data.error.message);
+  return data.candidates[0].content.parts[0].text;
+}
+
+async function aiLookupWord(){
+  const word=document.getElementById('ai-word-inp').value.trim();if(!word)return;
+  const r=document.getElementById('ai-word-result');r.style.display='';
+  r.innerHTML='<div class="dots"><span></span><span></span><span></span></div> 查詢中...';
+  try{
+    const result=await aiQuery(`You are an English dictionary for a Taiwanese learner. Look up "${word}" and provide in Traditional Chinese:\n1. 📖 音標（KK音標）與詞性\n2. 📝 中文解釋（列出主要意思）\n3. 📌 例句 × 2（英文 + 中文翻譯，用粗體標記該單字）\n4. 🔗 常見搭配詞組 × 3\n5. 💡 記憶小技巧（一句話）\nKeep it clear and concise.`);
+    r.innerHTML=result.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  }catch(e){r.innerHTML='❌ 查詢失敗：'+e.message;}
+}
+
+async function aiCheckGrammar(){
+  const sent=document.getElementById('ai-grammar-inp').value.trim();if(!sent)return;
+  const r=document.getElementById('ai-grammar-result');r.style.display='';
+  r.innerHTML='<div class="dots"><span></span><span></span><span></span></div> 分析中...';
+  try{
+    const result=await aiQuery(`You are an English grammar teacher for a Taiwanese student. Analyze: "${sent}"\nRespond in Traditional Chinese:\n1. ✅ 文法正確性（正確/有錯誤，如有錯誤給出修正版本）\n2. 📝 句子結構分析（主詞/動詞/受詞等）\n3. 📌 文法重點（用到了什麼文法，簡短說明）\n4. 💡 延伸用法或同類句型一個\nKeep it short and practical.`);
+    r.innerHTML=result.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  }catch(e){r.innerHTML='❌ 分析失敗：'+e.message;}
+}
+
+function resetChat(){
+  chatHistory=[];
+  document.getElementById('chat-box').innerHTML='<div class="chat-msg ai"><div class="chat-bubble">Hi! Choose a scene and start chatting with me in English. I\'ll help you practice! 😊</div></div>';
+}
+
+async function sendChat(){
+  const input=document.getElementById('chat-input');const msg=input.value.trim();if(!msg)return;
+  input.value='';const box=document.getElementById('chat-box');
+  box.innerHTML+='<div class="chat-msg user"><div class="chat-bubble">'+msg.replace(/</g,'&lt;')+'</div></div>';
+  box.innerHTML+='<div class="chat-msg ai" id="chat-loading"><div class="chat-bubble"><div class="dots"><span></span><span></span><span></span></div></div></div>';
+  box.scrollTop=box.scrollHeight;
+  chatHistory.push({role:'user',parts:[{text:msg}]});
+  const scene=document.getElementById('chat-scene').value;
+  const scenes={daily:'casual daily conversation',restaurant:'ordering food at a restaurant',travel:'asking for directions while traveling',shopping:'shopping and bargaining',interview:'a job interview',school:'school life conversation',free:'any topic the user wants'};
+  try{
+    const sysPrompt='You are a friendly English conversation partner for a Taiwanese high school student. Scene: '+scenes[scene]+'.\nRules:\n- Reply in SIMPLE English (A2-B1 level)\n- Keep responses short (2-4 sentences)\n- If the user makes a grammar/spelling mistake, gently correct it in parentheses like (💡 correction: ...)\n- Stay in character for the scene\n- Be encouraging and natural\n- End with a question to keep the conversation going';
+    const contents=[{role:'user',parts:[{text:sysPrompt}]},{role:'model',parts:[{text:'Got it! I\'ll be a friendly conversation partner.'}]},...chatHistory];
+    const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
+    const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents})});
+    const data=await res.json();
+    if(data.error)throw new Error(data.error.message);
+    const reply=data.candidates[0].content.parts[0].text;
+    chatHistory.push({role:'model',parts:[{text:reply}]});
+    const ld=document.getElementById('chat-loading');if(ld)ld.remove();
+    box.innerHTML+='<div class="chat-msg ai"><div class="chat-bubble">'+reply.replace(/\n/g,'<br>')+'</div></div>';
+    box.scrollTop=box.scrollHeight;addXP(5,'speak');
+  }catch(e){
+    const ld=document.getElementById('chat-loading');if(ld)ld.remove();
+    box.innerHTML+='<div class="chat-msg ai"><div class="chat-bubble">❌ '+e.message+'</div></div>';
+  }
 }
 
 // ===== INIT =====
