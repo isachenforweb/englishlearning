@@ -12,15 +12,19 @@
   --ms:#a8e6cf;--mr:#ffaaa5;--mb:#bce6eb;--mt:#fce89d;--ml:#cbaacb;--mo:#ffb7b2;
 }
 body{font-family:'PingFang TC','Noto Sans TC',sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.6}
+/* NAV */
 nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;display:flex;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:100;gap:2px}
 .brand{font-size:13px;font-weight:700;color:var(--mu);padding:10px 12px 10px 0;border-right:1px solid var(--bd);margin-right:6px;white-space:nowrap}
 .nb{background:none;border:none;padding:10px 9px;font-size:12px;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit}
 .nb.active{color:var(--tx);border-bottom-color:var(--mr)}
 .nb:hover{color:var(--tx)}
+/* PAGES */
 .page{display:none;padding:18px 16px;max-width:860px;margin:0 auto}
 .page.active{display:block}
+/* CARD */
 .card{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
 .card-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--mu);margin-bottom:10px;text-transform:uppercase}
+/* BUTTONS */
 .btn{border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-family:inherit;cursor:pointer;transition:opacity .15s}
 .btn:hover{opacity:.85}
 .btn-blue{background:var(--mb);color:var(--tx)}
@@ -46,15 +50,6 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
 .badge-streak{background:var(--mt);color:#7a6000}
 .badge-xp{background:var(--ms);color:#2a7a5a}
 .badge-level{background:var(--mb);color:#2a6a7a}
-/* BOOK SELECTOR */
-.book-sel{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
-.book-btn{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:6px 16px;font-size:12px;cursor:pointer;color:var(--mu);font-family:inherit;font-weight:600}
-.book-btn.active{background:var(--mr);border-color:var(--mr);color:var(--tx)}
-.lesson-sel{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;max-height:80px;overflow-y:auto}
-.lesson-btn{background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:5px 10px;font-size:11px;cursor:pointer;color:var(--mu);font-family:inherit;text-align:left;line-height:1.4;min-width:0;flex-shrink:0}
-.lesson-btn.active{border-color:var(--ml);background:#f7f0ff;color:var(--tx)}
-.lesson-btn.done{border-color:var(--ms)}
-.lesson-btn .ln{font-weight:700;color:var(--tx);font-size:12px}
 /* SUB TABS */
 .sub-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
 .sub-tab{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer;color:var(--mu);font-family:inherit}
@@ -78,7 +73,7 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
 .fc-front,.fc-back{position:absolute;inset:0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;padding:20px}
 .fc-front{background:var(--ml);border:2px solid #b899b8}
 .fc-back{background:var(--ms);border:2px solid #8ecfb6;transform:rotateY(180deg)}
-.fc-word{font-size:28px;font-weight:700;color:var(--tx);font-family:'Verdana',sans-serif}
+.fc-word{font-size:30px;font-weight:700;color:var(--tx);font-family:'Verdana',sans-serif}
 .fc-ph{font-size:12px;color:var(--mu);margin-top:5px}
 .fc-meaning{font-size:22px;color:var(--tx);text-align:center}
 .fc-ex{font-size:11px;color:var(--mu);margin-top:8px;font-style:italic;text-align:center;font-family:'Verdana',sans-serif}
@@ -110,7 +105,7 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
 .log-row{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
 .log-date{font-size:10px;color:var(--lt)}
 /* SPEAKING */
-.phrase-box{font-size:20px;font-weight:700;color:var(--tx);text-align:center;padding:22px;background:var(--sf);border-radius:10px;margin-bottom:6px;font-family:'Verdana',sans-serif}
+.phrase-box{font-size:22px;font-weight:700;color:var(--tx);text-align:center;padding:22px;background:var(--sf);border-radius:10px;margin-bottom:6px;font-family:'Verdana',sans-serif}
 .phrase-ph{font-size:13px;color:var(--mu);text-align:center;margin-bottom:16px}
 .phrase-tip{font-size:11px;color:var(--lt);text-align:center;margin-bottom:14px;line-height:1.6}
 .rec-btn{width:68px;height:68px;border-radius:50%;border:3px solid var(--mr);background:var(--cd);font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
@@ -126,6 +121,11 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
 textarea.write-area{width:100%;border:1px solid var(--bd);border-radius:8px;padding:12px;font-size:14px;font-family:'Verdana','Tahoma',sans-serif;color:var(--tx);background:var(--cd);resize:vertical;min-height:130px;outline:none;line-height:1.8}
 textarea.write-area:focus{border-color:var(--mb)}
 .feedback-box{background:var(--sf);border-left:3px solid var(--ml);border-radius:0 8px 8px 0;padding:12px 14px;font-size:12px;color:var(--tx);margin-top:10px;line-height:1.8}
+.feedback-box .fb-good{color:#2a7a5a;font-weight:600}
+.feedback-box .fb-fix{color:#b04040;font-weight:600}
+.write-history{max-height:200px;overflow-y:auto}
+.wh-item{background:var(--sf);border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:11px;color:var(--mu);cursor:pointer}
+.wh-item:hover{border:1px solid var(--bd)}
 /* PROGRESS */
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
 .stat-box{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center}
@@ -151,127 +151,139 @@ textarea.write-area:focus{border-color:var(--mb)}
 .dots span:nth-child(2){animation-delay:.15s}
 .dots span:nth-child(3){animation-delay:.3s}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+/* RESULT */
 .result-msg{text-align:center;padding:14px;border-radius:10px;margin-top:10px;font-size:13px}
 .result-msg.pass{background:var(--ms)}
 .result-msg.ok{background:var(--mt)}
 .result-msg.retry{background:var(--sf);color:var(--mu)}
+/* PROG BAR TOP */
 .prog-top{height:5px;border-radius:5px;background:var(--sf);margin-bottom:12px;overflow:hidden}
 .prog-top-fill{height:100%;border-radius:5px;background:var(--mr);transition:width .4s}
+/* SEC HEADER */
 .sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .sec-title{font-size:16px;font-weight:700;color:var(--tx)}
 .lv-tag{font-size:10px;padding:3px 9px;border-radius:12px;font-weight:700;background:var(--mb);color:var(--tx)}
+/* MISSIONS */
 .mission-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)}
 .mission-row:last-child{border:none}
 .mission-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
 .mission-check.done{background:var(--ms);border-color:var(--ms)}
 .mission-text{font-size:12px;color:var(--tx);flex:1}
 .mission-xp{font-size:10px;color:var(--mu);font-weight:600}
-.coming-soon{text-align:center;padding:40px 20px;color:var(--lt);font-size:13px}
-.word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
-.word-card{background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:9px}
-.word-card.known{border-color:var(--ms);background:#f0fdf8}
-.word-card .we{font-weight:700;font-size:13px;font-family:Verdana,sans-serif}
-.word-card .wz{font-size:12px;color:var(--mu);margin-top:3px}
-/* YOUTUBE PRACTICE */
-.yt-input-row{display:flex;gap:8px;margin-bottom:14px}
-.yt-input{flex:1;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
-.yt-input:focus{border-color:var(--mb)}
-.yt-player-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px}
-.yt-player-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-.yt-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-.speed-btns{display:flex;gap:4px;flex-wrap:wrap}
-.speed-btn{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;color:var(--mu)}
-.speed-btn.active{background:var(--mb);border-color:var(--mb);color:var(--tx)}
-.ab-loop{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:11px;color:var(--mu)}
-.mode-desc{background:var(--sf);border-radius:10px;padding:14px;margin-bottom:14px;font-size:12px;color:var(--mu);line-height:1.8}
-.echo-panel{text-align:center;padding:20px}
-.echo-status{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:12px}
-.dict-area{width:100%;border:1px solid var(--bd);border-radius:8px;padding:12px;font-size:14px;font-family:'Verdana','Tahoma',sans-serif;color:var(--tx);background:var(--cd);resize:vertical;min-height:100px;outline:none;line-height:1.8}
-.dict-area:focus{border-color:var(--mb)}
-/* AI TOOLS */
-.ai-input-row{display:flex;gap:8px;margin-bottom:14px}
-.ai-input{flex:1;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
-.ai-input:focus{border-color:var(--mb)}
-.ai-result{background:var(--sf);border-left:3px solid var(--ml);border-radius:0 8px 8px 0;padding:14px;font-size:13px;color:var(--tx);line-height:1.8;min-height:60px;white-space:pre-wrap}
-.chat-box{border:1px solid var(--bd);border-radius:12px;background:var(--cd);padding:14px;max-height:400px;overflow-y:auto;margin-bottom:12px;min-height:200px}
-.chat-msg{margin-bottom:10px;display:flex;gap:8px}
-.chat-msg.user{justify-content:flex-end}
-.chat-msg.user .chat-bubble{background:var(--mb);border-radius:12px 12px 2px 12px}
-.chat-msg.ai .chat-bubble{background:var(--sf);border-radius:12px 12px 12px 2px}
-.chat-bubble{max-width:80%;padding:10px 14px;font-size:13px;line-height:1.7;color:var(--tx)}
-.chat-input-row{display:flex;gap:8px}
-.chat-input{flex:1;border:1px solid var(--bd);border-radius:20px;padding:10px 16px;font-size:13px;font-family:inherit;color:var(--tx);background:var(--cd);outline:none}
-.chat-input:focus{border-color:var(--mb)}
-.ext-link{display:flex;align-items:center;gap:12px;background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:8px;text-decoration:none;color:var(--tx);transition:border-color .2s}
-.ext-link:hover{border-color:var(--mr)}
-.ext-link-icon{font-size:28px}
-.ext-link-info{flex:1}
-.ext-link-title{font-size:13px;font-weight:700}
-.ext-link-sub{font-size:11px;color:var(--lt);margin-top:2px}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="brand">📚 龍騰英文</div>
+  <div class="brand">📚 英文學習</div>
   <button class="nb active" onclick="showPage('home')">🏠 首頁</button>
   <button class="nb" onclick="showPage('vocab')">📝 單字</button>
   <button class="nb" onclick="showPage('reading')">📖 閱讀</button>
   <button class="nb" onclick="showPage('listening')">🎧 聽力</button>
   <button class="nb" onclick="showPage('speaking')">🗣️ 口說</button>
   <button class="nb" onclick="showPage('writing')">✍️ 寫作</button>
-  <button class="nb" onclick="showPage('ytpractice')">🎬 影音練習</button>
-  <button class="nb" onclick="showPage('aitools')">🤖 AI 工具</button>
   <button class="nb" onclick="showPage('progress')">📊 進度</button>
   <button class="nb" onclick="showPage('settings')">⚙️ 設定</button>
 </nav>
 
-<!-- HOME -->
+<!-- ======== 首頁 ======== -->
 <div class="page active" id="page-home">
   <div class="badges">
     <span class="badge badge-streak">🔥 <span id="home-streak">0</span> 天連續</span>
     <span class="badge badge-xp">⭐ <span id="home-xp">0</span> XP 今日</span>
-    <span class="badge badge-level">📖 <span id="home-book">英文一</span></span>
+    <span class="badge badge-level">📶 <span id="home-level">A2</span></span>
   </div>
+
   <div class="card">
-    <div class="card-title">目前進度</div>
-    <div style="font-size:13px;color:var(--tx);margin-bottom:8px">
-      <span id="home-lesson-label">選擇課別開始學習</span>
-    </div>
-    <div class="prog-top"><div class="prog-top-fill" id="home-prog" style="width:0%"></div></div>
     <div class="card-title">今日任務</div>
-    <div class="mission-row"><div class="mission-check" id="m-vocab">○</div><div class="mission-text">完成 5 個單字練習</div><div class="mission-xp">+10 XP</div></div>
-    <div class="mission-row"><div class="mission-check" id="m-read">○</div><div class="mission-text">閱讀課文並答題</div><div class="mission-xp">+15 XP</div></div>
-    <div class="mission-row"><div class="mission-check" id="m-listen">○</div><div class="mission-text">記錄一次聽力練習</div><div class="mission-xp">+10 XP</div></div>
-    <div class="mission-row"><div class="mission-check" id="m-speak">○</div><div class="mission-text">練習 3 句口說</div><div class="mission-xp">+10 XP</div></div>
-    <div class="mission-row"><div class="mission-check" id="m-write">○</div><div class="mission-text">完成一個寫作練習</div><div class="mission-xp">+20 XP</div></div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-vocab">○</div>
+      <div class="mission-text">完成 5 個單字練習</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-read">○</div>
+      <div class="mission-text">閱讀一篇文章並答題</div>
+      <div class="mission-xp">+15 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-listen">○</div>
+      <div class="mission-text">記錄一次聽力練習</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-speak">○</div>
+      <div class="mission-text">練習 3 句口說</div>
+      <div class="mission-xp">+10 XP</div>
+    </div>
+    <div class="mission-row">
+      <div class="mission-check" id="m-write">○</div>
+      <div class="mission-text">完成一個寫作練習</div>
+      <div class="mission-xp">+20 XP</div>
+    </div>
   </div>
+
   <div class="home-grid">
-    <div class="skill-tile" onclick="showPage('vocab')"><div class="tile-icon">📝</div><div class="tile-name">單字</div><div class="tile-sub">閃卡 · 配對 · 填空</div><div class="tile-bar"><div class="tile-fill" id="hbar-vocab" style="width:0%"></div></div></div>
-    <div class="skill-tile" onclick="showPage('reading')"><div class="tile-icon">📖</div><div class="tile-name">閱讀</div><div class="tile-sub">課文理解 · 選擇題</div><div class="tile-bar"><div class="tile-fill" id="hbar-read" style="width:0%"></div></div></div>
-    <div class="skill-tile" onclick="showPage('listening')"><div class="tile-icon">🎧</div><div class="tile-name">聽力</div><div class="tile-sub">資源推薦 · 練習記錄</div><div class="tile-bar"><div class="tile-fill" id="hbar-listen" style="width:0%"></div></div></div>
-    <div class="skill-tile" onclick="showPage('speaking')"><div class="tile-icon">🗣️</div><div class="tile-name">口說</div><div class="tile-sub">課文例句 · 語音辨識</div><div class="tile-bar"><div class="tile-fill" id="hbar-speak" style="width:0%"></div></div></div>
+    <div class="skill-tile" onclick="showPage('vocab')">
+      <div class="tile-icon">📝</div>
+      <div class="tile-name">單字</div>
+      <div class="tile-sub">閃卡 · 配對 · 填空</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-vocab" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('reading')">
+      <div class="tile-icon">📖</div>
+      <div class="tile-name">閱讀</div>
+      <div class="tile-sub">文章理解 · 選擇題</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-read" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('listening')">
+      <div class="tile-icon">🎧</div>
+      <div class="tile-name">聽力</div>
+      <div class="tile-sub">資源推薦 · 練習記錄</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-listen" style="width:0%"></div></div>
+    </div>
+    <div class="skill-tile" onclick="showPage('speaking')">
+      <div class="tile-icon">🗣️</div>
+      <div class="tile-name">口說</div>
+      <div class="tile-sub">發音練習 · 語音辨識</div>
+      <div class="tile-bar"><div class="tile-fill" id="hbar-speak" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:0">
+    <div class="card-title">學習提示</div>
+    <p style="font-size:12px;color:var(--mu);line-height:1.8" id="home-tip">每天只需 20 分鐘，按順序完成今日任務。遇到困難的題目直接跳過，先建立信心再回來。</p>
   </div>
 </div>
 
-<!-- VOCAB -->
+<!-- ======== 單字 ======== -->
 <div class="page" id="page-vocab">
-  <div class="sec-h"><div class="sec-title">📝 單字練習</div><span class="lv-tag" id="vocab-book-tag">英文一</span></div>
-  <div class="book-sel" id="vocab-books"></div>
-  <div class="lesson-sel" id="vocab-lessons"></div>
+  <div class="sec-h">
+    <div class="sec-title">📝 單字練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
   <div class="sub-tabs">
     <button class="sub-tab active" onclick="switchVocab('flash')">🃏 閃卡</button>
     <button class="sub-tab" onclick="switchVocab('match')">🔗 配對</button>
     <button class="sub-tab" onclick="switchVocab('fill')">✏️ 填空</button>
     <button class="sub-tab" onclick="switchVocab('list')">📋 單字表</button>
   </div>
+
+  <!-- 閃卡 -->
   <div class="sub-panel active" id="vp-flash">
-    <div class="card-title" style="text-align:center;margin-bottom:8px">點擊卡片翻面看中文 · <span id="fc-idx">1</span> / <span id="fc-total">0</span></div>
+    <div class="card-title" style="text-align:center;margin-bottom:8px">點擊卡片翻面看中文 · <span id="fc-idx">1</span> / <span id="fc-total">30</span></div>
     <div class="prog-top"><div class="prog-top-fill" id="fc-prog"></div></div>
     <div class="fc-wrap" onclick="flipCard()">
       <div class="fc" id="flashcard">
-        <div class="fc-front"><div class="fc-word" id="fc-word"></div><div class="fc-ph" id="fc-ph"></div><div class="fc-hint">點我翻面</div></div>
-        <div class="fc-back"><div class="fc-meaning" id="fc-meaning"></div><div class="fc-ex" id="fc-ex"></div></div>
+        <div class="fc-front">
+          <div class="fc-word" id="fc-word"></div>
+          <div class="fc-ph" id="fc-ph"></div>
+          <div class="fc-hint">點我翻面</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-meaning" id="fc-meaning"></div>
+          <div class="fc-ex" id="fc-ex"></div>
+        </div>
       </div>
     </div>
     <div class="fc-btns">
@@ -280,307 +292,147 @@ textarea.write-area:focus{border-color:var(--mb)}
       <button class="btn btn-green btn-sm" onclick="fcMark('easy')">✓ 記住了</button>
       <button class="btn btn-outline btn-sm" onclick="fcNav(1)">下一個 →</button>
     </div>
-    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:4px">✓ 已記住 <span id="fc-known">0</span> 個 · 😓 還不熟 <span id="fc-hard">0</span> 個</div>
+    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:4px">
+      ✓ 已記住 <span id="fc-known">0</span> 個 · 😓 還不熟 <span id="fc-hard">0</span> 個
+    </div>
   </div>
+
+  <!-- 配對 -->
   <div class="sub-panel" id="vp-match">
-    <div class="card-title">將英文與中文配對</div>
+    <div class="card-title">將英文與中文配對 · 組數 <span id="match-set">1</span> / 3</div>
     <div class="prog-top"><div class="prog-top-fill" id="match-prog"></div></div>
-    <div class="match-wrap"><div class="match-col" id="match-left"></div><div class="match-col" id="match-right"></div></div>
+    <div class="match-wrap">
+      <div class="match-col" id="match-left"></div>
+      <div class="match-col" id="match-right"></div>
+    </div>
     <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--lt)" id="match-msg"></div>
+    <div style="text-align:center;margin-top:10px">
+      <button class="btn btn-blue btn-sm" onclick="nextMatchSet()" id="match-next-btn" style="display:none">下一組 →</button>
+    </div>
   </div>
+
+  <!-- 填空 -->
   <div class="sub-panel" id="vp-fill">
-    <div class="card-title">填入正確的英文單字 · <span id="fill-idx">1</span> / <span id="fill-total">0</span></div>
+    <div class="card-title">填入正確的英文單字 · <span id="fill-idx">1</span> / <span id="fill-total">5</span></div>
     <div class="prog-top"><div class="prog-top-fill" id="fill-prog"></div></div>
-    <div class="ex-box"><div class="fill-sent" id="fill-sent"></div><div style="margin-top:10px;font-size:11px;color:var(--lt)">提示：<span id="fill-hint"></span></div></div>
+    <div class="ex-box">
+      <div class="fill-sent" id="fill-sent"></div>
+      <div style="margin-top:10px;font-size:11px;color:var(--lt)">提示：<span id="fill-hint"></span></div>
+    </div>
     <div class="ex-nav">
       <button class="btn btn-outline btn-sm" onclick="checkFill()">確認答案</button>
       <button class="btn btn-blue btn-sm" onclick="nextFill()" id="fill-next-btn" style="display:none">下一題 →</button>
     </div>
     <div id="fill-result" style="margin-top:8px;font-size:12px;color:var(--mu)"></div>
   </div>
+
+  <!-- 單字表 -->
   <div class="sub-panel" id="vp-list">
-    <div class="card-title" id="vocab-list-title">課文單字表</div>
-    <div id="vocab-list-grid" class="word-grid"></div>
+    <div class="card-title">A2 核心單字表</div>
+    <div id="vocab-list-grid" class="word-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
   </div>
 </div>
 
-<!-- READING -->
+<!-- ======== 閱讀 ======== -->
 <div class="page" id="page-reading">
-  <div class="sec-h"><div class="sec-title">📖 閱讀理解</div><span class="lv-tag" id="read-book-tag">英文一</span></div>
-  <div class="book-sel" id="read-books"></div>
-  <div class="lesson-sel" id="read-lessons"></div>
+  <div class="sec-h">
+    <div class="sec-title">📖 閱讀理解</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="sub-tabs" id="read-tabs"></div>
   <div id="read-content"></div>
 </div>
 
-<!-- LISTENING -->
+<!-- ======== 聽力 ======== -->
 <div class="page" id="page-listening">
-  <div class="sec-h"><div class="sec-title">🎧 聽力練習</div></div>
-  <div class="card" style="background:var(--sf)">
-    <p style="font-size:12px;color:var(--mu);line-height:1.8">📌 <strong>使用方式：</strong>點連結開啟影片，慢速聽 1-2 次，再回來記錄。<br>建議：第一遍不看字幕，第二遍開中文字幕，第三遍開英文字幕。</p>
+  <div class="sec-h">
+    <div class="sec-title">🎧 聽力練習</div>
+    <span class="lv-tag">A2</span>
   </div>
-  <div class="card-title" style="margin:14px 0 10px">推薦資源</div>
+  <div class="card" style="background:var(--sf)">
+    <p style="font-size:12px;color:var(--mu);line-height:1.8">
+      📌 <strong>使用方式：</strong>點連結開啟影片，慢速聽 1-2 次，再回來記錄今天聽了什麼、聽懂幾成。<br>
+      建議：第一遍不看字幕，第二遍開中文字幕，第三遍開英文字幕。
+    </p>
+  </div>
+
+  <div class="card-title" style="margin-bottom:10px">推薦資源（A2 適合）</div>
   <div id="listen-resources"></div>
+
   <div class="card" style="margin-top:14px">
     <div class="card-title">今日聽力記錄</div>
     <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
-      <select id="listen-sel" style="flex:1;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)"><option value="">選擇今天聽了哪個資源...</option></select>
-      <select id="listen-pct" style="border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)"><option value="20">聽懂約 20%</option><option value="40">聽懂約 40%</option><option value="60" selected>聽懂約 60%</option><option value="80">聽懂約 80%</option></select>
+      <select id="listen-sel" style="flex:1;border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)">
+        <option value="">選擇今天聽了哪個資源...</option>
+      </select>
+      <select id="listen-pct" style="border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit;background:var(--cd);color:var(--tx)">
+        <option value="20">聽懂約 20%</option>
+        <option value="40">聽懂約 40%</option>
+        <option value="60">聽懂約 60%</option>
+        <option value="80">聽懂約 80%</option>
+      </select>
       <button class="btn btn-green btn-sm" onclick="addListenLog()">記錄 ✓</button>
     </div>
     <div id="listen-log"></div>
   </div>
 </div>
 
-<!-- SPEAKING -->
+<!-- ======== 口說 ======== -->
 <div class="page" id="page-speaking">
-  <div class="sec-h"><div class="sec-title">🗣️ 口說練習</div><span class="lv-tag" id="speak-book-tag">英文一</span></div>
-  <div class="book-sel" id="speak-books"></div>
-  <div class="lesson-sel" id="speak-lessons"></div>
+  <div class="sec-h">
+    <div class="sec-title">🗣️ 口說練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
   <div class="card" style="background:var(--sf)">
-    <p style="font-size:12px;color:var(--mu);line-height:1.8">📌 看句子朗讀 2-3 次，再點麥克風讓瀏覽器辨識發音。需使用 Chrome 或 Edge。</p>
+    <p style="font-size:12px;color:var(--mu);line-height:1.8">
+      📌 <strong>使用方式：</strong>看句子，朗讀 2-3 次，再點麥克風按鈕讓瀏覽器辨識你的發音。<br>
+      需要使用 Chrome 或 Edge 瀏覽器才能啟動語音辨識。
+    </p>
   </div>
   <div class="card">
-    <div class="card-title">練習句 <span id="sp-idx">1</span> / <span id="sp-total">0</span></div>
+    <div class="card-title">練習句 <span id="sp-idx">1</span> / <span id="sp-total">12</span></div>
     <div class="prog-top"><div class="prog-top-fill" id="sp-prog"></div></div>
     <div class="phrase-box" id="sp-phrase"></div>
+    <div class="phrase-ph" id="sp-ph"></div>
     <div class="phrase-tip" id="sp-tip"></div>
     <button class="rec-btn" id="rec-btn" onclick="toggleRecord()">🎤</button>
     <div class="transcript-box" id="transcript">點麥克風開始錄音...</div>
-    <div id="sp-score-area" style="margin-top:8px;display:none"><div style="font-size:11px;color:var(--mu);margin-bottom:4px">相似度</div><div class="score-bar"><div class="score-fill" id="score-fill"></div></div><div style="font-size:11px;color:var(--lt)" id="score-label"></div></div>
+    <div id="sp-score-area" style="margin-top:8px;display:none">
+      <div style="font-size:11px;color:var(--mu);margin-bottom:4px">相似度</div>
+      <div class="score-bar"><div class="score-fill" id="score-fill"></div></div>
+      <div style="font-size:11px;color:var(--lt)" id="score-label"></div>
+    </div>
     <div class="ex-nav" style="margin-top:14px">
       <button class="btn btn-outline btn-sm" onclick="spNav(-1)">← 上一句</button>
       <button class="btn btn-lav btn-sm" onclick="markSpeak()">✓ 練習完成</button>
       <button class="btn btn-outline btn-sm" onclick="spNav(1)">下一句 →</button>
     </div>
-    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:8px">已練習 <span id="sp-done">0</span> / <span id="sp-done-total">0</span> 句</div>
+    <div style="text-align:center;font-size:11px;color:var(--lt);margin-top:8px">已練習 <span id="sp-done">0</span> / <span id="sp-done-total">12</span> 句</div>
   </div>
 </div>
 
-<!-- WRITING -->
+<!-- ======== 寫作 ======== -->
 <div class="page" id="page-writing">
-  <div class="sec-h"><div class="sec-title">✍️ 寫作練習</div><span class="lv-tag" id="write-book-tag">英文一</span></div>
-  <div class="book-sel" id="write-books"></div>
-  <div class="lesson-sel" id="write-lessons"></div>
+  <div class="sec-h">
+    <div class="sec-title">✍️ 寫作練習</div>
+    <span class="lv-tag">A2</span>
+  </div>
+  <div class="sub-tabs" id="write-tabs"></div>
   <div id="write-content"></div>
-</div>
-
-<!-- YOUTUBE PRACTICE -->
-<div class="page" id="page-ytpractice">
-  <div class="sec-h"><div class="sec-title">🎬 影音練習</div></div>
-  <div class="card">
-    <div class="card-title">貼上 YouTube 連結</div>
-    <div class="yt-input-row">
-      <input type="text" class="yt-input" id="yt-url" placeholder="https://www.youtube.com/watch?v=...">
-      <button class="btn btn-pink" onclick="loadYT()">載入</button>
-    </div>
-    <div class="yt-player-wrap" id="yt-wrap" style="display:none"><div id="yt-player"></div></div>
-  </div>
-  <div id="yt-practice-area" style="display:none">
-    <div class="card">
-      <div class="card-title">播放控制</div>
-      <div class="yt-controls">
-        <button class="btn btn-outline btn-sm" onclick="ytSeek(-5)">⏪ -5s</button>
-        <button class="btn btn-blue btn-sm" onclick="ytToggle()" id="yt-play-btn">▶ 播放</button>
-        <button class="btn btn-outline btn-sm" onclick="ytSeek(5)">⏩ +5s</button>
-        <button class="btn btn-outline btn-sm" onclick="ytSeek(-2)">⏪ -2s</button>
-        <button class="btn btn-outline btn-sm" onclick="ytSeek(2)">⏩ +2s</button>
-      </div>
-      <div class="card-title" style="margin-top:8px">速度</div>
-      <div class="speed-btns" id="speed-btns">
-        <button class="speed-btn" onclick="ytSpeed(0.5)">0.5x</button>
-        <button class="speed-btn" onclick="ytSpeed(0.6)">0.6x</button>
-        <button class="speed-btn" onclick="ytSpeed(0.75)">0.75x</button>
-        <button class="speed-btn active" onclick="ytSpeed(1)">1x</button>
-        <button class="speed-btn" onclick="ytSpeed(1.25)">1.25x</button>
-      </div>
-      <div class="card-title" style="margin-top:10px">A-B 循環</div>
-      <div class="ab-loop">
-        <button class="btn btn-outline btn-sm" onclick="setABPoint('A')">設 A 點</button>
-        <button class="btn btn-outline btn-sm" onclick="setABPoint('B')">設 B 點</button>
-        <button class="btn btn-green btn-sm" onclick="toggleABLoop()" id="ab-loop-btn">🔄 循環</button>
-        <button class="btn btn-outline btn-sm" onclick="clearAB()">✕ 清除</button>
-        <span id="ab-display" style="font-size:11px;color:var(--lt)"></span>
-      </div>
-    </div>
-    <div class="sub-tabs">
-      <button class="sub-tab active" onclick="switchYTMode('shadow')">🗣️ 影子跟讀</button>
-      <button class="sub-tab" onclick="switchYTMode('echo')">🔁 回音法</button>
-      <button class="sub-tab" onclick="switchYTMode('dictation')">✏️ 聽寫</button>
-    </div>
-    <div class="sub-panel active" id="ytp-shadow">
-      <div class="mode-desc">
-        <strong>影子跟讀法 Shadowing</strong><br>
-        在聽的同時立刻跟讀，不暫停、不思考，模仿母語人士的發音、節奏、語調。<br><br>
-        <strong>步驟：</strong><br>
-        ① 先不開字幕看一遍，聽到什麼就說什麼<br>
-        ② 再看一遍，仍不開字幕，聽到就跟讀<br>
-        ③ 打開字幕看一遍，理解內容<br>
-        ④ 開字幕跟讀，盡量同步<br>
-        ⑤ 關字幕，只聽只跟讀，追求完美模仿<br><br>
-        💡 初學者先調 0.6-0.8 倍速，習慣後再加速。每天 10-20 分鐘。
-      </div>
-      <div class="card" style="text-align:center">
-        <button class="btn btn-lav" onclick="ytToggleCC()">字幕 開/關</button>
-        <div style="font-size:11px;color:var(--lt);margin-top:8px">提示：也可直接在 YouTube 播放器上切換字幕</div>
-      </div>
-    </div>
-    <div class="sub-panel" id="ytp-echo">
-      <div class="mode-desc">
-        <strong>回音法 Echoing</strong><br>
-        聽一句 → 暫停 → 在腦中回放聲音 → 模仿說出來。<br><br>
-        <strong>步驟：</strong><br>
-        ① 設定播放秒數（建議 3-8 秒）<br>
-        ② 播放後自動暫停，先在腦中回想剛才的聲音<br>
-        ③ 模仿腦中的「回音」說出來<br>
-        ④ 按「重聽」或「繼續」<br><br>
-        💡 不需要 100% 完美，但要一個字一個字清楚說出來。
-      </div>
-      <div class="card echo-panel">
-        <div style="margin-bottom:12px">
-          <span style="font-size:12px;color:var(--mu)">播放秒數：</span>
-          <select id="echo-dur" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)">
-            <option value="3">3 秒</option>
-            <option value="5" selected>5 秒</option>
-            <option value="8">8 秒</option>
-            <option value="10">10 秒</option>
-            <option value="15">15 秒</option>
-          </select>
-        </div>
-        <div class="echo-status" id="echo-status">準備好了</div>
-        <div style="display:flex;gap:8px;justify-content:center">
-          <button class="btn btn-blue" onclick="echoPlay()" id="echo-play-btn">▶ 播放</button>
-          <button class="btn btn-outline" onclick="echoReplay()">🔄 重聽</button>
-        </div>
-        <div style="font-size:11px;color:var(--lt);margin-top:10px">已練習 <span id="echo-count">0</span> 句</div>
-      </div>
-    </div>
-    <div class="sub-panel" id="ytp-dictation">
-      <div class="mode-desc">
-        <strong>聽寫訓練 Dictation</strong><br>
-        聽一段 → 暫停 → 寫下聽到的內容。重點練句子結構和連讀辨識。<br><br>
-        <strong>步驟：</strong><br>
-        ① 設定播放秒數，播放後自動暫停<br>
-        ② 在下方輸入框寫下聽到的內容<br>
-        ③ 按「重聽」確認<br>
-        ④ 開啟 YouTube 字幕自己對答案<br><br>
-        💡 建議每週 3-4 次，每次 15 分鐘。
-      </div>
-      <div class="card">
-        <div style="margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <span style="font-size:12px;color:var(--mu)">播放秒數：</span>
-          <select id="dict-dur" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)">
-            <option value="5">5 秒</option>
-            <option value="8" selected>8 秒</option>
-            <option value="10">10 秒</option>
-            <option value="15">15 秒</option>
-          </select>
-          <button class="btn btn-blue btn-sm" onclick="dictPlay()">▶ 播放</button>
-          <button class="btn btn-outline btn-sm" onclick="dictReplay()">🔄 重聽</button>
-        </div>
-        <textarea class="dict-area" id="dict-area" placeholder="在這裡寫下你聽到的內容..."></textarea>
-        <div style="display:flex;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:6px">
-          <button class="btn btn-lav btn-sm" onclick="ytToggleCC()">開字幕對答案</button>
-          <button class="btn btn-outline btn-sm" onclick="document.getElementById('dict-area').value=''">清除</button>
-        </div>
-      </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">過去的練習</div>
+    <div id="write-history" class="write-history">
+      <div style="font-size:11px;color:var(--lt);padding:8px 0">還沒有練習記錄</div>
     </div>
   </div>
 </div>
 
-<!-- AI TOOLS -->
-<div class="page" id="page-aitools">
-  <div class="sec-h"><div class="sec-title">🤖 AI 工具</div></div>
-  <div id="ai-no-key" style="display:none">
-    <div class="card" style="background:var(--sf)">
-      <p style="font-size:12px;color:var(--mu);line-height:1.8">⚠️ 請先到「設定」頁面輸入 Gemini API Key 才能使用 AI 功能。<br>
-      <button class="btn btn-outline btn-sm" onclick="showPage('settings')" style="margin-top:6px">前往設定 →</button></p>
-    </div>
-  </div>
-  <div id="ai-tools-content">
-    <div class="sub-tabs">
-      <button class="sub-tab active" onclick="switchAI('word')">📖 查單字</button>
-      <button class="sub-tab" onclick="switchAI('grammar')">📝 查語法</button>
-      <button class="sub-tab" onclick="switchAI('chat')">💬 AI 對話</button>
-      <button class="sub-tab" onclick="switchAI('links')">🔗 外部資源</button>
-    </div>
-    <div class="sub-panel active" id="ai-word">
-      <div class="card">
-        <div class="card-title">輸入英文單字，AI 幫你查</div>
-        <div class="ai-input-row">
-          <input type="text" class="ai-input" id="ai-word-inp" placeholder="例：accomplish" onkeydown="if(event.key==='Enter')aiLookupWord()">
-          <button class="btn btn-lav" onclick="aiLookupWord()">查詢</button>
-        </div>
-        <div class="ai-result" id="ai-word-result" style="display:none"></div>
-      </div>
-    </div>
-    <div class="sub-panel" id="ai-grammar">
-      <div class="card">
-        <div class="card-title">輸入英文句子，AI 幫你分析文法</div>
-        <div class="ai-input-row">
-          <input type="text" class="ai-input" id="ai-grammar-inp" placeholder="例：I have been studying English for three years." onkeydown="if(event.key==='Enter')aiCheckGrammar()">
-          <button class="btn btn-blue" onclick="aiCheckGrammar()">分析</button>
-        </div>
-        <div class="ai-result" id="ai-grammar-result" style="display:none"></div>
-      </div>
-    </div>
-    <div class="sub-panel" id="ai-chat">
-      <div class="card">
-        <div class="card-title">AI 英語對話練習</div>
-        <div style="margin-bottom:10px">
-          <span style="font-size:12px;color:var(--mu)">場景：</span>
-          <select id="chat-scene" style="border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;background:var(--cd)" onchange="resetChat()">
-            <option value="daily">日常閒聊</option>
-            <option value="restaurant">餐廳點餐</option>
-            <option value="travel">旅遊問路</option>
-            <option value="shopping">購物</option>
-            <option value="interview">面試練習</option>
-            <option value="school">校園生活</option>
-            <option value="free">自由對話</option>
-          </select>
-          <button class="btn btn-outline btn-sm" onclick="resetChat()" style="margin-left:6px">重新開始</button>
-        </div>
-        <div class="chat-box" id="chat-box">
-          <div class="chat-msg ai"><div class="chat-bubble">Hi! Choose a scene and start chatting with me in English. I'll help you practice! 😊</div></div>
-        </div>
-        <div class="chat-input-row">
-          <input type="text" class="chat-input" id="chat-input" placeholder="Type in English..." onkeydown="if(event.key==='Enter')sendChat()">
-          <button class="btn btn-pink" onclick="sendChat()">送出</button>
-        </div>
-        <div style="font-size:10px;color:var(--lt);margin-top:6px">💡 用英文跟 AI 對話，AI 會用簡單英文回覆並幫你修正錯誤</div>
-      </div>
-    </div>
-    <div class="sub-panel" id="ai-links">
-      <div class="card">
-        <div class="card-title">外部學習資源</div>
-        <a class="ext-link" href="https://en.jiaojq.vip/word-list" target="_blank">
-          <div class="ext-link-icon">📚</div>
-          <div class="ext-link-info"><div class="ext-link-title">小語筆記 — 分類詞彙庫</div><div class="ext-link-sub">按主題劃分的英文詞彙庫</div></div>
-          <span style="font-size:12px;color:var(--lt)">→</span>
-        </a>
-        <a class="ext-link" href="https://en.jiaojq.vip/dictation-sentence" target="_blank">
-          <div class="ext-link-icon">🎧</div>
-          <div class="ext-link-info"><div class="ext-link-title">小語筆記 — 真題精聽</div><div class="ext-link-sub">真題精聽解析練習</div></div>
-          <span style="font-size:12px;color:var(--lt)">→</span>
-        </a>
-        <a class="ext-link" href="https://www.teco-lab.com/english" target="_blank">
-          <div class="ext-link-icon">🎬</div>
-          <div class="ext-link-info"><div class="ext-link-title">TEco Lab — YouTube 語料庫</div><div class="ext-link-sub">用 YouTube Vlog 學英文，互動字幕</div></div>
-          <span style="font-size:12px;color:var(--lt)">→</span>
-        </a>
-      </div>
-      <div class="card">
-        <div class="card-title">嵌入預覽（如網站不支援嵌入，請用上方連結）</div>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--bd)">
-          <iframe src="https://en.jiaojq.vip/word-list" style="width:100%;height:500px;border:none" id="embed-iframe"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROGRESS -->
+<!-- ======== 進度 ======== -->
 <div class="page" id="page-progress">
-  <div class="sec-h"><div class="sec-title">📊 學習進度</div></div>
+  <div class="sec-h">
+    <div class="sec-title">📊 學習進度</div>
+    <span class="lv-tag" id="prog-level-tag">A2</span>
+  </div>
   <div class="stat-grid">
     <div class="stat-box"><div class="stat-n" id="p-streak">0</div><div class="stat-l">🔥 連續天數</div></div>
     <div class="stat-box"><div class="stat-n" id="p-xp-total">0</div><div class="stat-l">⭐ 總 XP</div></div>
@@ -594,942 +446,713 @@ textarea.write-area:focus{border-color:var(--mb)}
     <div class="skill-prog-row"><div class="sp-label">口說</div><div class="sp-bar"><div class="sp-fill" id="spf-speak" style="width:0%;background:var(--mr)"></div></div><div class="sp-pct" id="spp-speak">0%</div></div>
     <div class="skill-prog-row"><div class="sp-label">寫作</div><div class="sp-bar"><div class="sp-fill" id="spf-write" style="width:0%;background:var(--mt)"></div></div><div class="sp-pct" id="spp-write">0%</div></div>
   </div>
-  <div class="card"><div class="card-title">過去 30 天出勤</div><div class="cal-wrap" id="streak-cal"></div></div>
+  <div class="card">
+    <div class="card-title">過去 30 天出勤</div>
+    <div class="cal-wrap" id="streak-cal"></div>
+  </div>
 </div>
 
-<!-- SETTINGS -->
+<!-- ======== 設定 ======== -->
 <div class="page" id="page-settings">
   <div class="sec-h"><div class="sec-title">⚙️ 設定</div></div>
   <div class="card">
-    <div class="set-row"><div><div class="set-label">Gemini API Key</div><div class="set-sub">用於寫作 AI 批改<br>前往 aistudio.google.com 取得免費 Key</div></div><input type="password" class="set-inp" id="api-key-inp" placeholder="AIza..." oninput="saveSettings()"></div>
-    <div class="set-row"><div><div class="set-label">清除所有進度</div><div class="set-sub">重置 XP、連續天數、練習記錄</div></div><button class="btn btn-outline btn-sm" onclick="clearProgress()">清除</button></div>
+    <div class="set-row">
+      <div><div class="set-label">Gemini API Key</div><div class="set-sub">用於寫作回饋與口說評分<br>前往 aistudio.google.com 取得免費 API Key</div></div>
+      <input type="password" class="set-inp" id="api-key-inp" placeholder="AIza..." oninput="saveSettings()">
+    </div>
+    <div class="set-row">
+      <div><div class="set-label">目前程度</div><div class="set-sub">影響練習題難度與顯示</div></div>
+      <select class="set-inp" id="cefr-sel" onchange="saveSettings()" style="width:120px">
+        <option value="A2">A2（初級）</option>
+        <option value="B1">B1（中初級）</option>
+        <option value="B2">B2（中級）</option>
+      </select>
+    </div>
+    <div class="set-row">
+      <div><div class="set-label">清除所有進度</div><div class="set-sub">重置 XP、連續天數、練習記錄</div></div>
+      <button class="btn btn-outline btn-sm" onclick="clearProgress()">清除</button>
+    </div>
   </div>
   <div class="card" style="background:var(--sf)">
     <div class="card-title">使用說明</div>
     <p style="font-size:12px;color:var(--mu);line-height:1.9">
-      ① 內容來自龍騰高中英文課本（英文一～五），按冊按課學習<br>
-      ② 設定 Gemini API Key 後，寫作練習可獲得 AI 回饋<br>
-      ③ 所有進度儲存於瀏覽器（localStorage），換瀏覽器需重新設定<br>
-      ④ 口說辨識需要 Chrome 或 Edge，且需允許麥克風權限<br>
-      ⑤ 建議每天固定一個時段使用，完成今日任務即可
+      ① 設定 Gemini API Key 後，寫作練習可獲得 AI 回饋<br>
+      ② 所有進度儲存於瀏覽器（localStorage），換瀏覽器需重新設定<br>
+      ③ 口說辨識需要 Chrome 或 Edge，且需允許麥克風權限<br>
+      ④ 建議每天固定一個時段使用，完成今日任務即可
     </p>
   </div>
 </div>
 
 <script>
-// ===== TEXTBOOK DATA =====
-const BOOKS = [
-{id:'B1',name:'英文一',lessons:[
-  {id:'B1L1',num:'L1',title:'Firsts in Life',
-   vocab:[
-    {en:'memorable',zh:'值得紀念的',ex:'First-time experiences are memorable.'},
-    {en:'reply',zh:'回覆',ex:'Read their replies below.'},
-    {en:'yell',zh:'大叫',ex:'She yelled at me to try her beef noodles.'},
-    {en:'perfect',zh:'完美的',ex:'She yelled at me to try her perfect beef noodles.'},
-    {en:'accidentally',zh:'意外地',ex:'Our teacher accidentally turned on a funny filter.'},
-    {en:'failure',zh:'失敗',ex:'Claire: A First Failure.'},
-    {en:'recall',zh:'回想',ex:'I can still recall my first crash-and-burn moment.'},
-    {en:'presentation',zh:'報告；簡報',ex:'For a group presentation last year, I was the speaker.'},
-    {en:'skip',zh:'跳過；翹掉',ex:'I didn\'t take the task seriously and skipped several group meetings.'},
-    {en:'ruin',zh:'毀壞',ex:'I ruined the presentation.'},
-    {en:'embarrassed',zh:'尷尬的',ex:'I felt embarrassed in front of my classmates.'},
-    {en:'depressed',zh:'沮喪的',ex:'I felt depressed about letting the team down.'},
-    {en:'upset',zh:'難過的',ex:'The failure really upset me.'},
-    {en:'reflect',zh:'反省',ex:'I reflected on it and learned from my mistake.'},
-    {en:'remind',zh:'提醒',ex:'This memory reminds me to prepare well.'},
-    {en:'realize',zh:'了解；意識到',ex:'I soon realized that the markets were a treat.'},
-    {en:'traditional',zh:'傳統的',ex:'I dressed up in traditional Korean clothes.'},
-    {en:'fortunately',zh:'幸運地',ex:'Fortunately, everyone was very friendly.'}
-   ],
-   reading:{
-    text:'In this month\'s Longteng Senior High School News, our reporter Jeremy interviews three students about some memorable first-time experiences in their lives.\n\nRobbie: A First Online Class\nA few years ago, I took an online class for the first time. I never thought that I could take classes in my pajamas! I also enjoyed using online tools such as Kahoot! and Quizlet. There were some memorable moments, too. Once, my grandmother suddenly came into the room. She yelled at me to try her perfect beef noodles. My microphone was on, so the rest of the students heard it and started laughing. Another time, our teacher accidentally turned on a funny filter on her camera. She looked like an alien on the screen, so my classmates and I had another good laugh. Online lessons were fun sometimes, but I still found that I enjoyed seeing others in person more.\n\nClaire: A First Failure\nI can still recall my first crash-and-burn moment in school. For a group presentation last year, I was the speaker for my team. However, I didn\'t take the task seriously and skipped several group meetings. When the time came for me to step onto the stage, I was nervous and unprepared. Of course, I ruined the presentation and felt embarrassed in front of my classmates and teacher. We got a very low grade, and I felt depressed about letting the team down. The failure really upset me, but I reflected on it and learned from my mistake. These days, this memory reminds me to prepare well and make sure that I always put my team first!\n\nNancy: A First Foreign Visit\nMy first trip abroad—to Seoul, South Korea—was unforgettable. The city\'s streets were busy, and delicious foods like Korean barbecue and kimchi were all around me. I soon realized that the markets were a treat for my other senses since cheerful K-pop and colorful clothes were everywhere. I visited several old buildings and dressed up in traditional Korean clothes. While I was there, I tried to talk to locals. My Korean was poor, but fortunately, everyone was very friendly. At the end of the trip, I left with a lot of great memories, and I can\'t wait to go back someday!\n\nHigh school is full of firsts, and you may all have unforgettable ones like Robbie, Claire, and Nancy. Share yours with us if you have any funny, embarrassing, or wonderful experiences!',
+// ===== 資料 =====
+const VOCAB = [
+  {en:'coffee',zh:'咖啡',ph:'/ˈkɒfi/',ex:'I drink coffee every morning.'},
+  {en:'breakfast',zh:'早餐',ph:'/ˈbrekfəst/',ex:'I eat breakfast at 8 am.'},
+  {en:'office',zh:'辦公室',ph:'/ˈɒfɪs/',ex:'She works in an office downtown.'},
+  {en:'meeting',zh:'會議',ph:'/ˈmiːtɪŋ/',ex:'We have a meeting at noon.'},
+  {en:'weather',zh:'天氣',ph:'/ˈweðər/',ex:'The weather is nice today.'},
+  {en:'hungry',zh:'飢餓的',ph:'/ˈhʌŋɡri/',ex:'I am hungry. Let\'s eat something.'},
+  {en:'tired',zh:'疲倦的',ph:'/ˈtaɪərd/',ex:'She is tired after a long day.'},
+  {en:'restaurant',zh:'餐廳',ph:'/ˈrestrɒnt/',ex:'Let\'s go to that new restaurant.'},
+  {en:'supermarket',zh:'超市',ph:'/ˈsuːpəmɑːkɪt/',ex:'I buy food at the supermarket.'},
+  {en:'appointment',zh:'預約',ph:'/əˈpɔɪntmənt/',ex:'I have a doctor\'s appointment today.'},
+  {en:'station',zh:'車站',ph:'/ˈsteɪʃən/',ex:'Meet me at the train station.'},
+  {en:'ticket',zh:'票',ph:'/ˈtɪkɪt/',ex:'I need a ticket for the bus.'},
+  {en:'weekend',zh:'週末',ph:'/ˈwiːkend/',ex:'What do you do at the weekend?'},
+  {en:'hobby',zh:'嗜好',ph:'/ˈhɒbi/',ex:'Reading is my favourite hobby.'},
+  {en:'exercise',zh:'運動',ph:'/ˈeksəsaɪz/',ex:'I exercise three times a week.'},
+  {en:'friendly',zh:'友善的',ph:'/ˈfrendli/',ex:'Everyone here is very friendly.'},
+  {en:'busy',zh:'忙碌的',ph:'/ˈbɪzi/',ex:'I am very busy this week.'},
+  {en:'early',zh:'早',ph:'/ˈɜːli/',ex:'I wake up early every day.'},
+  {en:'shopping',zh:'購物',ph:'/ˈʃɒpɪŋ/',ex:'She loves shopping on weekends.'},
+  {en:'colleague',zh:'同事',ph:'/ˈkɒliːɡ/',ex:'My colleagues are very helpful.'},
+  {en:'department',zh:'部門',ph:'/dɪˈpɑːtmənt/',ex:'She works in the marketing department.'},
+  {en:'salary',zh:'薪水',ph:'/ˈsæləri/',ex:'The salary is quite good.'},
+  {en:'reservation',zh:'預訂',ph:'/ˌrezəˈveɪʃən/',ex:'Do you have a reservation?'},
+  {en:'menu',zh:'菜單',ph:'/ˈmenjuː/',ex:'Can I see the menu, please?'},
+  {en:'comfortable',zh:'舒適的',ph:'/ˈkʌmftəbəl/',ex:'This sofa is very comfortable.'},
+  {en:'available',zh:'有空的/可用的',ph:'/əˈveɪləbəl/',ex:'Are you available on Friday?'},
+  {en:'information',zh:'資訊',ph:'/ˌɪnfəˈmeɪʃən/',ex:'Where can I get more information?'},
+  {en:'directions',zh:'方向/路線',ph:'/dɪˈrekʃənz/',ex:'Can you give me directions to the station?'},
+  {en:'recommend',zh:'推薦',ph:'/ˌrekəˈmend/',ex:'Can you recommend a good café?'},
+  {en:'journey',zh:'旅程',ph:'/ˈdʒɜːni/',ex:'It was a long journey by train.'},
+];
+
+const READINGS = [
+  {
+    id:'r1',title:'My Morning Routine',
+    text:`My name is Anna. I wake up at 7 o'clock every morning. First, I go to the bathroom and wash my face. Then I make breakfast. I usually eat toast and drink coffee. I leave home at 8:30 and take the bus to work.\n\nI work in an office in the city centre. My office starts at 9 o'clock. In the morning, I check my emails and go to meetings. I have lunch at 12:30. I usually eat in the office cafeteria with my colleagues. In the afternoon, I write reports and answer phone calls. I finish work at 6 pm and go home.`,
     qs:[
-     {q:'What is the main idea of this passage?',opts:['Trying something new can broaden one\'s horizons.','People should step out of their comfort zone sometimes.','Doing something for the first time is never easy.','First-time experiences are unforgettable.'],a:3},
-     {q:'Which of the following statements is true?',opts:['Nancy spoke fluent Korean while she was traveling.','Jeremy interviewed students about their first day of school.','Claire failed her group project because she didn\'t spend enough time on it.','Robbie\'s grandma shouted at him for sleeping in class.'],a:2},
-     {q:'Which word best describes the author\'s attitude toward first-time experiences?',opts:['Positive.','Negative.','Curious.','Doubtful.'],a:0}
+      {q:'What time does Anna wake up?',opts:['6 o\'clock','7 o\'clock','8 o\'clock','9 o\'clock'],a:1},
+      {q:'How does Anna go to work?',opts:['by car','by train','by bus','she walks'],a:2},
+      {q:'What does Anna eat for breakfast?',opts:['eggs and juice','cereal and milk','toast and coffee','fruit and tea'],a:2},
+      {q:'Where does Anna have lunch?',opts:['at home','in a restaurant','in the park','in the office cafeteria'],a:3},
     ]
-   },
-   writing:{title:'Writing about First-Time Experiences',prompt:'Write 5-8 sentences about a memorable first-time experience in your life. What happened? How did you feel? What did you learn from it?',guide:'參考用詞：the first time, memorable, experience, nervous, excited, I learned that...\n範例開頭：I still remember the first time I...'},
-   speaking:[
-    {p:'I took an online class for the first time.',tip:'注意 for the first time 要連貫說出。'},
-    {p:'She yelled at me to try her perfect beef noodles.',tip:'yelled 的過去式 /jɛld/，注意 perfect 重音在第一音節。'},
-    {p:'I felt embarrassed in front of my classmates.',tip:'embarrassed 有四個音節 /ɪmˈbærəst/，重音在第二音節。'},
-    {p:'This memory reminds me to prepare well.',tip:'reminds 的 s 要發 /z/ 的音。'},
-    {p:'Fortunately, everyone was very friendly.',tip:'fortunately 重音在第一音節 /ˈfɔːrtʃənətli/。'},
-    {p:'First-time experiences are unforgettable.',tip:'unforgettable 重音在第三音節 un-for-GET-table。'}
-   ]
   },
-  {id:'B1L2',num:'L2',title:'Goodbye, John',
-   vocab:[
-    {en:'relationship',zh:'關係',ex:'Our relationship has been mostly satisfying.'},
-    {en:'satisfying',zh:'令人滿意的',ex:'Our relationship has been mostly satisfying.'},
-    {en:'attention',zh:'注意力',ex:'You take all my attention away.'},
-    {en:'ignore',zh:'忽略',ex:'I ignore the people right in front of me.'},
-    {en:'focus',zh:'專注',ex:'I cannot focus on anything else.'},
-    {en:'communicate',zh:'溝通',ex:'We stopped communicating face to face.'},
-    {en:'communication',zh:'溝通',ex:'Communication is important in relationships.'},
-    {en:'connect',zh:'連結',ex:'I want to truly connect with people.'},
-    {en:'connection',zh:'連結',ex:'I miss the real connections with people.'},
-    {en:'introduction',zh:'介紹',ex:'This is my introduction to the topic.'},
-    {en:'message',zh:'訊息',ex:'I check messages on my phone constantly.'},
-    {en:'respond',zh:'回應',ex:'I need to respond to messages right away.'},
-    {en:'response',zh:'回應',ex:'Her response was unexpected.'},
-    {en:'personal',zh:'個人的',ex:'This is a very personal letter.'},
-    {en:'romantic',zh:'浪漫的',ex:'It sounds romantic but it\'s not.'},
-    {en:'relate',zh:'有關聯',ex:'I can relate to this story.'},
-    {en:'deny',zh:'否認',ex:'I can\'t deny that you\'ve been useful.'}
-   ],
-   reading:{
-    text:'Dear John,\n\nIt is not easy to tell you this, but I still need to say it. I\'m leaving you. Our relationship has been mostly satisfying, but I\'m afraid it\'s over.\n\nRemember how it was when we first met? I thought you were the smartest, coolest thing ever. You helped me connect with friends, find information, and even learn new things. I was amazed at everything you could do.\n\nBut over time, things changed. You started taking up all my attention. I couldn\'t focus on anything else when you were around. At dinner, I would ignore my family just to check on you. I stopped reading books, I stopped going for walks, and I even stopped talking to people face to face. You became the center of my world, and that wasn\'t healthy.\n\nI know what you\'re thinking — "But I make your life easier!" And I can\'t deny that. You wake me up in the morning, remind me of my schedule, and help me find the best restaurants. But at what cost? I\'ve lost real connections with the people around me.\n\nSo, goodbye, John. I\'m not saying I\'ll never see you again. But from now on, I\'ll use you wisely — maybe an hour a day, and definitely not at the dinner table.\n\nWith mixed feelings,\nYour former smartphone addict',
+  {
+    id:'r2',title:'A Weekend Plan (Email)',
+    text:`Hi Sarah,\n\nHow are you? I'm writing to tell you about my plans for this weekend. On Saturday morning, I'm going to the supermarket with my mum. In the afternoon, we're meeting Tom and Linda for coffee. They want to go to the new café on Green Street.\n\nOn Sunday, I'm going to stay home and relax. Maybe I'll watch a film or read a book. It sounds boring, but I really need some rest after this busy week!\n\nWould you like to join us on Saturday afternoon? The café looks really nice and the cakes are supposed to be great!\n\nSee you soon,\nMia`,
     qs:[
-     {q:'Who is "John" in this letter?',opts:['A boyfriend','A smartphone','A teacher','A friend'],a:1},
-     {q:'According to the text, which of the following statements is WRONG?',opts:['The writer used to ignore family at dinner to check the phone.','The writer plans to never use the phone again.','The phone helped the writer connect with friends.','The writer feels the phone took away real connections.'],a:1},
-     {q:'What is the main purpose of this letter?',opts:['To break up with a partner.','To complain about technology.','To reflect on smartphone overuse and set limits.','To recommend a new phone.'],a:2}
+      {q:'What is Mia doing on Saturday morning?',opts:['going to a café','visiting friends','going to the supermarket','staying at home'],a:2},
+      {q:'Where are they meeting for coffee?',opts:['at Mia\'s home','in the office','at the new café on Green Street','in a park'],a:2},
+      {q:'What does Mia plan to do on Sunday?',opts:['go shopping','meet friends','stay home and relax','go to the café'],a:2},
+      {q:'What does Mia invite Sarah to do?',opts:['help her cook','join them at the café on Saturday','go shopping on Sunday','watch a film together'],a:1},
     ]
-   },
-   writing:{title:'Writing a Break-Up Letter',prompt:'Write a short "break-up letter" (5-8 sentences) to a bad habit you want to change (e.g., staying up late, eating junk food, procrastinating). Explain why you need to say goodbye.',guide:'參考用詞：Dear..., Our relationship, I can\'t deny, But at what cost, From now on\n範例開頭：Dear Late Nights, It is not easy to tell you this, but...'},
-   speaking:[
-    {p:'Our relationship has been mostly satisfying.',tip:'relationship 有四個音節，重音在第三音節 re-LA-tion-ship。'},
-    {p:'I couldn\'t focus on anything else when you were around.',tip:'couldn\'t 的 t 幾乎不發音，聽起來像 /ˈkʊdnt/。'},
-    {p:'I stopped reading books and talking to people face to face.',tip:'face to face 三個字要連貫，語速均勻。'},
-    {p:'From now on, I\'ll use you wisely.',tip:'wisely 的重音在第一音節 /ˈwaɪzli/。'}
-   ]
   },
-  {id:'B1L3',num:'L3',title:'Do Animals Sleep like You and Me?',
-   vocab:[
-    {en:'wonder',zh:'想知道',ex:'Have you ever wondered how other animals sleep?'},
-    {en:'amazing',zh:'令人驚奇的',ex:'You might be surprised when you read some amazing facts.'},
-    {en:'average',zh:'平均的',ex:'Some giraffes sleep only thirty minutes a day on average.'},
-    {en:'therefore',zh:'因此',ex:'Therefore, a giraffe never naps for too long.'},
-    {en:'nap',zh:'小睡',ex:'A giraffe never naps for too long.'},
-    {en:'float',zh:'漂浮',ex:'Groups of sea otters float on their backs.'},
-    {en:'avoid',zh:'避免',ex:'To avoid floating away, they lock their little paws together.'},
-    {en:'surface',zh:'水面；表面',ex:'They must swim to the surface to breathe.'},
-    {en:'breathe',zh:'呼吸',ex:'They must swim to the surface every twenty minutes to breathe.'},
-    {en:'awake',zh:'醒著的',ex:'The other half stays awake.'},
-    {en:'impressive',zh:'令人印象深刻的',ex:'Some migratory birds have yet another impressive way of sleeping.'},
-    {en:'distance',zh:'距離',ex:'Alpine swifts fly over a great distance.'},
-    {en:'journey',zh:'旅程',ex:'During their journeys to and from Africa.'},
-    {en:'flight',zh:'飛行',ex:'They take little naps while in flight.'},
-    {en:'variety',zh:'多樣性',ex:'The wide variety of sleeping habits is amazing.'},
-    {en:'creature',zh:'生物',ex:'Different creatures have different ways of avoiding danger.'},
-    {en:'expert',zh:'專家',ex:'Each animal is an expert at surviving in the wild.'},
-    {en:'survive',zh:'生存',ex:'Each animal is an expert at surviving in the wild.'}
-   ],
-   reading:{
-    text:'You may know that brown bears hibernate and that goldfish sleep without closing their eyes, but have you ever wondered how other animals sleep? You might be surprised when you read some of the following amazing facts about animals\' sleeping habits.\n\nUnlike most mammals, giraffes sleep very little. In fact, it is reported that some giraffes sleep only thirty minutes a day on average. When a giraffe sleeps, it curls its long neck and lays its head on its hip. However, there are often predators around, and a giraffe can\'t stand up from this position very quickly. Therefore, a giraffe never naps for too long.\n\nSea otters, one of the world\'s cutest animals, perhaps have the cutest sleeping position. Groups of sea otters float on their backs and hold hands while they are sleeping! They can rest on the land, but they are much safer in the water. To avoid floating away, they lock their little paws together and hold on to each other.\n\nDolphins have one of the most amazing sleeping secrets: only half their brain is asleep at a time! One of the reasons for this is that they must swim to the surface once every twenty minutes to breathe. They also have to look out for sharks and other predators. When one half of their brain goes to sleep, the other half stays awake to help them swim, breathe, and be on the lookout for danger.\n\nSome migratory birds have yet another impressive way of sleeping: they sleep up in the sky! For example, Alpine swifts have to keep flying for a long time over a great distance during their journeys to and from Africa. Along the way, they eat insects in the air and take little naps while in flight. This habit can save their lives since they may be caught by wild animals if they land. According to studies, these amazing little birds may be able to stay in the air for up to two hundred days without needing to land and get some sleep.\n\nThe sleeping habits of the giraffe, sea otter, dolphin, and Alpine swift may seem quite amazing. Yet these are just four examples. The wide variety of sleeping habits in the animal kingdom shows how different creatures have different ways of avoiding danger. As you can see, each animal is an expert at surviving in the wild.',
+  {
+    id:'r3',title:'At the Restaurant',
+    text:`Waiter: Good evening! Do you have a reservation?\nCustomer: Yes, the name is Chen. A table for two.\nWaiter: Of course. Please follow me. Here is your table. Can I get you something to drink?\nCustomer: A glass of water, please. And can I see the menu?\nWaiter: Of course. Here you are. Today's special is grilled salmon with vegetables.\nCustomer: That sounds delicious! I'd like the salmon, please.\nWaiter: Excellent choice. And would you like a starter?\nCustomer: No, thank you. Just the main course.\nWaiter: No problem. I'll bring your water right away.\nCustomer: Thank you very much.`,
     qs:[
-     {q:'Why do giraffes never nap for too long?',opts:['They don\'t need much sleep.','Predators are often around and they can\'t stand up quickly.','They prefer to eat instead of sleeping.','Their necks are too long to sleep comfortably.'],a:1},
-     {q:'Why do sea otters hold hands while sleeping?',opts:['To keep warm.','To show affection.','To avoid floating away from each other.','To protect their babies.'],a:2},
-     {q:'What do all four animals\' sleeping habits have in common?',opts:['They all sleep very little.','They all sleep in water.','Their sleeping habits help them avoid dangers.','They all sleep while moving.'],a:2}
+      {q:'Does the customer have a reservation?',opts:['Yes','No','Maybe','Not mentioned'],a:0},
+      {q:'How many people is the table for?',opts:['one','two','three','four'],a:1},
+      {q:"What is today's special?",opts:['chicken pasta','grilled salmon','beef steak','vegetable soup'],a:1},
+      {q:'Does the customer order a starter?',opts:['Yes, soup','Yes, salad','No','Yes, bread'],a:2},
     ]
-   },
-   writing:{title:'Introducing an Animal\'s Behavior',prompt:'Write 5-8 sentences introducing an interesting animal behavior. Describe what the animal does and explain why it does it.',guide:'參考用詞：amazing, behavior, in order to, survive, for example\n範例開頭：Did you know that...'},
-   speaking:[
-    {p:'Have you ever wondered how other animals sleep?',tip:'wondered 的重音在第一音節 /ˈwʌndərd/。'},
-    {p:'Groups of sea otters float on their backs and hold hands.',tip:'otters 的 tt 發輕彈音，聽起來像 /ˈɒtərz/。'},
-    {p:'Only half their brain is asleep at a time!',tip:'注意 half 的 l 不發音 /hæf/。'},
-    {p:'Each animal is an expert at surviving in the wild.',tip:'expert 重音在第一音節 /ˈekspɜːrt/。'}
-   ]
   },
-  {id:'B1L4',num:'L4',title:'Sniffing Out More Than Just Bones',
-   vocab:[
-    {en:'sensitive',zh:'敏感的',ex:'A dog\'s sense of smell is far more sensitive than a human\'s.'},
-    {en:'keen',zh:'敏銳的',ex:'Sniffer dogs use their keen sense of smell.'},
-    {en:'detect',zh:'偵測',ex:'They use their keen sense of smell to detect certain items.'},
-    {en:'item',zh:'物品',ex:'They detect certain items such as hidden drugs.'},
-    {en:'accomplish',zh:'完成；達成',ex:'This isn\'t the only task that sniffer dogs can accomplish.'},
-    {en:'disease',zh:'疾病',ex:'They find trees that have brown root rot disease.'},
-    {en:'infected',zh:'受感染的',ex:'Dogs can detect infected trees.'},
-    {en:'locate',zh:'定位；找到',ex:'Once they locate such a tree, they sit down beside it.'},
-    {en:'reward',zh:'獎賞',ex:'Their trainer hands them a treat as a reward.'},
-    {en:'ability',zh:'能力',ex:'Sniffer dogs\' ability to detect sickness is amazing.'},
-    {en:'predict',zh:'預測',ex:'They have been trained to predict the onset of certain diseases.'},
-    {en:'manage',zh:'設法做到',ex:'How can sniffer dogs manage to do these tasks?'},
-    {en:'create',zh:'創造',ex:'Chemical changes usually create special odors.'},
-    {en:'expose',zh:'使暴露',ex:'Trainers need to expose their dogs to these smells many times.'},
-    {en:'perform',zh:'執行；表演',ex:'Dogs are then taught to perform a certain kind of behavior.'},
-    {en:'behavior',zh:'行為',ex:'They perform a certain kind of behavior as an alert.'},
-    {en:'alert',zh:'警報；警覺的',ex:'They perform behavior as an alert, such as sitting down.'},
-    {en:'complete',zh:'完成',ex:'Once their training is complete, sniffer dogs are assigned duties.'},
-    {en:'assign',zh:'指派',ex:'Sniffer dogs are assigned to carry out specific duties.'},
-    {en:'specific',zh:'特定的',ex:'They carry out specific duties.'}
-   ],
-   reading:{
-    text:'Have you ever noticed that dogs are able to smell things that we can\'t? This is because a dog\'s sense of smell is far more sensitive than a human\'s. For this reason, some dogs are specially trained to become "sniffer dogs," which use their keen sense of smell to detect certain items such as hidden drugs. But this isn\'t the only task that sniffer dogs can accomplish. Here are a few more interesting ways that these amazing animals can help humans out.\n\nIn Pingtung, officials in one park use trained dogs to find trees that have "brown root rot" disease. Due to their keen sense of smell, the dogs can detect infected trees. Once they locate such a tree, they sit down beside it until their trainer hands them a treat as a reward. Workers then dig out these trees before they fall and hurt people. Since they have realized how useful these sniffer dogs can be, officials in parks across Taiwan are inviting them to come and help find the trees with brown root rot disease.\n\nSniffer dogs\' ability to detect sickness can be used for more than just locating sick trees. They have also been trained to predict the onset of certain diseases in humans. Maria Tello, who was a 58-year-old woman with diabetes, was asleep one night. All of a sudden, her dog Malachi opened its eyes and got up. By using its powerful nose, it could sense that Maria\'s blood sugar was dropping to a dangerously low level. Malachi woke her up and then rushed to get her medicine. It turned out that Malachi saved Maria\'s life in this way four more times that year.\n\nHow can sniffer dogs manage to do the above-mentioned tasks? The answer is that diseases cause chemical changes in plants, animals, and even the human body. These chemical changes usually create special odors, and trainers need to expose their dogs to these smells many times. The dogs are then taught to perform a certain kind of behavior as an alert, such as sitting down or barking, when they come across these smells. Once their training is complete, sniffer dogs are assigned to carry out specific duties.\n\nDogs really are our best friends. As we continue to understand them better, they can help us more. Who knows in what other ways their sharp sense of smell will be useful to us in the future?',
+  {
+    id:'r4',title:'My Hobby: Photography',
+    text:`My name is James and my favourite hobby is photography. I started taking photos five years ago. I got my first camera as a birthday present from my parents. Now I have three different cameras!\n\nI usually take photos of nature — trees, flowers, and animals. Sometimes I go to the park early in the morning to photograph birds. The light is beautiful at that time of day.\n\nI also like street photography. I walk around the city and take photos of interesting people and buildings. I love to capture everyday moments.\n\nI have a website where I share my photos. Many people follow my website and leave nice comments. Photography makes me very happy and helps me to see the world in a different way.`,
     qs:[
-     {q:'According to the passage, which of the following is NOT true?',opts:['People can take comfort from being with therapy dogs.','Only dogs with certain qualities can be trained as sniffer dogs.','Sniffer dogs can help detect diseases in both trees and humans.','Dogs\' sense of smell is less sensitive than humans\'.'],a:3},
-     {q:'How did Malachi help Maria Tello?',opts:['By barking at strangers.','By detecting her dropping blood sugar and getting her medicine.','By calling an ambulance.','By keeping her warm at night.'],a:1},
-     {q:'What enables sniffer dogs to detect diseases?',opts:['Their excellent hearing.','Their sharp eyesight.','Chemical changes from diseases create special odors dogs can smell.','They can read human emotions.'],a:2}
+      {q:"What is James's hobby?",opts:['painting','cooking','photography','cycling'],a:2},
+      {q:'How long has James been taking photos?',opts:['two years','three years','five years','ten years'],a:2},
+      {q:'Why does James go to the park early in the morning?',opts:['to exercise','to meet friends','to photograph birds','to buy coffee'],a:2},
+      {q:'Where does James share his photos?',opts:['on Instagram','in a gallery','on a website','in a magazine'],a:2},
     ]
-   },
-   writing:{title:'Writing about Working Animals',prompt:'Write 5-8 sentences about an animal that helps humans. What does the animal do? How does it help people? Give a specific example.',guide:'參考用詞：trained, ability, detect, help humans, for example\n範例開頭：Did you know that some animals are trained to...'},
-   speaking:[
-    {p:'A dog\'s sense of smell is far more sensitive than a human\'s.',tip:'sensitive 重音在第一音節 /ˈsensɪtɪv/。'},
-    {p:'Sniffer dogs use their keen sense of smell to detect certain items.',tip:'keen 和 sense 兩個字都是重音字。'},
-    {p:'All of a sudden, her dog opened its eyes and got up.',tip:'all of a sudden 是常用片語，要連貫說。'},
-    {p:'Dogs really are our best friends.',tip:'really 的 r 要捲舌，are 弱讀成 /ər/。'}
-   ]
   },
-  {id:'B1L5',num:'L5',title:'The Life of a Plastic Bag',
-   vocab:[
-    {en:'convenience',zh:'便利',ex:'I was sent from the factory to a convenience store.'},
-    {en:'eagerly',zh:'急切地',ex:'I waited eagerly to be used.'},
-    {en:'surround',zh:'圍繞',ex:'I was surrounded by plastic cups, plates, and straws.'},
-    {en:'drift',zh:'漂流',ex:'After days of drifting, I started to envy the birds.'},
-    {en:'envy',zh:'羨慕',ex:'I started to envy the birds up above.'},
-    {en:'crowded',zh:'擁擠的',ex:'It got quite crowded inside.'},
-    {en:'obviously',zh:'顯然地',ex:'We obviously weren\'t that nutritious.'},
-    {en:'product',zh:'產品',ex:'A lot of plastic products end up in the ocean.'},
-    {en:'consume',zh:'消耗；吃掉',ex:'They are then consumed by different sea creatures.'},
-    {en:'poisonous',zh:'有毒的',ex:'The poisonous substances from the plastic make us feel sick.'},
-    {en:'substance',zh:'物質',ex:'The poisonous substances from the plastic end up inside us.'},
-    {en:'recycling',zh:'回收',ex:'The humans are going to take us to a recycling plant.'},
-    {en:'harm',zh:'傷害',ex:'I\'m tired of causing harm to the environment.'},
-    {en:'environment',zh:'環境',ex:'I\'m tired of causing harm to the environment.'},
-    {en:'properly',zh:'適當地',ex:'I really hope my future owner will use me properly.'},
-    {en:'plastic',zh:'塑膠（的）',ex:'I am a plastic bag.'}
-   ],
-   reading:{
-    text:'I am a plastic bag. When I was very young, I was sent from the factory to a convenience store. I stayed there for a long time and waited eagerly to be used. Finally, some kids came along, bought some snacks, and took me along to the beach for a picnic. When it was getting dark, they packed everything up and let me stay there alone! The wind started to howl, and suddenly I was in the sea all on my own.\n\nI floated helplessly in the water for a while, but soon realized I wasn\'t alone. I was surrounded by plastic cups, plates, and straws. After days of drifting, I started to envy the birds up above, who were flying so high and free. I could only follow the currents. Suddenly, I went down a tunnel into a chamber. "What happened?" I asked a fork next to me. "I think we were just swallowed by a huge fish!" he replied. More and more of us were swallowed until it got quite crowded inside. We obviously weren\'t that nutritious because the fish died after a few days.\n\nThe fish\'s body slowly decomposed, and then I was back in the ocean. One day, a big wave came and threw me up onto the shore. A few days later, some schoolchildren walked up to me. They were carrying bags and pairs of tongs. I felt a sudden pinch, and the next thing I knew, I was inside a big bag of trash. A teacher told the schoolchildren, "Because of all the littering, a lot of plastic products end up in the ocean. They are then consumed by different sea creatures. You might think that\'s okay, but when we eat seafood, the poisonous substances from the plastic end up inside us and make us feel sick."\n\nAccording to a plastic bottle nearby, the humans are going to take us to a recycling plant. I really don\'t understand them. They produce us to make their lives better, but then they misuse us and make everyone\'s life worse! I\'m tired of floating around, killing fish, and causing harm to the environment. I really hope that my future owner will use me properly in my next life.',
+  {
+    id:'r5',title:'A New Job',
+    text:`Last month, I started a new job at a marketing company. The office is near the city centre, so I take the MRT to work every day. My working hours are from 9 am to 6 pm, Monday to Friday.\n\nMy boss is very kind and patient. The team is also friendly — there are twelve people in my department. My job is to write social media posts and help plan events for our clients.\n\nThe work is sometimes stressful, especially before big events. But I enjoy what I do. The salary is good, and the company provides free lunch every day. I also get 15 days of annual leave.\n\nOverall, I feel very lucky to have this job. I am learning a lot and meeting interesting people every day.`,
     qs:[
-     {q:'What happened to the plastic bag first?',opts:['It was recycled.','It was taken to a beach picnic and left behind.','It was swallowed by a fish.','It was thrown into a river.'],a:1},
-     {q:'According to the text, which statement is true?',opts:['The plastic bag is happy about its life.','Paper bags cause no harm to the ocean.','By 2050, there may be more plastic bags than fish in the ocean.','The plastic bag hopes to be used properly in the future.'],a:3},
-     {q:'What is the plastic bag\'s attitude at the end of the story?',opts:['Angry at humans and hopeful for change.','Happy to be recycled.','Indifferent about pollution.','Proud of being useful.'],a:0}
+      {q:'What type of company does the writer work at?',opts:['a restaurant','a school','a marketing company','a hospital'],a:2},
+      {q:'How does the writer get to work?',opts:['by bus','by MRT','by bike','on foot'],a:1},
+      {q:'What does the writer do at work?',opts:['design logos','write social media posts','teach classes','sell products'],a:1},
+      {q:'What is one benefit the company offers?',opts:['free gym','free transport','free lunch','free housing'],a:2},
     ]
-   },
-   writing:{title:'Summarizing a Fairy Tale or a Fable',prompt:'Write a short story (6-10 sentences) from the perspective of an everyday object (e.g., a water bottle, a pair of shoes, a book). Describe its "life" and experiences.',guide:'參考用詞：I am a..., When I was young, One day, Finally, I hope that\n範例開頭：I am a water bottle. My life began in a factory...'},
-   speaking:[
-    {p:'I am a plastic bag. When I was very young, I was sent from the factory.',tip:'plastic 的重音在第一音節 /ˈplæstɪk/。'},
-    {p:'I floated helplessly in the water for a while.',tip:'helplessly 重音在第一音節，注意 -lessly 的發音。'},
-    {p:'A lot of plastic products end up in the ocean.',tip:'end up 是常用片語，products 的 s 發 /s/。'},
-    {p:'I really hope that my future owner will use me properly.',tip:'properly 重音在第一音節 /ˈprɒpərli/。'}
-   ]
   },
-  {id:'B1L6',num:'L6',title:'Built for Freedom',
-   vocab:[
-    {en:'ancient',zh:'古代的',ex:'In ancient times, slavery was common.'},
-    {en:'celebrate',zh:'慶祝',ex:'People celebrate freedom in many ways.'},
-    {en:'celebration',zh:'慶祝活動',ex:'The celebration was wonderful.'},
-    {en:'freedom',zh:'自由',ex:'The monument was built for freedom.'},
-    {en:'represent',zh:'代表',ex:'The statue represents freedom.'},
-    {en:'remove',zh:'移除',ex:'They removed the chains of slavery.'},
-    {en:'slave',zh:'奴隸',ex:'Millions of people lived as slaves.'},
-    {en:'firm',zh:'堅定的',ex:'She stood firm in her beliefs.'},
-    {en:'firmly',zh:'堅定地',ex:'She held the torch firmly.'},
-    {en:'symbol',zh:'象徵',ex:'The Statue of Liberty is a symbol of freedom.'},
-    {en:'monument',zh:'紀念碑',ex:'The monument attracts many tourists.'},
-    {en:'landmark',zh:'地標',ex:'It became a famous landmark.'},
-    {en:'treatment',zh:'待遇；治療',ex:'The treatment of slaves was terrible.'},
-    {en:'attraction',zh:'景點；吸引力',ex:'It is a popular tourist attraction.'},
-    {en:'attractive',zh:'有吸引力的',ex:'The design was very attractive.'},
-    {en:'survival',zh:'生存',ex:'Survival was their main concern.'}
-   ],
-   reading:{
-    text:'It was October 28, 1886. Even though it was a rainy day in New York City, close to a million people were out for their first look at the city\'s newest addition on Bedloe\'s Island, which was later renamed Liberty Island. When French sculptor Frédéric Auguste Bartholdi removed the large French flag from the front of his latest creation, the crowds cheered and the soldiers fired their guns in celebration. The grand sight before their eyes was the Statue of Liberty.\n\nThe Statue of Liberty is a gift that France presented to America to celebrate its one hundred years of independence from Great Britain. The full height of the monument is 305 feet, and the statue itself stands 151 feet tall. When it was first created, the statue\'s copper surface was reddish-brown. Over time, this outer layer has been exposed to the air and oxidized so much that it has turned green.\n\nEach part of the statue has a special meaning. In her left hand, Lady Liberty holds a giant tablet with the date "July 4, 1776" on it. It was on this day that the United States became independent, and the tablet symbolizes a new and free America. A giant torch, which symbolizes that Lady Liberty lights the way to freedom, is held firmly in her right hand.\n\nOther symbolic parts of the statue include Lady Liberty\'s crown, her dress, and the broken chains at her feet. Seven spikes rise from the top of the crown and represent the rays of the sun. Lady Liberty is thus divine and shines her heavenly light on the world. Her robe in the ancient Roman style shows that Bartholdi was also inspired by Libertas, the Roman goddess of freedom. The broken chains represent the end of slavery in the United States and symbolize freedom from unfair treatment.\n\nToday, the Statue of Liberty is one of America\'s biggest tourist attractions. It is such a popular landmark that every visitor to New York City has heard of it and wants to pay a visit to Liberty Island. As always, Lady Liberty stands tall and proud. She is a symbol of hope and freedom for visitors from around the globe.',
-    qs:[
-     {q:'Which title below is also suitable for the passage?',opts:['Freedom: The Gift from Heaven','Long Lost Secrets of Lady Liberty','American Independence: A Long Journey','The Statue That Is More Than a Landmark'],a:3},
-     {q:'For what reason did France send America the Statue of Liberty as a gift?',opts:['Slavery had ended in the United States.','New York City had become a popular sightseeing place.','This was to celebrate America\'s 100 years of independence from Great Britain.','France wanted to celebrate the friendship between New York City and Paris.'],a:2},
-     {q:'Which of the following statements about the Statue of Liberty is true?',opts:['Its surface was white when it was first built.','Its color has changed from reddish-brown to green.','It was painted green since the color symbolizes freedom.','It was built with oxidized copper in order to save money.'],a:1}
-    ]
-   },
-   writing:{title:'Describing a Room in Your Home',prompt:'Write 5-8 sentences describing your favorite room at home. What does it look like? Why is it your favorite?',guide:'參考用詞：In my room, there is/are, I like it because, It makes me feel'},
-   speaking:[{p:'The Statue of Liberty is a symbol of freedom.',tip:'liberty 重音在第一音節 /ˈlɪbərti/。'},{p:'Lady Liberty stands tall and proud.',tip:'stands 和 tall 都是重音字，要清楚發出。'},{p:'The broken chains represent the end of slavery.',tip:'chains 的 ch 發 /tʃ/，slavery 重音在第一音節。'},{p:'Each part of the statue has a special meaning.',tip:'special 重音在第一音節 /ˈspeʃəl/。'}]
-  },
-  {id:'B1L7',num:'L7',title:'From Trash to Triumph',
-   vocab:[
-    {en:'triumph',zh:'勝利；成功',ex:'The performance was a triumph.'},
-    {en:'grateful',zh:'感恩的',ex:'I am grateful for the opportunity.'},
-    {en:'schedule',zh:'時間表',ex:'My schedule is very busy.'},
-    {en:'record',zh:'記錄',ex:'She broke the world record.'},
-    {en:'proof',zh:'證明',ex:'This is proof that dreams come true.'},
-    {en:'scenery',zh:'風景',ex:'The scenery in the park is beautiful.'},
-    {en:'concert',zh:'音樂會',ex:'They performed several local concerts.'},
-    {en:'instrument',zh:'樂器',ex:'They made instruments from recycled materials.'},
-    {en:'receive',zh:'收到',ex:'They received invitations to perform abroad.'},
-    {en:'apply',zh:'申請；應用',ex:'She applied for the music lessons.'},
-    {en:'applicant',zh:'申請者',ex:'There were many applicants.'},
-    {en:'application',zh:'申請；應用',ex:'Submit your application before the deadline.'},
-    {en:'scream',zh:'尖叫',ex:'They heard screams of excitement.'},
-    {en:'somehow',zh:'不知怎地',ex:'The garbage picker somehow managed to make instruments.'},
-    {en:'barely',zh:'幾乎不',ex:'They barely cost anything.'},
-    {en:'invaluable',zh:'無價的',ex:'The instruments were invaluable to the children.'},
-    {en:'encouragement',zh:'鼓勵',ex:'With Mr. Chávez\'s encouragement, they kept practicing.'},
-    {en:'dazzle',zh:'使目眩；使驚嘆',ex:'They dazzled the world.'},
-    {en:'potential',zh:'潛力',ex:'A rock band saw the children\'s potential.'},
-    {en:'dizzy',zh:'頭暈的',ex:'These children felt dizzy on stage.'},
-    {en:'overseas',zh:'海外的',ex:'Touring overseas changed their lives.'},
-    {en:'determination',zh:'決心',ex:'Through determination, they created beauty out of garbage.'},
-    {en:'faith',zh:'信念',ex:'They had faith in their abilities.'},
-    {en:'pursue',zh:'追求',ex:'They pursued greater things.'}
-   ],
-   reading:{
-    text:'Ada Ríos grew up in a slum near the Cateura landfill in Paraguay. Every morning, garbage trucks rolled into the landfill and unloaded tons of trash. People in the slum then looked through the trash for things they could recycle or sell. This was how they made a living, and Ada believed her future would be no different.\n\nOne day, Ada\'s grandma saw a poster that said "Free music lessons from Mr. Chávez." Ada\'s grandma knew Ada loved music, so she applied for Ada. Ada really looked forward to the lessons. She wanted to learn how to play the violin and be carried away by the power of music.\n\nAda and some other children took Mr. Chávez\'s lessons, but there were not enough instruments. Buying new ones was impossible, since a violin cost more than a local house! Fortunately, a garbage picker who was good at using tools learned about their trouble and tried to use what was at hand. By putting together metal cans, forks, and other items from the landfill, the garbage picker somehow managed to make various instruments. They weren\'t very traditional and barely cost anything, but to these children they were invaluable.\n\nAt first, each child played in his or her own way, and only screeches came out of the instruments. Some kids quit the music lessons after a few weeks, but with Mr. Chávez\'s encouragement, Ada and the others kept practicing, sometimes for several hours a day. Slowly, their musical skills improved. They began to hit all the right notes and played together harmoniously. Finally, they formed the "Recycled Orchestra." After the orchestra performed several local concerts, they attracted wider attention and even received invitations to perform abroad. Ada and the other members visited different countries. The world dazzled them just as they dazzled the world.\n\nFour years later, a world-famous rock band saw the children\'s potential and invited the orchestra to tour with them. At their first concert with the band, Ada and her friends nervously stepped on stage in front of nearly 35,000 people. They saw glaring lights and heard screams of excitement. These children felt dizzy and didn\'t know what to do. However, as soon as the orchestra began to play, everyone cheered. When Ada and her friends bowed to the crowd at the end, they knew that the performance was a triumph.\n\nTouring overseas changed their lives in other ways, too. With the money they earned, Ada and her friends had larger, safer houses built for their families. More importantly, they showed the locals that children\'s dreams didn\'t have to end up in the trash. Through determination and hard work, these children were able to create beauty out of garbage and have faith in their abilities to pursue greater things.',
-    qs:[
-     {q:'What is the passage mainly about?',opts:['A creative use of recycled items.','A miracle that happened in a slum.','The early life of a famous musician.','An act of kindness from someone unknown.'],a:0},
-     {q:'How is the passage organized?',opts:['In order of time.','By cause and effect.','In order of importance.','By comparison and contrast.'],a:0},
-     {q:'According to the passage, which of the following statements about Ada and her friends is true?',opts:['They had to pay for their music lessons.','They never traveled abroad to give performances.','They showed great musical talent from the beginning.','Their performance with the rock band was a huge success.'],a:3}
-    ]
-   },
-   writing:{title:'Writing about an Experience of Helping People',prompt:'Write 5-8 sentences about a time you helped someone or someone helped you. What happened? How did it make you feel?',guide:'參考用詞：One day, I decided to, helped, grateful, experience'},
-   speaking:[{p:'They made instruments from recycled materials.',tip:'instruments 重音在第一音節 /ˈɪnstrəmənts/。'},{p:'Through determination, they created beauty out of garbage.',tip:'determination 重音在第四音節 de-ter-mi-NA-tion。'},{p:'The performance was a triumph.',tip:'triumph 重音在第一音節 /ˈtraɪʌmf/。'},{p:'Children\'s dreams didn\'t have to end up in the trash.',tip:'dreams 的 dr 要連在一起發音。'}]
-  },
-  {id:'B1L8',num:'L8',title:'Convenience Stores',
-   vocab:[
-    {en:'familiar',zh:'熟悉的',ex:'You hear the familiar "Welcome!"'},
-    {en:'urge',zh:'衝動；慾望',ex:'There\'s no need to be embarrassed if you\'ve experienced this sudden urge to shop.'},
-    {en:'strategy',zh:'策略',ex:'Convenience stores use certain strategies.'},
-    {en:'visible',zh:'看得見的',ex:'The more visible the products are, the easier it is to purchase them.'},
-    {en:'purchase',zh:'購買',ex:'Shoppers notice and purchase them.'},
-    {en:'profitable',zh:'有利可圖的',ex:'Smart shop owners place their most profitable items at eye level.'},
-    {en:'aim',zh:'瞄準；目標',ex:'Products aimed at children are placed on lower shelves.'},
-    {en:'impulse',zh:'衝動',ex:'Another strategy is to promote impulse purchases.'},
-    {en:'display',zh:'展示',ex:'These are displayed near cash registers.'},
-    {en:'offer',zh:'提供；優惠',ex:'Special offers like "buy one, get one free" make them attractive.'},
-    {en:'customer',zh:'顧客',ex:'Since customers are lining up at cash registers anyway.'},
-    {en:'advantage',zh:'優勢',ex:'Shops take advantage of this.'},
-    {en:'eventually',zh:'最終',ex:'Eventually, they end up purchasing more things.'},
-    {en:'trap',zh:'陷阱',ex:'To avoid falling into any of the traps above.'},
-    {en:'aware',zh:'意識到的',ex:'Try to be more aware of the clever strategies.'},
-    {en:'clever',zh:'聰明的',ex:'Be aware of the clever strategies convenience stores use.'}
-   ],
-   reading:{
-    text:'It has probably happened to you before. The glass doors of the convenience store slide open invitingly; you hear the familiar "Welcome!" and enter just to pick up one item. A few minutes later, you walk out with a whole bag full of drinks, snacks, and other goodies you never even thought of buying!\n\nThere\'s no need to be embarrassed if you\'ve experienced this sudden urge to shop. Convenience stores use certain strategies to make you feel this way. One of these strategies is to follow the "eye level is buy level" rule. The more visible the products are, the easier it is for shoppers to notice and purchase them. Therefore, smart shop owners usually place their most profitable and popular items at the average shopper\'s eye level to make sure that those items are most likely to be seen. Similarly, products that are aimed at children, such as toys, are placed on lower shelves so that younger shoppers will surely see them.\n\nAnother eye-catching convenience store strategy is to promote impulse purchases of small, cheap items like candy bars. These are displayed near cash registers and are thus easily noticed and within quick reach. Special offers, like "buy one, get one free," make such little "extras" even more attractive. Since customers are lining up at cash registers to pay for their things anyway, these items can easily be grabbed and added to their shopping baskets on impulse.\n\nA third strategy is to make customers spend more time in stores so that they will spend more money, too. Studies have shown that the longer people stay inside, the more products they buy. Shops take advantage of this by setting up bar-style seating or dining areas. Here, people can read the paper, hold a meeting, or just hang out. Although these customers might start off with just a beverage, they often grow hungry over time. Eventually, they end up purchasing more things like microwave dinners and fruit packs.\n\nTo avoid falling into any of the traps above, try to be more aware of the clever strategies convenience stores use to get deeper into your pocket. If you can always remember the tricks that shop owners use, you won\'t have to worry about spending too much!',
-    qs:[
-     {q:'What is the main idea of the passage?',opts:['It is easier for convenience store shoppers to buy goods on impulse.','\"Eye level is buy level\" is the golden rule for convenience store owners.','Convenience stores use clever strategies to attract shoppers to buy more.','It is important to avoid spending too much money in convenience stores.'],a:2},
-     {q:'Which of the following situations is LEAST likely to be seen in a convenience store?',opts:['"Buy 1, get 1 free" is used to promote candy bars.','Toys are hung from the ceiling to attract children.','Customers sit down, relax, and chat.','Students dine on microwave dinners.'],a:1},
-     {q:'What is implied in the passage?',opts:['Shop owners are cleverer than shoppers.','Popular items sold in the stores are mostly useless.','Children are more likely to buy things on impulse.','Shoppers often spend more than they expected.'],a:3}
-    ]
-   },
-   writing:{title:'Making a Strategic Plan',prompt:'Write 5-8 sentences about a store, restaurant, or place you visit often. Describe how it is designed to attract customers.',guide:'參考用詞：strategy, attract, customer, display, advantage'},
-   speaking:[{p:'Convenience stores use certain strategies to make you feel this way.',tip:'strategies 重音在第一音節 /ˈstrætədʒiz/。'},{p:'The more visible the products are, the easier it is to purchase them.',tip:'visible 重音在第一音節 /ˈvɪzəbl/。'},{p:'Shoppers often spend more than they expected.',tip:'expected 重音在第二音節 /ɪkˈspektɪd/。'},{p:'Try to be more aware of the clever strategies.',tip:'aware 重音在第二音節 /əˈwɛr/。'}]
-  },
-  {id:'B1L9',num:'L9',title:'Fighting for or against Graffiti',
-   vocab:[
-    {en:'detailed',zh:'詳細的',ex:'Some graffiti works are very detailed paintings.'},
-    {en:'mess',zh:'混亂',ex:'Is graffiti a form of art or just a mess?'},
-    {en:'express',zh:'表達',ex:'Graffiti is about expressing one\'s feelings and being creative.'},
-    {en:'opinion',zh:'意見',ex:'Banksy paints to show his opinions.'},
-    {en:'contrast',zh:'對比',ex:'Many of his works contrast the horror of war with the innocence of children.'},
-    {en:'horror',zh:'恐怖',ex:'His works contrast the horror of war.'},
-    {en:'innocence',zh:'天真；無辜',ex:'The innocence of children is shown in his art.'},
-    {en:'violence',zh:'暴力',ex:'The gun represents violence.'},
-    {en:'visual',zh:'視覺的',ex:'Graffiti is nothing but visual pollution.'},
-    {en:'pollution',zh:'汙染',ex:'It is nothing but visual pollution.'},
-    {en:'permission',zh:'許可',ex:'Most graffiti is done without permission.'},
-    {en:'effort',zh:'努力',ex:'A lot of money and effort are needed to get rid of it.'},
-    {en:'community',zh:'社區',ex:'Graffiti harms communities.'},
-    {en:'associate',zh:'聯想',ex:'Many people associate graffiti with criminal activity.'},
-    {en:'criminal',zh:'犯罪的',ex:'Graffiti is associated with criminal activity.'},
-    {en:'destructive',zh:'破壞性的',ex:'Is graffiti creative or destructive?'}
-   ],
-   reading:{
-    text:'When people draw or spray-paint pictures or words onto a wall, under bridges, or even on the sides of buses and trains, these pictures or words are called graffiti. It comes in all shapes and sizes, from simple words to detailed paintings. Some love it, while others hate it. The question is: Is graffiti a form of art or just a mess?\n\nGraffiti is obviously art. First, it takes a lot of time and hard work. It is not just scribbling. Graffiti artists are like other painters. Their art starts as sketches and outlines, perfected with vivid pictures and various details later. The only difference is that they paint on walls rather than on paper. Second, like other art forms, graffiti is about expressing one\'s feelings and being creative. Banksy, for example, is a famous graffiti artist who paints to show his opinions. Many of his works contrast the horror of war with the innocence of children. In one of his pieces, a young boy places a flower into a soldier\'s gun. The gun represents violence, whereas the flower stands for peace. Works like this call attention to the need for positive change in the world. Isn\'t it art?\n\nGraffiti makes a mess. It is nothing but visual pollution. Most graffiti is "tagging," which is more like just scribbling someone\'s name. These ugly paintings make cities look messy. In addition, most graffiti is done without permission. A lot of money and effort are needed to get rid of it. The city of Los Angeles, for example, has a huge problem with graffiti, spending millions of dollars every year cleaning it up. Each month, workers wash away hundreds of thousands of square feet of it. Even worse, graffiti harms communities. Many people believe that graffiti is associated with criminal activity, feeling that it is unsafe to walk around or live in areas with graffiti. If graffiti causes all these problems, can we really call it art?\n\nWhich side of the wall are you on when it comes to graffiti? Is it creative or destructive? Now, it\'s your turn to express yourself and share your thoughts about it!',
-    qs:[
-     {q:'Which of the following best describes the passage?',opts:['Graffiti is recognized as a form of art.','Some people don\'t regard graffiti as a form of art.','No one is sure if graffiti is a form of art or not.','People have different points of view regarding graffiti.'],a:3},
-     {q:'Which of the following facts about graffiti is NOT mentioned in the passage?',opts:['A neighborhood full of graffiti may be associated with crime.','A house with Banksy\'s graffiti on it is usually sold at a high price.','Many graffiti works are just name tagging, and they make a city look dirty.','Creating graffiti requires painting techniques and skills.'],a:1},
-     {q:'Based on the passage, which of the following may be the reason for people who hate graffiti?',opts:['They think graffiti works lack originality but can still be beautiful.','They think it makes cities look too bright and colorful.','Graffiti has made people look down upon their communities.','Graffiti is associated with health problems.'],a:2}
-    ]
-   },
-   writing:{title:'Writing Your Opinion about a Debate',prompt:'Write 5-8 sentences about whether graffiti is art or vandalism. Give your opinion with reasons.',guide:'參考用詞：In my opinion, On one hand / On the other hand, I believe that'},
-   speaking:[{p:'Some people consider graffiti a form of art.',tip:'graffiti 重音在第二音節 /ɡrəˈfiːti/。'},{p:'Many of his works contrast the horror of war with the innocence of children.',tip:'contrast 當動詞時重音在第二音節 /kənˈtræst/。'},{p:'Is graffiti creative or destructive?',tip:'destructive 重音在第二音節 /dɪˈstrʌktɪv/。'},{p:'In my opinion, everyone has the right to express themselves.',tip:'opinion 重音在第二音節 /əˈpɪnjən/。'}]
-  }
-]},
-{id:'B2',name:'英文二',lessons:[
-  {id:'B2L1',num:'L1',title:'The Heart of a Champion',vocab:[{en:'champion',zh:'冠軍',ex:'She has the heart of a champion.'},{en:'inspire',zh:'啟發',ex:'Her story inspired millions.'},{en:'determination',zh:'決心',ex:'Her determination was unbreakable.'},{en:'encourage',zh:'鼓勵',ex:'Her coach encouraged her to keep going.'},{en:'goal',zh:'目標',ex:'She set a goal and achieved it.'},{en:'improve',zh:'改善',ex:'She improved her performance every day.'},{en:'overcome',zh:'克服',ex:'She overcame many obstacles.'}],reading:{text:'',qs:[]},writing:{title:'Writing about an Unforgettable Experience',prompt:'Write about a time you worked hard to achieve something.',guide:''},speaking:[{p:'She has the heart of a champion.',tip:'champion 重音在第一音節。'}]},
-  {id:'B2L2',num:'L2',title:'My Mouth\'s in Airplane Mode!',vocab:[{en:'interrupt',zh:'打斷',ex:'Don\'t interrupt when others are talking.'},{en:'awkward',zh:'尷尬的',ex:'The situation became very awkward.'},{en:'apologize',zh:'道歉',ex:'I should apologize for what I said.'},{en:'regret',zh:'後悔',ex:'I regret saying that.'},{en:'conversation',zh:'對話',ex:'We had an interesting conversation.'}],reading:{text:'',qs:[]},writing:{title:'Writing an Advice Letter',prompt:'Write a letter giving advice to someone about communication.',guide:''},speaking:[{p:'I\'m sorry. I didn\'t mean to interrupt.',tip:'interrupt 重音在第三音節。'}]},
-  {id:'B2L3',num:'L3',title:'The Birthmark',vocab:[{en:'birthmark',zh:'胎記',ex:'She had a birthmark on her face.'},{en:'appearance',zh:'外表',ex:'She was worried about her appearance.'},{en:'confidence',zh:'自信',ex:'She gained confidence over time.'},{en:'accept',zh:'接受',ex:'She learned to accept herself.'}],reading:{text:'',qs:[]},writing:{title:'Summarizing a Story',prompt:'Write a summary of a story you\'ve read.',guide:''},speaking:[{p:'True beauty comes from within.',tip:'beauty 重音在第一音節 /ˈbjuːti/。'}]},
-  {id:'B2L4',num:'L4',title:'Malala',vocab:[{en:'education',zh:'教育',ex:'Education is a basic human right.'},{en:'courage',zh:'勇氣',ex:'Malala showed incredible courage.'},{en:'protest',zh:'抗議',ex:'She protested against the ban on girls\' education.'},{en:'threaten',zh:'威脅',ex:'They threatened her life.'}],reading:{text:'',qs:[]},writing:{title:'Writing about a Hero',prompt:'Write about someone you admire and why.',guide:''},speaking:[{p:'Education is a basic human right.',tip:'education 重音在第三音節 e-du-CA-tion。'}]},
-  {id:'B2L5',num:'L5',title:'Walt Disney\'s Inspirational Message',vocab:[{en:'inspirational',zh:'激勵人心的',ex:'His message was inspirational.'},{en:'imagination',zh:'想像力',ex:'Use your imagination!'},{en:'failure',zh:'失敗',ex:'He faced many failures before success.'},{en:'creative',zh:'有創造力的',ex:'Disney was a very creative person.'}],reading:{text:'',qs:[]},writing:{title:'Writing about Dreams',prompt:'Write about a dream you hope to achieve someday.',guide:''},speaking:[{p:'All our dreams can come true if we have the courage to pursue them.',tip:'pursue 重音在第二音節 /pərˈsuː/。'}]},
-  {id:'B2L6',num:'L6',title:'No Wonder He\'s Special',vocab:[{en:'disability',zh:'殘疾',ex:'He has a physical disability.'},{en:'accomplish',zh:'成就',ex:'He accomplished great things.'},{en:'ordinary',zh:'普通的',ex:'He seemed like an ordinary person.'}],reading:{text:'',qs:[]},writing:{title:'Writing about Someone Special',prompt:'Write about someone who inspires you despite challenges.',guide:''},speaking:[{p:'Everyone is special in their own way.',tip:'special 重音在第一音節。'}]},
-  {id:'B2L7',num:'L7',title:'TED Talks',vocab:[{en:'audience',zh:'觀眾',ex:'The audience was captivated.'},{en:'topic',zh:'主題',ex:'Choose an interesting topic.'},{en:'deliver',zh:'發表',ex:'She delivered an excellent speech.'},{en:'persuade',zh:'說服',ex:'He persuaded the audience.'}],reading:{text:'',qs:[]},writing:{title:'Writing a Speech',prompt:'Write a short speech about a topic you care about.',guide:''},speaking:[{p:'Ideas worth spreading.',tip:'worth 的 /θ/ 要用舌尖抵上齒。'}]},
-  {id:'B2L8',num:'L8',title:'Ban-Doh',vocab:[{en:'tradition',zh:'傳統',ex:'Ban-Doh is a Taiwanese tradition.'},{en:'occasion',zh:'場合',ex:'It is served on special occasions.'},{en:'culture',zh:'文化',ex:'Food is an important part of culture.'}],reading:{text:'',qs:[]},writing:{title:'Writing about a Cultural Event',prompt:'Write about a traditional food or cultural event you enjoy.',guide:''},speaking:[{p:'Food is an important part of Taiwanese culture.',tip:'culture 重音在第一音節 /ˈkʌltʃər/。'}]},
-  {id:'B2L9',num:'L9',title:'The Story behind Eponyms',vocab:[{en:'origin',zh:'起源',ex:'The origin of the word is interesting.'},{en:'discover',zh:'發現',ex:'He discovered a new element.'},{en:'invention',zh:'發明',ex:'This was a great invention.'},{en:'influence',zh:'影響',ex:'Their names influenced the language.'}],reading:{text:'',qs:[]},writing:{title:'Writing about Word Origins',prompt:'Write about an interesting word or expression and where it comes from.',guide:''},speaking:[{p:'Many English words come from people\'s names.',tip:'注意 names 的 /eɪ/ 發音。'}]}
-]},
-{id:'B3',name:'英文三',lessons:[
-  {id:'B3L1',num:'L1',title:'(即將更新)',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]}
-]},
-{id:'B4',name:'英文四',lessons:[
-  {id:'B4L1',num:'L1',title:'The Lady or the Tiger?',vocab:[{en:'trial',zh:'審判',ex:'The prisoner was brought to trial.'},{en:'accused',zh:'被告',ex:'The accused stood before the king.'},{en:'jealous',zh:'嫉妒的',ex:'The princess was jealous.'},{en:'fate',zh:'命運',ex:'His fate was in her hands.'}],reading:{text:'',qs:[]},writing:{title:'Writing an Ending',prompt:'Write your own ending for "The Lady or the Tiger?"',guide:''},speaking:[{p:'Which came out of the opened door — the lady, or the tiger?',tip:'注意 lady 和 tiger 要加重語氣表達對比。'}]},
-  {id:'B4L2',num:'L2',title:'Boat Schools',vocab:[{en:'flood',zh:'洪水',ex:'The floods destroyed many schools.'},{en:'solution',zh:'解決方案',ex:'Boat schools are an innovative solution.'},{en:'access',zh:'取得；進入',ex:'Children now have access to education.'}],reading:{text:'',qs:[]},writing:{title:'Describing an Invention',prompt:'Write about an invention that solves a problem.',guide:''},speaking:[{p:'These floating schools bring education to remote areas.',tip:'remote 重音在第二音節 /rɪˈmoʊt/。'}]},
-  {id:'B4L3',num:'L3',title:'Progress and Preservation',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L4',num:'L4',title:'Living under Nature\'s Wing',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L5',num:'L5',title:'Irena Sendler',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L6',num:'L6',title:'Dabbawalas',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L7',num:'L7',title:'Iceland\'s Road to Gender Equality',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L8',num:'L8',title:'Overtourism in Barcelona',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B4L9',num:'L9',title:'To Kill a Mockingbird',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]}
-]},
-{id:'B5',name:'英文五',lessons:[
-  {id:'B5L1',num:'L1',title:'Life Lessons in Rudyard Kipling\'s "If—"',vocab:[{en:'wisdom',zh:'智慧',ex:'The poem is full of wisdom.'},{en:'patience',zh:'耐心',ex:'If you can wait and not be tired by waiting.'},{en:'virtue',zh:'美德',ex:'Patience is a great virtue.'}],reading:{text:'',qs:[]},writing:{title:'Writing about Teenagers',prompt:'Write about what it means to be a teenager in the 21st century.',guide:''},speaking:[{p:'If you can keep your head when all about you are losing theirs.',tip:'這是 Kipling 的名詩句，注意語調的起伏。'}]},
-  {id:'B5L2',num:'L2',title:'Battling Fake News',vocab:[{en:'fake',zh:'假的',ex:'Fake news spreads quickly online.'},{en:'source',zh:'來源',ex:'Always check the source of information.'},{en:'critical',zh:'批判性的',ex:'We need to think critically about news.'}],reading:{text:'',qs:[]},writing:{title:'Providing Solutions',prompt:'Write about the problem of fake news and suggest solutions.',guide:''},speaking:[{p:'Always check the source before sharing news online.',tip:'source 的 /ɔːrs/ 注意不要念成 sauce。'}]},
-  {id:'B5L3',num:'L3',title:'Formosa',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B5L4',num:'L4',title:'Lab-Grown Meat',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B5L5',num:'L5',title:'Venice',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]},
-  {id:'B5L6',num:'L6',title:'I Have a Dream',vocab:[],reading:{text:'',qs:[]},writing:{title:'',prompt:'',guide:''},speaking:[]}
-]}
 ];
 
 const LISTEN_RES = [
-  {icon:'📺',title:'BBC Learning English – 6 Minute English',sub:'每集 6 分鐘，有逐字稿',url:'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english'},
-  {icon:'📻',title:'VOA Learning English',sub:'語速慢、發音清晰，有文字稿',url:'https://learningenglish.voanews.com/z/4381'},
-  {icon:'🎬',title:'EnglishClass101',sub:'YouTube 頻道，短影片，日常對話',url:'https://www.youtube.com/@EnglishClass101'},
-  {icon:'🌐',title:'Elllo – Listening Lessons',sub:'免費聽力練習，有文字稿和測驗',url:'https://www.elllo.org/english/Mixer/'},
-  {icon:'📱',title:'TED-Ed 短動畫',sub:'有中文字幕，視覺輔助強',url:'https://ed.ted.com/'},
-  {icon:'🎵',title:'Peppa Pig 英文版',sub:'語速慢、用字簡單，適合練耳朵',url:'https://www.youtube.com/@officialpeppapig'},
+  {icon:'📺',title:'BBC Learning English – 6 Minute English',sub:'每集 6 分鐘，有逐字稿，A2-B1 適合',url:'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english'},
+  {icon:'📻',title:'VOA Learning English – Everyday Grammar',sub:'語速慢、發音清晰，有文字稿',url:'https://learningenglish.voanews.com/z/4381'},
+  {icon:'🎬',title:'EnglishClass101 – Absolute Beginner',sub:'YouTube 頻道，短影片，A1-A2 日常對話',url:'https://www.youtube.com/@EnglishClass101'},
+  {icon:'🌐',title:'Elllo – A2 Listening Lessons',sub:'免費聽力練習網站，有文字稿和測驗',url:'https://www.elllo.org/english/Mixer/'},
+  {icon:'📱',title:'TED-Ed – 短動畫（開字幕）',sub:'有中文字幕，視覺輔助強，從簡單主題開始',url:'https://ed.ted.com/'},
+  {icon:'🎵',title:'Peppa Pig（英文版）',sub:'語速慢、用字簡單，適合聽力初學者練耳朵',url:'https://www.youtube.com/@officialpeppapig'},
 ];
 
-// ===== STATE =====
-let ST = {xp:0,xpToday:0,streak:0,lastDate:'',vocabKnown:[],vocabHard:[],readDone:{},listenLog:[],speakDone:[],writeDone:[],missions:{vocab:false,read:false,listen:false,speak:false,write:false},days:[],apiKey:'',curBook:0,curLesson:0};
+const SPEAK_PHRASES = [
+  {p:'Hello! How are you today?',ph:'/həˈloʊ haʊ ɑːr juː təˈdeɪ/',tip:'這是最基本的問候，注意 how are you 要連音，聽起來像 howaryou。'},
+  {p:'I\'m fine, thank you.',ph:'/aɪm faɪn θæŋk juː/',tip:'回答問候的標準句。 fine 的 f 要用上齒咬下唇發音。'},
+  {p:'My name is Isa. Nice to meet you.',ph:'/maɪ neɪm ɪz... naɪs tə miːt juː/',tip:'Nice to meet you 的 to 通常弱讀成 /tə/，聽起來是 nice-tuh-meet-you。'},
+  {p:'Can I have a coffee, please?',ph:'/kæn aɪ hæv ə ˈkɒfi pliːz/',tip:'點餐必學句。please 放最後，語調要上揚再下降，表示禮貌。'},
+  {p:'How much does this cost?',ph:'/haʊ mʌtʃ dʌz ðɪs kɒst/',tip:'購物必學句。does this 連音變成 /dʌzðɪs/，快速說。'},
+  {p:'Where is the train station?',ph:'/wɛr ɪz ðə treɪn ˈsteɪʃən/',tip:'問路必備。Where is 連音說快一點，is 弱讀成 /ɪz/。'},
+  {p:'I would like to make a reservation.',ph:'/aɪ wʊd laɪk tə meɪk ə ˌrezəˈveɪʃən/',tip:'預約用句。would like 比 want 更有禮貌。'},
+  {p:'Could you speak more slowly, please?',ph:'/kʊd juː spiːk mɔːr ˈsloʊli pliːz/',tip:'非常實用！聽不懂時說這句。slowly 重音在第一音節。'},
+  {p:'I don\'t understand. Can you repeat that?',ph:'/aɪ doʊnt ˌʌndərˈstænd kæn juː rɪˈpiːt ðæt/',tip:'也是聽不懂時用。repeat 重音在 pe，不要說成 REpeat。'},
+  {p:'What time does the office open?',ph:'/wɒt taɪm dʌz ðə ˈɒfɪs ˈoʊpən/',tip:'詢問時間常用句。does the 連音。'},
+  {p:'I\'m looking for the supermarket.',ph:'/aɪm ˈlʊkɪŋ fɔːr ðə ˈsuːpərmɑːrkɪt/',tip:'問路時說我在找某個地方。looking for 是重要片語。'},
+  {p:'Have a nice day!',ph:'/hæv ə naɪs deɪ/',tip:'道別常用語。a 弱讀成 /ə/，整句連貫說：hav-uh-nice-day。'},
+];
 
-function loadST(){try{const s=localStorage.getItem('isaEng2');if(s)ST={...ST,...JSON.parse(s)};}catch(e){}}
-function saveST(){try{localStorage.setItem('isaEng2',JSON.stringify(ST));}catch(e){}}
+const WRITE_PROMPTS = [
+  {
+    title:'我的一天',
+    prompt:'Write 4–6 sentences about your typical day. Include: when you wake up, what you eat, how you go to work/school, and what you do in the evening.',
+    guide:'參考用詞：wake up, have breakfast, take the bus/MRT, work on, in the evening, go to bed\n範例開頭：I usually wake up at 7 am. First, I...',
+    minWords:30
+  },
+  {
+    title:'自我介紹',
+    prompt:'Write a short introduction about yourself (4–6 sentences). Include your name, job, where you live, and one hobby.',
+    guide:'參考用詞：My name is, I work at, I live in, My hobby is, I enjoy\n範例開頭：My name is Isa. I work as a marketing planner at...',
+    minWords:30
+  },
+  {
+    title:'我最喜歡的食物',
+    prompt:'Write 4–6 sentences about your favourite food. What is it? When do you eat it? Why do you like it?',
+    guide:'參考用詞：My favourite food is, I usually eat it, I like it because, It tastes\n範例開頭：My favourite food is...',
+    minWords:30
+  },
+  {
+    title:'給朋友的簡訊',
+    prompt:'Write a short message to a friend (4–6 sentences). Invite them to do something this weekend. Suggest a time and place.',
+    guide:'參考用詞：Would you like to, How about, Let\'s meet at, I\'ll be at, See you\n範例開頭：Hi! Are you free this weekend?',
+    minWords:30
+  },
+  {
+    title:'描述我的工作',
+    prompt:'Write 4–6 sentences about your job. What do you do? Where do you work? What do you like or dislike about it?',
+    guide:'參考用詞：I work as, My job is to, My office is, I like/dislike, It is sometimes\n範例開頭：I work as a marketing planner...',
+    minWords:30
+  },
+];
 
-function addXP(n,mission){
-  const today=new Date().toISOString().slice(0,10);
-  if(ST.lastDate!==today){ST.xpToday=0;if(ST.lastDate===new Date(Date.now()-86400000).toISOString().slice(0,10))ST.streak++;else ST.streak=1;ST.lastDate=today;if(!ST.days.includes(today))ST.days.push(today);}
-  ST.xp+=n;ST.xpToday+=n;
-  if(mission&&!ST.missions[mission])ST.missions[mission]=true;
-  saveST();updateHome();
+const FILL_EXERCISES = [
+  {sent:'I usually drink ___ every morning before work.',blank:'coffee',hint:'熱飲，早上喝',pos:2},
+  {sent:'She is very ___ — she always smiles and helps everyone.',blank:'friendly',hint:'形容人的個性好',pos:3},
+  {sent:'Can I see the ___, please? I\'d like to order.',blank:'menu',hint:'在餐廳點餐用',pos:2},
+  {sent:'I have a doctor\'s ___ at 3 pm today.',blank:'appointment',hint:'預約看診',pos:3},
+  {sent:'The ___ to work takes about 30 minutes by MRT.',blank:'journey',hint:'通勤的過程',pos:1},
+];
+
+// ===== 狀態 =====
+let ST = {
+  xp: 0, xpToday: 0, streak: 0, lastDate: '',
+  vocabKnown: [], vocabHard: [],
+  readDone: {},
+  listenLog: [],
+  speakDone: [],
+  writeDone: [],
+  missions: {vocab:false, read:false, listen:false, speak:false, write:false},
+  days: [],
+  apiKey: '',
+  level: 'A2',
+};
+
+function loadST() {
+  try { const s = localStorage.getItem('isaEng'); if(s) ST = {...ST,...JSON.parse(s)}; } catch(e){}
+}
+function saveST() {
+  try { localStorage.setItem('isaEng', JSON.stringify(ST)); } catch(e){}
 }
 
-function curLessonData(){return BOOKS[ST.curBook].lessons[ST.curLesson];}
-function curVocab(){return curLessonData().vocab||[];}
+function addXP(n, mission) {
+  const today = new Date().toISOString().slice(0,10);
+  if(ST.lastDate !== today) {
+    ST.xpToday = 0;
+    if(ST.lastDate === new Date(Date.now()-86400000).toISOString().slice(0,10)) ST.streak++;
+    else ST.streak = 1;
+    ST.lastDate = today;
+    if(!ST.days.includes(today)) ST.days.push(today);
+  }
+  ST.xp += n;
+  ST.xpToday += n;
+  if(mission && !ST.missions[mission]) ST.missions[mission] = true;
+  saveST();
+  updateHome();
+}
 
-// ===== NAV =====
-function showPage(id){
+// ===== 導航 =====
+function showPage(id) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const order=['home','vocab','reading','listening','speaking','writing','ytpractice','aitools','progress','settings'];
-  const idx=order.indexOf(id);
-  if(idx>=0)document.querySelectorAll('.nb')[idx].classList.add('active');
-  if(id==='vocab')initVocabPage();
-  if(id==='reading')initReadPage();
-  if(id==='speaking')initSpeakPage();
-  if(id==='writing')initWritePage();
-  if(id==='ytpractice')initYTPractice();
-  if(id==='aitools')initAITools();
-  if(id==='progress')renderProgress();
-  if(id==='settings')loadSettingsUI();
-}
-
-// ===== BOOK/LESSON SELECTORS =====
-function renderBookSel(containerId,onChange){
-  const c=document.getElementById(containerId);
-  c.innerHTML=BOOKS.map((b,i)=>`<button class="book-btn ${i===ST.curBook?'active':''}" onclick="${onChange}(${i})">${b.name}</button>`).join('');
-}
-function renderLessonSel(containerId,onChange){
-  const c=document.getElementById(containerId);
-  const lessons=BOOKS[ST.curBook].lessons;
-  c.innerHTML=lessons.map((l,i)=>`<button class="lesson-btn ${i===ST.curLesson?'active':''}" onclick="${onChange}(${i})"><span class="ln">${l.num}</span> ${l.title.substring(0,15)}${l.title.length>15?'...':''}</button>`).join('');
+  const btns = document.querySelectorAll('.nb');
+  const order = ['home','vocab','reading','listening','speaking','writing','progress','settings'];
+  const idx = order.indexOf(id);
+  if(idx>=0) btns[idx].classList.add('active');
+  if(id==='progress') renderProgress();
+  if(id==='settings') loadSettingsUI();
 }
 
 // ===== HOME =====
-function updateHome(){
-  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  el('home-streak',ST.streak);el('home-xp',ST.xpToday);
-  el('home-book',BOOKS[ST.curBook].name);
-  const L=curLessonData();
-  el('home-lesson-label',`${BOOKS[ST.curBook].name} ${L.num} — ${L.title}`);
-  ['vocab','read','listen','speak','write'].forEach(k=>{const e=document.getElementById('m-'+k);if(e){e.textContent=ST.missions[k]?'✓':'○';e.className='mission-check'+(ST.missions[k]?' done':'');}});
-  const v=curVocab();
-  const vPct=v.length?Math.min(100,Math.round(ST.vocabKnown.filter(w=>v.some(x=>x.en===w)).length/v.length*100)):0;
-  const setBar=(id,v)=>{const e=document.getElementById(id);if(e)e.style.width=v+'%';};
-  setBar('hbar-vocab',vPct);
+function updateHome() {
+  const el = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+  el('home-streak', ST.streak);
+  el('home-xp', ST.xpToday);
+  el('home-level', ST.level);
+  // missions
+  const mk = ['vocab','read','listen','speak','write'];
+  mk.forEach(k => {
+    const el = document.getElementById('m-'+k);
+    if(el) { el.textContent = ST.missions[k]?'✓':'○'; el.className='mission-check'+(ST.missions[k]?' done':''); }
+  });
+  // skill bars
+  const vPct = Math.min(100, Math.round((ST.vocabKnown||[]).length/VOCAB.length*100));
+  const rPct = Math.min(100, Math.round(Object.keys(ST.readDone||{}).length/READINGS.length*100));
+  const lPct = Math.min(100, Math.round(Math.min((ST.listenLog||[]).length,10)/10*100));
+  const sPct = Math.min(100, Math.round((ST.speakDone||[]).length/SPEAK_PHRASES.length*100));
+  const setBar = (id,v) => { const e=document.getElementById(id); if(e) e.style.width=v+'%'; };
+  setBar('hbar-vocab',vPct); setBar('hbar-read',rPct); setBar('hbar-listen',lPct); setBar('hbar-speak',sPct);
 }
 
-// ===== VOCAB PAGE =====
-let fcIdx=0;
-function initVocabPage(){
-  renderBookSel('vocab-books','changeVocabBook');
-  renderLessonSel('vocab-lessons','changeVocabLesson');
-  document.getElementById('vocab-book-tag').textContent=BOOKS[ST.curBook].name;
-  fcIdx=0;renderFlashcard();
-}
-function changeVocabBook(i){ST.curBook=i;ST.curLesson=0;saveST();initVocabPage();}
-function changeVocabLesson(i){ST.curLesson=i;saveST();initVocabPage();}
-
-function renderFlashcard(){
-  const v=curVocab();
-  if(!v.length){document.getElementById('fc-word').textContent='此課尚未有單字';return;}
-  if(fcIdx>=v.length)fcIdx=0;
-  const w=v[fcIdx];
-  document.getElementById('fc-word').textContent=w.en;
-  document.getElementById('fc-ph').textContent=w.ph||'';
-  document.getElementById('fc-meaning').textContent=w.zh;
-  document.getElementById('fc-ex').textContent=w.ex;
+// ===== 單字：閃卡 =====
+let fcIdx = 0;
+function renderFlashcard() {
+  const v = VOCAB[fcIdx];
+  document.getElementById('fc-word').textContent = v.en;
+  document.getElementById('fc-ph').textContent = v.ph;
+  document.getElementById('fc-meaning').textContent = v.zh;
+  document.getElementById('fc-ex').textContent = v.ex;
   document.getElementById('flashcard').classList.remove('flipped');
-  document.getElementById('fc-idx').textContent=fcIdx+1;
-  document.getElementById('fc-total').textContent=v.length;
-  document.getElementById('fc-prog').style.width=((fcIdx+1)/v.length*100)+'%';
-  const known=ST.vocabKnown.filter(w2=>v.some(x=>x.en===w2)).length;
-  const hard=ST.vocabHard.filter(w2=>v.some(x=>x.en===w2)).length;
-  document.getElementById('fc-known').textContent=known;
-  document.getElementById('fc-hard').textContent=hard;
+  document.getElementById('fc-idx').textContent = fcIdx+1;
+  document.getElementById('fc-total').textContent = VOCAB.length;
+  document.getElementById('fc-prog').style.width = ((fcIdx+1)/VOCAB.length*100)+'%';
+  document.getElementById('fc-known').textContent = (ST.vocabKnown||[]).length;
+  document.getElementById('fc-hard').textContent = (ST.vocabHard||[]).length;
 }
-function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
-function fcNav(d){const v=curVocab();if(!v.length)return;fcIdx=(fcIdx+d+v.length)%v.length;renderFlashcard();}
-function fcMark(type){
-  const v=curVocab();if(!v.length)return;
-  const word=v[fcIdx].en;
-  if(type==='easy'){if(!ST.vocabKnown.includes(word)){ST.vocabKnown.push(word);addXP(2,'vocab');}}
-  else{if(!ST.vocabHard.includes(word))ST.vocabHard.push(word);}
-  saveST();fcNav(1);
-}
-
-function switchVocab(mode){
-  document.querySelectorAll('#page-vocab .sub-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('#page-vocab .sub-tab').forEach((t,i)=>{if(['flash','match','fill','list'][i]===mode)t.classList.add('active');});
-  document.querySelectorAll('#page-vocab .sub-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('vp-'+mode).classList.add('active');
-  if(mode==='match')renderMatch();
-  if(mode==='fill')renderFill();
-  if(mode==='list')renderVocabList();
+function flipCard() { document.getElementById('flashcard').classList.toggle('flipped'); }
+function fcNav(d) { fcIdx = (fcIdx+d+VOCAB.length)%VOCAB.length; renderFlashcard(); }
+function fcMark(type) {
+  const word = VOCAB[fcIdx].en;
+  if(type==='easy') {
+    if(!ST.vocabKnown) ST.vocabKnown=[];
+    if(!ST.vocabKnown.includes(word)) { ST.vocabKnown.push(word); addXP(2,'vocab'); }
+  } else {
+    if(!ST.vocabHard) ST.vocabHard=[];
+    if(!ST.vocabHard.includes(word)) ST.vocabHard.push(word);
+  }
+  saveST();
+  fcNav(1);
 }
 
-// MATCHING
-let matchSelected=null,matchDone=0,matchItems=[];
-function renderMatch(){
-  const v=curVocab();if(!v.length){document.getElementById('match-left').innerHTML='<div class="coming-soon">此課尚未有單字</div>';return;}
-  matchItems=v.slice(0,Math.min(6,v.length));matchDone=0;matchSelected=null;
-  document.getElementById('match-msg').textContent='';
-  document.getElementById('match-prog').style.width='0%';
-  const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const lefts=shuffle(matchItems.map(p=>({en:p.en,id:p.en})));
-  const rights=shuffle(matchItems.map(p=>({zh:p.zh,id:p.en})));
-  const lCol=document.getElementById('match-left'),rCol=document.getElementById('match-right');
-  lCol.innerHTML='';rCol.innerHTML='';
-  lefts.forEach(item=>{const b=document.createElement('button');b.className='m-item';b.textContent=item.en;b.dataset.id=item.id;b.dataset.side='left';b.onclick=()=>selectMatch(b);lCol.appendChild(b);});
-  rights.forEach(item=>{const b=document.createElement('button');b.className='m-item';b.textContent=item.zh;b.dataset.id=item.id;b.dataset.side='right';b.onclick=()=>selectMatch(b);rCol.appendChild(b);});
+// ===== 單字：配對 =====
+let matchSet=0, matchSelected=null, matchPairs=[], matchDone=0;
+const MATCH_SETS = [
+  VOCAB.slice(0,6), VOCAB.slice(6,12), VOCAB.slice(12,18)
+];
+function renderMatch() {
+  const pairs = MATCH_SETS[matchSet]||MATCH_SETS[0];
+  matchPairs = [...pairs];
+  matchDone = 0; matchSelected = null;
+  document.getElementById('match-set').textContent = matchSet+1;
+  document.getElementById('match-prog').style.width = (matchSet/3*100)+'%';
+  document.getElementById('match-msg').textContent = '';
+  document.getElementById('match-next-btn').style.display='none';
+  const shuffle = a=>[...a].sort(()=>Math.random()-.5);
+  const lefts = shuffle(pairs.map(p=>({en:p.en,id:p.en})));
+  const rights = shuffle(pairs.map(p=>({zh:p.zh,id:p.en})));
+  const lCol = document.getElementById('match-left');
+  const rCol = document.getElementById('match-right');
+  lCol.innerHTML=''; rCol.innerHTML='';
+  lefts.forEach(item=>{
+    const b=document.createElement('button');
+    b.className='m-item'; b.textContent=item.en; b.dataset.id=item.id; b.dataset.side='left';
+    b.onclick=()=>selectMatch(b);
+    lCol.appendChild(b);
+  });
+  rights.forEach(item=>{
+    const b=document.createElement('button');
+    b.className='m-item'; b.textContent=item.zh; b.dataset.id=item.id; b.dataset.side='right';
+    b.onclick=()=>selectMatch(b);
+    rCol.appendChild(b);
+  });
 }
-function selectMatch(btn){
-  if(btn.classList.contains('matched'))return;
-  if(matchSelected===null){matchSelected=btn;btn.classList.add('selected');}
-  else{
-    if(matchSelected===btn){matchSelected.classList.remove('selected');matchSelected=null;return;}
-    if(matchSelected.dataset.side===btn.dataset.side){matchSelected.classList.remove('selected');matchSelected=btn;btn.classList.add('selected');return;}
-    if(matchSelected.dataset.id===btn.dataset.id){matchSelected.classList.remove('selected');matchSelected.classList.add('matched');btn.classList.add('matched');matchSelected=null;matchDone++;document.getElementById('match-prog').style.width=(matchDone/matchItems.length*100)+'%';if(matchDone===matchItems.length){document.getElementById('match-msg').textContent='✓ 全部配對成功！';addXP(5,'vocab');}}
-    else{matchSelected.classList.remove('selected');matchSelected.classList.add('wrong-m');btn.classList.add('wrong-m');const s=matchSelected,b2=btn;setTimeout(()=>{s.classList.remove('wrong-m');b2.classList.remove('wrong-m');},700);matchSelected=null;}
+function selectMatch(btn) {
+  if(btn.classList.contains('matched')) return;
+  if(matchSelected===null) {
+    matchSelected=btn; btn.classList.add('selected');
+  } else {
+    if(matchSelected===btn) { matchSelected.classList.remove('selected'); matchSelected=null; return; }
+    if(matchSelected.dataset.side===btn.dataset.side) {
+      matchSelected.classList.remove('selected'); matchSelected=btn; btn.classList.add('selected'); return;
+    }
+    if(matchSelected.dataset.id===btn.dataset.id) {
+      matchSelected.classList.remove('selected'); matchSelected.classList.add('matched'); btn.classList.add('matched');
+      matchSelected=null; matchDone++;
+      if(matchDone===MATCH_SETS[matchSet].length) {
+        document.getElementById('match-msg').textContent='✓ 全部配對成功！';
+        addXP(5,'vocab');
+        if(matchSet<2) document.getElementById('match-next-btn').style.display='';
+      }
+    } else {
+      matchSelected.classList.remove('selected'); matchSelected.classList.add('wrong-m'); btn.classList.add('wrong-m');
+      const s=matchSelected,b2=btn;
+      setTimeout(()=>{ s.classList.remove('wrong-m'); b2.classList.remove('wrong-m'); },700);
+      matchSelected=null;
+    }
   }
 }
+function nextMatchSet() {
+  matchSet=(matchSet+1)%3; renderMatch();
+}
 
-// FILL
+// ===== 單字：填空 =====
 let fillIdx=0;
-function renderFill(){
-  const v=curVocab();
-  if(!v.length){document.getElementById('fill-sent').innerHTML='<div class="coming-soon">此課尚未有填空題</div>';return;}
-  if(fillIdx>=v.length)fillIdx=0;
-  const w=v[fillIdx];
-  const sent=w.ex.replace(new RegExp(w.en,'i'),`<input class="blank-inp" id="blank-inp" placeholder="___" autocomplete="off">`);
+function renderFill() {
+  const ex=FILL_EXERCISES[fillIdx];
+  const sent=ex.sent.replace('___','<input class="blank-inp" id="blank-inp" placeholder="___" autocomplete="off">');
   document.getElementById('fill-sent').innerHTML=sent;
-  document.getElementById('fill-hint').textContent=w.zh;
+  document.getElementById('fill-hint').textContent=ex.hint;
   document.getElementById('fill-idx').textContent=fillIdx+1;
-  document.getElementById('fill-total').textContent=v.length;
-  document.getElementById('fill-prog').style.width=((fillIdx+1)/v.length*100)+'%';
+  document.getElementById('fill-total').textContent=FILL_EXERCISES.length;
+  document.getElementById('fill-prog').style.width=((fillIdx+1)/FILL_EXERCISES.length*100)+'%';
   document.getElementById('fill-result').textContent='';
   document.getElementById('fill-next-btn').style.display='none';
 }
-function checkFill(){
-  const inp=document.getElementById('blank-inp');if(!inp)return;
+function checkFill() {
+  const inp=document.getElementById('blank-inp');
+  if(!inp) return;
   const ans=inp.value.trim().toLowerCase();
-  const v=curVocab();const correct=v[fillIdx].en.toLowerCase();
-  if(ans===correct){inp.classList.add('ok');document.getElementById('fill-result').innerHTML='<span style="color:#2a7a5a">✓ 正確！</span>';addXP(3,'vocab');}
-  else{inp.classList.add('fail');document.getElementById('fill-result').innerHTML='<span style="color:#c0392b">✗ 答案是：'+v[fillIdx].en+'</span>';}
-  inp.disabled=true;document.getElementById('fill-next-btn').style.display='';
+  const correct=FILL_EXERCISES[fillIdx].blank.toLowerCase();
+  if(ans===correct) {
+    inp.classList.add('ok');
+    document.getElementById('fill-result').innerHTML='<span style="color:#2a7a5a">✓ 正確！</span>';
+    addXP(3,'vocab');
+  } else {
+    inp.classList.add('fail');
+    document.getElementById('fill-result').innerHTML='<span style="color:#c0392b">✗ 答案是：'+FILL_EXERCISES[fillIdx].blank+'</span>';
+  }
+  inp.disabled=true;
+  document.getElementById('fill-next-btn').style.display='';
 }
-function nextFill(){const v=curVocab();fillIdx=(fillIdx+1)%v.length;renderFill();}
+function nextFill() {
+  fillIdx=(fillIdx+1)%FILL_EXERCISES.length; renderFill();
+}
 
-function renderVocabList(){
-  const v=curVocab();const L=curLessonData();
-  document.getElementById('vocab-list-title').textContent=`${L.num} ${L.title} — 單字表`;
-  if(!v.length){document.getElementById('vocab-list-grid').innerHTML='<div class="coming-soon">此課尚未有單字資料</div>';return;}
-  document.getElementById('vocab-list-grid').innerHTML=v.map(w=>`<div class="word-card ${ST.vocabKnown.includes(w.en)?'known':''}"><div class="we">${w.en} ${ST.vocabKnown.includes(w.en)?'✓':''}</div><div class="wz">${w.zh}</div></div>`).join('');
+// ===== 單字表 =====
+function renderVocabList() {
+  const grid=document.getElementById('vocab-list-grid');
+  grid.innerHTML=VOCAB.map(v=>`
+    <div style="background:var(--cd);border:1px solid var(--bd);border-radius:8px;padding:9px;${(ST.vocabKnown||[]).includes(v.en)?'border-color:var(--ms);background:#f0fdf8':''}">
+      <div style="font-weight:700;font-size:13px;font-family:Verdana,sans-serif">${v.en} ${(ST.vocabKnown||[]).includes(v.en)?'✓':''}</div>
+      <div style="font-size:11px;color:var(--lt)">${v.ph}</div>
+      <div style="font-size:12px;color:var(--mu);margin-top:3px">${v.zh}</div>
+    </div>`).join('');
 }
 
-// ===== READING PAGE =====
-let readAnswers=[],readDoneQ=false;
-function initReadPage(){
-  renderBookSel('read-books','changeReadBook');
-  renderLessonSel('read-lessons','changeReadLesson');
-  document.getElementById('read-book-tag').textContent=BOOKS[ST.curBook].name;
-  readAnswers=[];readDoneQ=false;renderReadContent();
+function switchVocab(mode) {
+  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-vocab .sub-tab').forEach((t,i)=>{
+    if(['flash','match','fill','list'][i]===mode) t.classList.add('active');
+  });
+  document.querySelectorAll('#page-vocab .sub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('vp-'+mode).classList.add('active');
+  if(mode==='match') renderMatch();
+  if(mode==='fill') renderFill();
+  if(mode==='list') renderVocabList();
 }
-function changeReadBook(i){ST.curBook=i;ST.curLesson=0;saveST();initReadPage();}
-function changeReadLesson(i){ST.curLesson=i;saveST();initReadPage();}
-function renderReadContent(){
-  const L=curLessonData();const r=L.reading;
-  if(!r||!r.text){document.getElementById('read-content').innerHTML='<div class="coming-soon">📖 此課閱讀內容即將更新</div>';return;}
-  const done=ST.readDone&&ST.readDone[L.id];
-  readAnswers=[];readDoneQ=false;
+
+// ===== 閱讀 =====
+let readIdx=0, readAnswers=[], readDoneQ=false;
+function renderReadTabs() {
+  const tabs=document.getElementById('read-tabs');
+  tabs.innerHTML=READINGS.map((r,i)=>`
+    <button class="sub-tab ${i===readIdx?'active':''}" onclick="selectRead(${i})">${i+1}. ${r.title.substring(0,10)}...</button>`).join('');
+}
+function selectRead(i) {
+  readIdx=i; readAnswers=[]; readDoneQ=false;
+  renderReadTabs();
+  renderReadContent();
+}
+function renderReadContent() {
+  const r=READINGS[readIdx];
+  const done=ST.readDone&&ST.readDone[r.id];
   document.getElementById('read-content').innerHTML=`
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-        <div style="font-size:15px;font-weight:700">${L.num} — ${L.title}</div>
+        <div style="font-size:15px;font-weight:700;color:var(--tx)">${r.title}</div>
         ${done?'<span style="font-size:11px;color:#2a7a5a">✓ 完成</span>':''}
       </div>
       <div class="read-text">${r.text}</div>
-      ${r.qs.length?'<div class="card-title" style="margin-top:4px">理解測驗</div><div id="read-qs"></div><div id="read-result"></div>':''}
+      <div class="card-title" style="margin-top:4px">理解測驗</div>
+      <div id="read-qs"></div>
+      <div id="read-result"></div>
     </div>`;
-  if(!r.qs.length)return;
-  document.getElementById('read-qs').innerHTML=r.qs.map((q,qi)=>`
-    <div style="margin-bottom:14px"><div class="q-text" style="font-size:13px">${qi+1}. ${q.q}</div>
-    <div class="options">${q.opts.map((o,oi)=>`<button class="opt" id="rq${qi}o${oi}" onclick="answerRead(${qi},${oi})">${o}</button>`).join('')}</div></div>`).join('');
+  const qsDiv=document.getElementById('read-qs');
+  qsDiv.innerHTML=r.qs.map((q,qi)=>`
+    <div style="margin-bottom:14px">
+      <div class="q-text" style="font-size:13px">${qi+1}. ${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,oi)=>`<button class="opt" id="rq${qi}o${oi}" onclick="answerRead(${qi},${oi})">${o}</button>`).join('')}
+      </div>
+    </div>`).join('');
 }
-function answerRead(qi,oi){
-  const r=curLessonData().reading;if(readAnswers[qi]!==undefined)return;
-  readAnswers[qi]=oi;const correct=r.qs[qi].a;
+function answerRead(qi,oi) {
+  const r=READINGS[readIdx];
+  if(readAnswers[qi]!==undefined) return;
+  readAnswers[qi]=oi;
+  const correct=r.qs[qi].a;
   document.querySelectorAll(`[id^="rq${qi}o"]`).forEach(b=>b.disabled=true);
   document.getElementById(`rq${qi}o${oi}`).classList.add(oi===correct?'correct':'wrong');
-  if(oi!==correct)document.getElementById(`rq${qi}o${correct}`).classList.add('correct');
-  if(readAnswers.filter(a=>a!==undefined).length===r.qs.length&&!readDoneQ){
-    readDoneQ=true;const score=readAnswers.filter((a,i)=>a===r.qs[i].a).length;const pct=Math.round(score/r.qs.length*100);
-    document.getElementById('read-result').innerHTML=`<div class="result-msg ${pct>=75?'pass':pct>=50?'ok':'retry'}">答對 ${score} / ${r.qs.length} 題（${pct}%）${pct>=75?' 🎉 答得很好！':' 📌 再讀一次課文試試看。'}</div>`;
-    const L=curLessonData();if(!ST.readDone)ST.readDone={};if(!ST.readDone[L.id]){ST.readDone[L.id]=score;addXP(15,'read');}
+  if(oi!==correct) document.getElementById(`rq${qi}o${correct}`).classList.add('correct');
+  if(readAnswers.filter(a=>a!==undefined).length===r.qs.length && !readDoneQ) {
+    readDoneQ=true;
+    const score=readAnswers.filter((a,i)=>a===r.qs[i].a).length;
+    const pct=Math.round(score/r.qs.length*100);
+    const cls=pct>=75?'pass':pct>=50?'ok':'retry';
+    document.getElementById('read-result').innerHTML=`
+      <div class="result-msg ${cls}">
+        答對 ${score} / ${r.qs.length} 題（${pct}%）
+        ${pct>=75?'🎉 答得很好！':'📌 再讀一次課文，試試看能不能找到答案。'}
+      </div>`;
+    if(!ST.readDone) ST.readDone={};
+    if(!ST.readDone[r.id]) { ST.readDone[r.id]=score; addXP(15,'read'); }
+    renderReadTabs();
   }
 }
 
-// ===== LISTENING =====
-function renderListenResources(){
-  const div=document.getElementById('listen-resources');const sel=document.getElementById('listen-sel');
-  div.innerHTML=LISTEN_RES.map(r=>`<div class="res-item"><div class="res-icon">${r.icon}</div><div class="res-info"><div class="res-title">${r.title}</div><div class="res-sub">${r.sub}</div><a class="res-link" href="${r.url}" target="_blank">開啟 →</a></div></div>`).join('');
-  LISTEN_RES.forEach(r=>{const o=document.createElement('option');o.value=r.title;o.textContent=r.title;sel.appendChild(o);});
+// ===== 聽力 =====
+function renderListenResources() {
+  const div=document.getElementById('listen-resources');
+  const sel=document.getElementById('listen-sel');
+  div.innerHTML=LISTEN_RES.map(r=>`
+    <div class="res-item">
+      <div class="res-icon">${r.icon}</div>
+      <div class="res-info">
+        <div class="res-title">${r.title}</div>
+        <div class="res-sub">${r.sub}</div>
+        <a class="res-link" href="${r.url}" target="_blank">開啟 →</a>
+      </div>
+    </div>`).join('');
+  LISTEN_RES.forEach(r=>{ const o=document.createElement('option'); o.value=r.title; o.textContent=r.title; sel.appendChild(o); });
   renderListenLog();
 }
-function addListenLog(){
-  const sel=document.getElementById('listen-sel'),pct=document.getElementById('listen-pct');
-  if(!sel.value)return;if(!ST.listenLog)ST.listenLog=[];
-  ST.listenLog.unshift({title:sel.value,pct:pct.value,date:new Date().toLocaleDateString('zh-TW')});
-  if(ST.listenLog.length>20)ST.listenLog=ST.listenLog.slice(0,20);
-  addXP(10,'listen');renderListenLog();
+function addListenLog() {
+  const sel=document.getElementById('listen-sel');
+  const pct=document.getElementById('listen-pct');
+  if(!sel.value) return;
+  if(!ST.listenLog) ST.listenLog=[];
+  const today=new Date().toLocaleDateString('zh-TW');
+  ST.listenLog.unshift({title:sel.value,pct:pct.value,date:today});
+  if(ST.listenLog.length>20) ST.listenLog=ST.listenLog.slice(0,20);
+  addXP(10,'listen');
+  renderListenLog();
 }
-function renderListenLog(){
+function renderListenLog() {
   const div=document.getElementById('listen-log');
-  if(!ST.listenLog||!ST.listenLog.length){div.innerHTML='<div style="font-size:11px;color:var(--lt);padding:6px 0">尚無記錄</div>';return;}
-  div.innerHTML=ST.listenLog.map(l=>`<div class="log-row"><div style="font-size:12px">${l.title}</div><div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;color:var(--mu)">聽懂 ${l.pct}%</span><span class="log-date">${l.date}</span></div></div>`).join('');
+  if(!ST.listenLog||!ST.listenLog.length) { div.innerHTML='<div style="font-size:11px;color:var(--lt);padding:6px 0">尚無記錄</div>'; return; }
+  div.innerHTML=ST.listenLog.map(l=>`
+    <div class="log-row">
+      <div style="font-size:12px;color:var(--tx)">${l.title}</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;color:var(--mu)">聽懂 ${l.pct}%</span>
+        <span class="log-date">${l.date}</span>
+      </div>
+    </div>`).join('');
 }
 
-// ===== SPEAKING =====
-let spIdx=0,recognition=null,isRecording=false;
-function initSpeakPage(){
-  renderBookSel('speak-books','changeSpeakBook');
-  renderLessonSel('speak-lessons','changeSpeakLesson');
-  document.getElementById('speak-book-tag').textContent=BOOKS[ST.curBook].name;
-  spIdx=0;renderSpeak();
-}
-function changeSpeakBook(i){ST.curBook=i;ST.curLesson=0;saveST();initSpeakPage();}
-function changeSpeakLesson(i){ST.curLesson=i;saveST();initSpeakPage();}
-function renderSpeak(){
-  const phrases=curLessonData().speaking||[];
-  if(!phrases.length){document.getElementById('sp-phrase').textContent='此課口說練習即將更新';return;}
-  if(spIdx>=phrases.length)spIdx=0;
-  const ph=phrases[spIdx];
+// ===== 口說 =====
+let spIdx=0, recognition=null, isRecording=false;
+function renderSpeak() {
+  const ph=SPEAK_PHRASES[spIdx];
   document.getElementById('sp-phrase').textContent=ph.p;
+  document.getElementById('sp-ph').textContent=ph.ph;
   document.getElementById('sp-tip').textContent='💡 '+ph.tip;
   document.getElementById('sp-idx').textContent=spIdx+1;
-  document.getElementById('sp-total').textContent=phrases.length;
-  document.getElementById('sp-prog').style.width=((spIdx+1)/phrases.length*100)+'%';
+  document.getElementById('sp-total').textContent=SPEAK_PHRASES.length;
+  document.getElementById('sp-prog').style.width=((spIdx+1)/SPEAK_PHRASES.length*100)+'%';
   document.getElementById('transcript').textContent='點麥克風開始錄音...';
   document.getElementById('sp-score-area').style.display='none';
   document.getElementById('sp-done').textContent=(ST.speakDone||[]).length;
-  document.getElementById('sp-done-total').textContent=phrases.length;
+  document.getElementById('sp-done-total').textContent=SPEAK_PHRASES.length;
 }
-function toggleRecord(){
-  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){document.getElementById('transcript').textContent='此瀏覽器不支援語音辨識，請使用 Chrome 或 Edge。';return;}
-  if(isRecording){recognition&&recognition.stop();return;}
+function toggleRecord() {
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)) {
+    document.getElementById('transcript').textContent='此瀏覽器不支援語音辨識，請使用 Chrome 或 Edge。';
+    return;
+  }
+  if(isRecording) { recognition&&recognition.stop(); return; }
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  recognition=new SR();recognition.lang='en-US';recognition.continuous=false;recognition.interimResults=true;
-  recognition.onstart=()=>{isRecording=true;document.getElementById('rec-btn').classList.add('recording');document.getElementById('transcript').textContent='正在聆聽...';};
-  recognition.onresult=(e)=>{let t='';for(let i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;document.getElementById('transcript').textContent=t;};
+  recognition=new SR();
+  recognition.lang='en-US'; recognition.continuous=false; recognition.interimResults=true;
+  recognition.onstart=()=>{ isRecording=true; document.getElementById('rec-btn').classList.add('recording'); document.getElementById('transcript').textContent='正在聆聽...'; };
+  recognition.onresult=(e)=>{
+    let t=''; for(let i=0;i<e.results.length;i++) t+=e.results[i][0].transcript;
+    document.getElementById('transcript').textContent=t;
+  };
   recognition.onend=()=>{
-    isRecording=false;document.getElementById('rec-btn').classList.remove('recording');
+    isRecording=false; document.getElementById('rec-btn').classList.remove('recording');
     const transcript=document.getElementById('transcript').textContent;
-    const phrases=curLessonData().speaking||[];if(!phrases.length)return;
-    const target=phrases[spIdx].p.toLowerCase().replace(/[^a-z\s]/g,'');
+    const target=SPEAK_PHRASES[spIdx].p.toLowerCase().replace(/[^a-z\s]/g,'');
     const heard=transcript.toLowerCase().replace(/[^a-z\s]/g,'');
-    const wa=target.trim().split(/\s+/),wb=heard.trim().split(/\s+/);let match=0;wa.forEach(w=>{if(wb.includes(w))match++;});
-    const score=Math.round(match/wa.length*100);
-    document.getElementById('sp-score-area').style.display='';
+    const score=calcSimilarity(target,heard);
+    const scoreArea=document.getElementById('sp-score-area');
+    scoreArea.style.display='';
     document.getElementById('score-fill').style.width=score+'%';
-    document.getElementById('score-label').textContent=score>=80?'很好！發音清晰':score>=60?'不錯！繼續練習':score>=40?'聽得出來，再試一次':'請再說一次';
+    document.getElementById('score-label').textContent=
+      score>=80?'很好！發音清晰':score>=60?'不錯！繼續練習':score>=40?'聽得出來，再試一次':'請再說一次，盡量清晰';
   };
   recognition.start();
 }
-function spNav(d){const phrases=curLessonData().speaking||[];if(!phrases.length)return;spIdx=(spIdx+d+phrases.length)%phrases.length;renderSpeak();}
-function markSpeak(){
-  const phrases=curLessonData().speaking||[];if(!phrases.length)return;
-  const phrase=phrases[spIdx].p;if(!ST.speakDone)ST.speakDone=[];
-  if(!ST.speakDone.includes(phrase)){ST.speakDone.push(phrase);addXP(4,'speak');}
+function calcSimilarity(a,b) {
+  const wa=a.trim().split(/\s+/), wb=b.trim().split(/\s+/);
+  let match=0;
+  wa.forEach(w=>{ if(wb.includes(w)) match++; });
+  return Math.round(match/wa.length*100);
+}
+function spNav(d) { spIdx=(spIdx+d+SPEAK_PHRASES.length)%SPEAK_PHRASES.length; renderSpeak(); }
+function markSpeak() {
+  const phrase=SPEAK_PHRASES[spIdx].p;
+  if(!ST.speakDone) ST.speakDone=[];
+  if(!ST.speakDone.includes(phrase)) { ST.speakDone.push(phrase); addXP(4,'speak'); }
   spNav(1);
 }
 
-// ===== WRITING =====
-function initWritePage(){
-  renderBookSel('write-books','changeWriteBook');
-  renderLessonSel('write-lessons','changeWriteLesson');
-  document.getElementById('write-book-tag').textContent=BOOKS[ST.curBook].name;
-  renderWriteContent();
+// ===== 寫作 =====
+let writeIdx=0, writeAILoading=false;
+function renderWriteTabs() {
+  const tabs=document.getElementById('write-tabs');
+  tabs.innerHTML=WRITE_PROMPTS.map((p,i)=>`
+    <button class="sub-tab ${i===writeIdx?'active':''}" onclick="selectWrite(${i})">${p.title}</button>`).join('');
 }
-function changeWriteBook(i){ST.curBook=i;ST.curLesson=0;saveST();initWritePage();}
-function changeWriteLesson(i){ST.curLesson=i;saveST();initWritePage();}
-function renderWriteContent(){
-  const L=curLessonData();const w=L.writing;
-  if(!w||!w.prompt){document.getElementById('write-content').innerHTML='<div class="coming-soon">✍️ 此課寫作練習即將更新</div>';return;}
-  const hasKey=!!ST.apiKey;
+function selectWrite(i) {
+  writeIdx=i; renderWriteTabs(); renderWriteContent();
+}
+function renderWriteContent() {
+  const pr=WRITE_PROMPTS[writeIdx];
+  const hasKey=!!(ST.apiKey);
   document.getElementById('write-content').innerHTML=`
     <div class="card">
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px">${L.num} — ${w.title}</div>
-      <div class="prompt-box"><div class="prompt-text">📝 ${w.prompt}</div>${w.guide?`<div class="prompt-guide" style="margin-top:8px;white-space:pre-line">${w.guide}</div>`:''}</div>
-      <textarea class="write-area" id="write-area" placeholder="在這裡用英文寫作...（至少 30 個字）"></textarea>
+      <div class="prompt-box">
+        <div class="prompt-text">📝 ${pr.prompt}</div>
+        <div class="prompt-guide" style="margin-top:8px;white-space:pre-line">${pr.guide}</div>
+      </div>
+      <textarea class="write-area" id="write-area" placeholder="在這裡用英文寫作...（至少 ${pr.minWords} 個字）"></textarea>
       <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
         <button class="btn btn-lav" onclick="submitWrite()">${hasKey?'🤖 AI 批改':'儲存練習'}</button>
-        <button class="btn btn-outline btn-sm" onclick="document.getElementById('write-area').value=''">清除</button>
+        <button class="btn btn-outline btn-sm" onclick="clearWriteArea()">清除</button>
         ${!hasKey?'<span style="font-size:11px;color:var(--lt);align-self:center">設定 Gemini API Key 可獲得 AI 回饋</span>':''}
       </div>
       <div id="write-feedback"></div>
     </div>`;
+  renderWriteHistory();
 }
-async function submitWrite(){
-  const area=document.getElementById('write-area');if(!area)return;
-  const text=area.value.trim();if(!text||text.split(/\s+/).length<5){document.getElementById('write-feedback').innerHTML='<div class="feedback-box">請先寫至少一個完整的句子。</div>';return;}
-  if(!ST.writeDone)ST.writeDone=[];
-  const L=curLessonData();
-  const record={lesson:L.id,prompt:L.writing.title,text,date:new Date().toLocaleDateString('zh-TW'),feedback:''};
-  if(ST.apiKey){
-    document.getElementById('write-feedback').innerHTML='<div class="feedback-box"><div class="dots"><span></span><span></span><span></span></div> AI 正在批改...</div>';
-    try{
-      const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
-      const body={contents:[{parts:[{text:`You are an encouraging English teacher for a Taiwanese high school student. Review this English writing and give feedback in Traditional Chinese. Be warm and encouraging. Structure your feedback as:\n1. ✓ 寫得好的地方（1-2 points）\n2. 📝 可以改進的地方（1-2 corrections max, show corrected version）\n3. 💡 一個建議\nKeep it short. The lesson topic is "${L.writing.title}". Student's writing:\n\n${text}`}]}]};
-      const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-      const data=await res.json();
-      if(data.error)throw new Error(data.error.message);
-      const fb=data.candidates[0].content.parts[0].text;
-      record.feedback=fb;
-      document.getElementById('write-feedback').innerHTML=`<div class="feedback-box">${fb.replace(/\n/g,'<br>')}</div>`;
-    }catch(e){document.getElementById('write-feedback').innerHTML=`<div class="feedback-box" style="border-color:var(--mr)">AI 回饋失敗：${e.message}</div>`;}
-  }else{document.getElementById('write-feedback').innerHTML='<div class="feedback-box" style="border-color:var(--ms)">✓ 練習已儲存！設定 Gemini API Key 可獲得詳細回饋。</div>';}
-  ST.writeDone.unshift(record);if(ST.writeDone.length>20)ST.writeDone=ST.writeDone.slice(0,20);
-  addXP(20,'write');
-}
-
-// ===== PROGRESS =====
-function renderProgress(){
-  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  el('p-streak',ST.streak);el('p-xp-total',ST.xp);el('p-vocab-k',(ST.vocabKnown||[]).length);
-  const totalVocab=BOOKS.reduce((s,b)=>s+b.lessons.reduce((s2,l)=>s2+(l.vocab||[]).length,0),0);
-  const totalRead=BOOKS.reduce((s,b)=>s+b.lessons.filter(l=>l.reading&&l.reading.text).length,0);
-  const vPct=totalVocab?Math.min(100,Math.round((ST.vocabKnown||[]).length/totalVocab*100)):0;
-  const rPct=totalRead?Math.min(100,Math.round(Object.keys(ST.readDone||{}).length/totalRead*100)):0;
-  const lPct=Math.min(100,Math.round(Math.min((ST.listenLog||[]).length,10)/10*100));
-  const sPct=Math.min(100,Math.round((ST.speakDone||[]).length/30*100));
-  const wPct=Math.min(100,Math.round((ST.writeDone||[]).length/10*100));
-  const setBar=(bar,pct,label)=>{const b=document.getElementById(bar),p=document.getElementById(label);if(b)b.style.width=pct+'%';if(p)p.textContent=pct+'%';};
-  setBar('spf-vocab',vPct,'spp-vocab');setBar('spf-read',rPct,'spp-read');setBar('spf-listen',lPct,'spp-listen');setBar('spf-speak',sPct,'spp-speak');setBar('spf-write',wPct,'spp-write');
-  const cal=document.getElementById('streak-cal');cal.innerHTML='';const today=new Date();
-  for(let i=29;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const ds=d.toISOString().slice(0,10);const div=document.createElement('div');div.className='cal-day'+((ST.days||[]).includes(ds)?' done':'')+(i===0?' today':'');div.textContent=d.getDate();cal.appendChild(div);}
-}
-
-// ===== SETTINGS =====
-function loadSettingsUI(){const k=document.getElementById('api-key-inp');if(k)k.value=ST.apiKey||'';}
-function saveSettings(){ST.apiKey=document.getElementById('api-key-inp').value.trim();saveST();}
-function clearProgress(){
-  if(!confirm('確定要清除所有進度嗎？'))return;
-  const key=ST.apiKey;
-  ST={xp:0,xpToday:0,streak:0,lastDate:'',vocabKnown:[],vocabHard:[],readDone:{},listenLog:[],speakDone:[],writeDone:[],missions:{vocab:false,read:false,listen:false,speak:false,write:false},days:[],apiKey:key,curBook:0,curLesson:0};
-  saveST();updateHome();alert('進度已清除。');
-}
-
-// ===== YOUTUBE PRACTICE =====
-let ytPlayer=null,ytReady=false,abA=null,abB=null,abInterval=null,abActive=false;
-let echoTimer=null,echoCount=0,dictLastPos=0;
-
-function loadYTAPI(){
-  if(window.YT&&window.YT.Player){ytReady=true;return;}
-  const tag=document.createElement('script');
-  tag.src='https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
-}
-window.onYouTubeIframeAPIReady=function(){ytReady=true;};
-
-function getYTID(url){
-  const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([^&?\s#]+)/);
-  return m?m[1]:null;
-}
-function initYTPractice(){loadYTAPI();}
-
-function loadYT(){
-  const url=document.getElementById('yt-url').value.trim();
-  const id=getYTID(url);
-  if(!id){alert('請輸入有效的 YouTube 連結');return;}
-  document.getElementById('yt-wrap').style.display='';
-  document.getElementById('yt-practice-area').style.display='';
-  if(ytPlayer){ytPlayer.loadVideoById(id);}
-  else{
-    ytPlayer=new YT.Player('yt-player',{
-      videoId:id,
-      playerVars:{rel:0,modestbranding:1,cc_load_policy:0,playsinline:1},
-      events:{
-        onReady:function(){ytReady=true;},
-        onStateChange:function(e){
-          document.getElementById('yt-play-btn').textContent=e.data===1?'⏸ 暫停':'▶ 播放';
-        }
-      }
-    });
+function clearWriteArea() { const a=document.getElementById('write-area'); if(a) a.value=''; }
+async function submitWrite() {
+  const area=document.getElementById('write-area');
+  if(!area) return;
+  const text=area.value.trim();
+  if(!text||text.split(/\s+/).length<5) { document.getElementById('write-feedback').innerHTML='<div class="feedback-box">請先寫至少一個完整的句子。</div>'; return; }
+  if(!ST.writeDone) ST.writeDone=[];
+  const record={prompt:WRITE_PROMPTS[writeIdx].title,text,date:new Date().toLocaleDateString('zh-TW'),feedback:''};
+  if(ST.apiKey) {
+    const fb=document.getElementById('write-feedback');
+    fb.innerHTML='<div class="feedback-box"><div class="dots"><span></span><span></span><span></span></div> AI 正在批改...</div>';
+    try {
+      const res=await callGemini(`You are an encouraging English teacher for an A2-level adult learner. Review this English writing and give feedback in Traditional Chinese. Be warm and encouraging. Structure your feedback as:\n1. ✓ 寫得好的地方（1-2 points）\n2. 📝 可以改進的地方（1-2 corrections max, show corrected version）\n3. 💡 一個建議\nKeep it short. Student's writing:\n\n${text}`);
+      record.feedback=res;
+      fb.innerHTML=`<div class="feedback-box">${res.replace(/\n/g,'<br>')}</div>`;
+    } catch(e) { fb.innerHTML=`<div class="feedback-box" style="border-color:var(--mr)">AI 回饋失敗，請檢查 API Key 是否正確。</div>`; }
+  } else {
+    document.getElementById('write-feedback').innerHTML='<div class="feedback-box" style="border-color:var(--ms)">✓ 練習已儲存！設定 Gemini API Key 可獲得詳細回饋。</div>';
   }
-  clearAB();
+  ST.writeDone.unshift(record);
+  if(ST.writeDone.length>10) ST.writeDone=ST.writeDone.slice(0,10);
+  addXP(20,'write');
+  renderWriteHistory();
 }
-
-function ytToggle(){if(!ytPlayer)return;ytPlayer.getPlayerState()===1?ytPlayer.pauseVideo():ytPlayer.playVideo();}
-function ytSeek(d){if(!ytPlayer)return;ytPlayer.seekTo(Math.max(0,ytPlayer.getCurrentTime()+d),true);}
-function ytSpeed(r){
-  if(!ytPlayer)return;ytPlayer.setPlaybackRate(r);
-  document.querySelectorAll('.speed-btn').forEach(b=>{b.classList.toggle('active',b.textContent===r+'x');});
-}
-function ytToggleCC(){
-  if(!ytPlayer)return;
-  try{const o=ytPlayer.getOptions();if(o&&o.includes('captions'))ytPlayer.unloadModule('captions');else ytPlayer.loadModule('captions');}catch(e){}
-}
-
-function setABPoint(p){if(!ytPlayer)return;const t=Math.round(ytPlayer.getCurrentTime()*10)/10;if(p==='A')abA=t;else abB=t;updateABDisplay();}
-function clearAB(){abA=null;abB=null;abActive=false;if(abInterval)clearInterval(abInterval);abInterval=null;updateABDisplay();const b=document.getElementById('ab-loop-btn');if(b)b.textContent='🔄 循環';}
-function updateABDisplay(){
-  const fmt=t=>t===null?'--':Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
-  const d=document.getElementById('ab-display');if(d)d.textContent='A: '+fmt(abA)+' → B: '+fmt(abB);
-}
-function toggleABLoop(){
-  if(abA===null||abB===null){alert('請先設定 A 點和 B 點');return;}
-  if(abA>=abB){alert('A 點必須在 B 點之前');return;}
-  abActive=!abActive;
-  document.getElementById('ab-loop-btn').textContent=abActive?'⏹ 停止':'🔄 循環';
-  if(abActive){
-    ytPlayer.seekTo(abA,true);ytPlayer.playVideo();
-    abInterval=setInterval(()=>{if(!ytPlayer||!abActive)return;if(ytPlayer.getCurrentTime()>=abB)ytPlayer.seekTo(abA,true);},200);
-  }else{if(abInterval)clearInterval(abInterval);abInterval=null;}
-}
-
-function switchYTMode(mode){
-  document.querySelectorAll('#page-ytpractice .sub-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('#page-ytpractice .sub-tab').forEach((t,i)=>{if(['shadow','echo','dictation'][i]===mode)t.classList.add('active');});
-  document.querySelectorAll('#page-ytpractice .sub-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('ytp-'+mode).classList.add('active');
-}
-
-function echoPlay(){
-  if(!ytPlayer)return;
-  const dur=parseInt(document.getElementById('echo-dur').value);
-  document.getElementById('echo-status').textContent='🎧 聆聽中...';
-  document.getElementById('echo-play-btn').disabled=true;
-  ytPlayer.playVideo();
-  if(echoTimer)clearTimeout(echoTimer);
-  echoTimer=setTimeout(()=>{
-    ytPlayer.pauseVideo();
-    document.getElementById('echo-status').textContent='🧠 回想剛才的聲音，然後說出來！';
-    document.getElementById('echo-play-btn').disabled=false;
-    echoCount++;document.getElementById('echo-count').textContent=echoCount;
-  },dur*1000);
-}
-function echoReplay(){
-  if(!ytPlayer)return;
-  const dur=parseInt(document.getElementById('echo-dur').value);
-  ytPlayer.seekTo(Math.max(0,ytPlayer.getCurrentTime()-dur),true);
-  echoPlay();
-}
-
-function dictPlay(){
-  if(!ytPlayer)return;
-  const dur=parseInt(document.getElementById('dict-dur').value);
-  dictLastPos=ytPlayer.getCurrentTime();
-  document.getElementById('dict-area').focus();
-  ytPlayer.playVideo();
-  setTimeout(()=>{if(ytPlayer)ytPlayer.pauseVideo();},dur*1000);
-}
-function dictReplay(){if(!ytPlayer)return;ytPlayer.seekTo(dictLastPos,true);dictPlay();}
-
-// ===== AI TOOLS =====
-let chatHistory=[];
-
-function initAITools(){
-  const noKey=document.getElementById('ai-no-key'),content=document.getElementById('ai-tools-content');
-  if(!ST.apiKey){noKey.style.display='';content.style.display='none';}
-  else{noKey.style.display='none';content.style.display='';}
-}
-
-function switchAI(mode){
-  document.querySelectorAll('#page-aitools .sub-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('#page-aitools .sub-tab').forEach((t,i)=>{if(['word','grammar','chat','links'][i]===mode)t.classList.add('active');});
-  document.querySelectorAll('#page-aitools .sub-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('ai-'+mode).classList.add('active');
-}
-
-async function aiQuery(prompt){
+async function callGemini(prompt) {
   const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
-  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+  const body={contents:[{parts:[{text:prompt}]}]};
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   const data=await res.json();
-  if(data.error)throw new Error(data.error.message);
+  if(data.error) throw new Error(data.error.message);
   return data.candidates[0].content.parts[0].text;
 }
-
-async function aiLookupWord(){
-  const word=document.getElementById('ai-word-inp').value.trim();if(!word)return;
-  const r=document.getElementById('ai-word-result');r.style.display='';
-  r.innerHTML='<div class="dots"><span></span><span></span><span></span></div> 查詢中...';
-  try{
-    const result=await aiQuery(`You are an English dictionary for a Taiwanese learner. Look up "${word}" and provide in Traditional Chinese:\n1. 📖 音標（KK音標）與詞性\n2. 📝 中文解釋（列出主要意思）\n3. 📌 例句 × 2（英文 + 中文翻譯，用粗體標記該單字）\n4. 🔗 常見搭配詞組 × 3\n5. 💡 記憶小技巧（一句話）\nKeep it clear and concise.`);
-    r.innerHTML=result.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  }catch(e){r.innerHTML='❌ 查詢失敗：'+e.message;}
+function renderWriteHistory() {
+  const div=document.getElementById('write-history');
+  if(!div) return;
+  if(!ST.writeDone||!ST.writeDone.length) { div.innerHTML='<div style="font-size:11px;color:var(--lt);padding:8px 0">還沒有練習記錄</div>'; return; }
+  div.innerHTML=ST.writeDone.map((r,i)=>`
+    <div class="wh-item" onclick="showWriteRecord(${i})">
+      <div style="display:flex;justify-content:space-between">
+        <strong>${r.prompt}</strong><span class="log-date">${r.date}</span>
+      </div>
+      <div style="margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">${r.text.substring(0,80)}...</div>
+    </div>`).join('');
+}
+function showWriteRecord(i) {
+  const r=ST.writeDone[i];
+  alert(`【${r.prompt}】\n\n${r.text}${r.feedback?'\n\n--- AI 回饋 ---\n'+r.feedback:''}`);
 }
 
-async function aiCheckGrammar(){
-  const sent=document.getElementById('ai-grammar-inp').value.trim();if(!sent)return;
-  const r=document.getElementById('ai-grammar-result');r.style.display='';
-  r.innerHTML='<div class="dots"><span></span><span></span><span></span></div> 分析中...';
-  try{
-    const result=await aiQuery(`You are an English grammar teacher for a Taiwanese student. Analyze: "${sent}"\nRespond in Traditional Chinese:\n1. ✅ 文法正確性（正確/有錯誤，如有錯誤給出修正版本）\n2. 📝 句子結構分析（主詞/動詞/受詞等）\n3. 📌 文法重點（用到了什麼文法，簡短說明）\n4. 💡 延伸用法或同類句型一個\nKeep it short and practical.`);
-    r.innerHTML=result.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  }catch(e){r.innerHTML='❌ 分析失敗：'+e.message;}
-}
-
-function resetChat(){
-  chatHistory=[];
-  document.getElementById('chat-box').innerHTML='<div class="chat-msg ai"><div class="chat-bubble">Hi! Choose a scene and start chatting with me in English. I\'ll help you practice! 😊</div></div>';
-}
-
-async function sendChat(){
-  const input=document.getElementById('chat-input');const msg=input.value.trim();if(!msg)return;
-  input.value='';const box=document.getElementById('chat-box');
-  box.innerHTML+='<div class="chat-msg user"><div class="chat-bubble">'+msg.replace(/</g,'&lt;')+'</div></div>';
-  box.innerHTML+='<div class="chat-msg ai" id="chat-loading"><div class="chat-bubble"><div class="dots"><span></span><span></span><span></span></div></div></div>';
-  box.scrollTop=box.scrollHeight;
-  chatHistory.push({role:'user',parts:[{text:msg}]});
-  const scene=document.getElementById('chat-scene').value;
-  const scenes={daily:'casual daily conversation',restaurant:'ordering food at a restaurant',travel:'asking for directions while traveling',shopping:'shopping and bargaining',interview:'a job interview',school:'school life conversation',free:'any topic the user wants'};
-  try{
-    const sysPrompt='You are a friendly English conversation partner for a Taiwanese high school student. Scene: '+scenes[scene]+'.\nRules:\n- Reply in SIMPLE English (A2-B1 level)\n- Keep responses short (2-4 sentences)\n- If the user makes a grammar/spelling mistake, gently correct it in parentheses like (💡 correction: ...)\n- Stay in character for the scene\n- Be encouraging and natural\n- End with a question to keep the conversation going';
-    const contents=[{role:'user',parts:[{text:sysPrompt}]},{role:'model',parts:[{text:'Got it! I\'ll be a friendly conversation partner.'}]},...chatHistory];
-    const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
-    const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents})});
-    const data=await res.json();
-    if(data.error)throw new Error(data.error.message);
-    const reply=data.candidates[0].content.parts[0].text;
-    chatHistory.push({role:'model',parts:[{text:reply}]});
-    const ld=document.getElementById('chat-loading');if(ld)ld.remove();
-    box.innerHTML+='<div class="chat-msg ai"><div class="chat-bubble">'+reply.replace(/\n/g,'<br>')+'</div></div>';
-    box.scrollTop=box.scrollHeight;addXP(5,'speak');
-  }catch(e){
-    const ld=document.getElementById('chat-loading');if(ld)ld.remove();
-    box.innerHTML+='<div class="chat-msg ai"><div class="chat-bubble">❌ '+e.message+'</div></div>';
+// ===== 進度 =====
+function renderProgress() {
+  const el=(id,v)=>{ const e=document.getElementById(id); if(e) e.textContent=v; };
+  el('p-streak',ST.streak);
+  el('p-xp-total',ST.xp);
+  el('p-vocab-k',(ST.vocabKnown||[]).length);
+  el('prog-level-tag',ST.level);
+  const vPct=Math.min(100,Math.round((ST.vocabKnown||[]).length/VOCAB.length*100));
+  const rPct=Math.min(100,Math.round(Object.keys(ST.readDone||{}).length/READINGS.length*100));
+  const lPct=Math.min(100,Math.round(Math.min((ST.listenLog||[]).length,10)/10*100));
+  const sPct=Math.min(100,Math.round((ST.speakDone||[]).length/SPEAK_PHRASES.length*100));
+  const wPct=Math.min(100,Math.round((ST.writeDone||[]).length/WRITE_PROMPTS.length*20));
+  const setBar=(bar,pct,label)=>{ const b=document.getElementById(bar); const p=document.getElementById(label); if(b){b.style.width=pct+'%'} if(p){p.textContent=pct+'%'} };
+  setBar('spf-vocab',vPct,'spp-vocab');
+  setBar('spf-read',rPct,'spp-read');
+  setBar('spf-listen',lPct,'spp-listen');
+  setBar('spf-speak',sPct,'spp-speak');
+  setBar('spf-write',wPct,'spp-write');
+  // calendar
+  const cal=document.getElementById('streak-cal');
+  cal.innerHTML='';
+  const today=new Date();
+  for(let i=29;i>=0;i--) {
+    const d=new Date(today); d.setDate(d.getDate()-i);
+    const ds=d.toISOString().slice(0,10);
+    const div=document.createElement('div');
+    div.className='cal-day'+(( ST.days||[]).includes(ds)?' done':'')+(i===0?' today':'');
+    div.textContent=d.getDate();
+    cal.appendChild(div);
   }
 }
 
-// ===== INIT =====
-function init(){
-  loadST();
-  const today=new Date().toISOString().slice(0,10);
-  if(ST.lastDate!==today)ST.xpToday=0;
-  if(ST.curBook>=BOOKS.length)ST.curBook=0;
-  if(ST.curLesson>=BOOKS[ST.curBook].lessons.length)ST.curLesson=0;
-  updateHome();renderListenResources();
+// ===== 設定 =====
+function loadSettingsUI() {
+  const k=document.getElementById('api-key-inp'); if(k) k.value=ST.apiKey||'';
+  const s=document.getElementById('cefr-sel'); if(s) s.value=ST.level||'A2';
 }
+function saveSettings() {
+  ST.apiKey=document.getElementById('api-key-inp').value.trim();
+  ST.level=document.getElementById('cefr-sel').value;
+  saveST(); updateHome();
+}
+function clearProgress() {
+  if(!confirm('確定要清除所有進度嗎？')) return;
+  ST={xp:0,xpToday:0,streak:0,lastDate:'',vocabKnown:[],vocabHard:[],readDone:{},listenLog:[],speakDone:[],writeDone:[],missions:{vocab:false,read:false,listen:false,speak:false,write:false},days:[],apiKey:ST.apiKey,level:ST.level};
+  saveST(); updateHome(); alert('進度已清除。');
+}
+
+// ===== 初始化 =====
+function init() {
+  loadST();
+  // 處理今日 xpToday reset
+  const today=new Date().toISOString().slice(0,10);
+  if(ST.lastDate!==today) ST.xpToday=0;
+  updateHome();
+  renderFlashcard();
+  renderListenResources();
+  renderReadTabs();
+  renderReadContent();
+  renderWriteTabs();
+  renderWriteContent();
+  renderSpeak();
+}
+
 init();
 </script>
 </body>
