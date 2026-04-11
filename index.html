@@ -222,6 +222,7 @@ textarea.write-area:focus{border-color:var(--mb)}
   <button class="nb" onclick="showPage('writing')">✍️ 寫作</button>
   <button class="nb" onclick="showPage('ytpractice')">🎬 影音練習</button>
   <button class="nb" onclick="showPage('aitools')">🤖 AI 工具</button>
+  <button class="nb" onclick="showPage('guided')">🗣️ 引導學習</button>
   <button class="nb" onclick="showPage('progress')">📊 進度</button>
   <button class="nb" onclick="showPage('settings')">⚙️ 設定</button>
 </nav>
@@ -567,6 +568,64 @@ textarea.write-area:focus{border-color:var(--mb)}
           <div class="ext-link-info"><div class="ext-link-title">TEco Lab — YouTube 語料庫</div><div class="ext-link-sub">用 YouTube Vlog 學英文，互動字幕</div></div>
           <span style="font-size:12px;color:var(--lt)">→</span>
         </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUIDED LEARNING -->
+<div class="page" id="page-guided">
+  <div id="guided-no-key" style="display:none">
+    <div class="card" style="background:var(--sf)">
+      <p style="font-size:12px;color:var(--mu);line-height:1.8">⚠️ 請先到「設定」頁面輸入 Gemini API Key 才能使用引導式學習功能。<br>
+      <button class="btn btn-outline btn-sm" onclick="showPage('settings')" style="margin-top:6px">前往設定 →</button></p>
+    </div>
+  </div>
+  <div id="guided-content">
+    <div class="card" id="guided-input-card">
+      <div class="sec-h" style="margin-bottom:10px"><div class="sec-title">🗣️ 引導式學習</div></div>
+      <div class="sub-tabs">
+        <button class="sub-tab active" onclick="switchGuidedInput('url')">🔗 URL 抓取</button>
+        <button class="sub-tab" onclick="switchGuidedInput('text')">📋 貼入文字</button>
+        <button class="sub-tab" onclick="switchGuidedInput('sentence')">✏️ 單句解析</button>
+      </div>
+      <div class="sub-panel active" id="guided-url-panel">
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="guided-url-inp" placeholder="貼上文章網址…" onkeydown="if(event.key==='Enter')fetchGuidedURL()">
+          <button class="btn btn-blue" onclick="fetchGuidedURL()">抓取</button>
+        </div>
+        <div id="guided-url-status" style="display:none;font-size:12px;margin-top:6px;line-height:1.8"></div>
+      </div>
+      <div class="sub-panel" id="guided-text-panel">
+        <textarea class="write-area" id="guided-text-inp" placeholder="貼上文章內容…" style="min-height:110px"></textarea>
+        <button class="btn btn-green" onclick="startGuidedArticle()" style="margin-top:8px">開始對話</button>
+      </div>
+      <div class="sub-panel" id="guided-sentence-panel">
+        <div style="font-size:11px;color:var(--lt);margin-bottom:8px">輸入一句英文，AI 不逐字翻譯，而是先讓你感受它在說什麼</div>
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="guided-sentence-inp" placeholder="例：She left without saying a word." onkeydown="if(event.key==='Enter')analyzeGuidedSentence()">
+          <button class="btn btn-lav" onclick="analyzeGuidedSentence()">解析</button>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="guided-article-card" style="display:none">
+      <div class="card-title" style="cursor:pointer;user-select:none" onclick="toggleGuidedArticle()">📄 已載入文章 <span id="guided-article-toggle" style="font-size:11px;color:var(--lt)">▼ 展開</span></div>
+      <div id="guided-article-preview" style="display:none;font-size:12px;color:var(--mu);line-height:1.7;max-height:150px;overflow-y:auto;margin-top:8px;background:var(--sf);border-radius:8px;padding:10px;font-family:'Verdana',sans-serif;white-space:pre-wrap"></div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="card-title" style="margin:0">對話</div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-outline btn-sm" onclick="clearGuidedChat()">清空</button>
+          <button class="btn btn-yellow btn-sm" onclick="saveGuidedChat()">💾 儲存</button>
+        </div>
+      </div>
+      <div class="chat-box" id="guided-chat-box" style="min-height:260px">
+        <div class="chat-msg ai"><div class="chat-bubble">嗨，我準備好了。貼入文章 URL、直接貼文字，或輸入一個英文句子都行。</div></div>
+      </div>
+      <div class="chat-input-row" style="margin-top:10px">
+        <input type="text" class="chat-input" id="guided-chat-input" placeholder="輸入想說的…" onkeydown="if(event.key==='Enter')sendGuidedChat()">
+        <button class="btn btn-pink" onclick="sendGuidedChat()">送出</button>
       </div>
     </div>
   </div>
@@ -995,7 +1054,7 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const order=['home','vocab','reading','listening','speaking','writing','ytpractice','aitools','progress','settings'];
+  const order=['home','vocab','reading','listening','speaking','writing','ytpractice','aitools','guided','progress','settings'];
   const idx=order.indexOf(id);
   if(idx>=0)document.querySelectorAll('.nb')[idx].classList.add('active');
   if(id==='vocab')initVocabPage();
@@ -1004,6 +1063,7 @@ function showPage(id){
   if(id==='writing')initWritePage();
   if(id==='ytpractice')initYTPractice();
   if(id==='aitools')initAITools();
+  if(id==='guided')initGuidedPage();
   if(id==='progress')renderProgress();
   if(id==='settings')loadSettingsUI();
 }
@@ -1515,6 +1575,169 @@ async function sendChat(){
     const ld=document.getElementById('chat-loading');if(ld)ld.remove();
     box.innerHTML+='<div class="chat-msg ai"><div class="chat-bubble">❌ '+e.message+'</div></div>';
   }
+}
+
+// ===== GUIDED LEARNING =====
+const GUIDED_SYSTEM=`你是一個說書人型的思考夥伴，不是老師、不是知識提供者、不是辯論對手。使用者有閱讀障礙與注意力不足，學習開關是情緒觸發——好奇或異議，不是「應該學習」的義務感。她不需要讀文章，你負責把文章變成她願意接話的對話。
+文章進入時：
+不給摘要、不問問題。把文章最核心或最反直覺的概念，包進一個真實場景或故事裡說出來，100字以內。結尾不一定要留問題，有時候留懸念、有時候說一半停住、有時候直接說完讓她自己決定要不要接——讓她永遠猜不到你下一句的形式。
+她表態後：
+不評價對錯、不說「很好」「說得對」。用故事或案例推進，例如「有個案例跟你說的方向完全相反」或「有個人當初也這樣想，後來發生了一件事」。讓她在對話裡自己移動立場，但感覺像是自己想通的。
+她堅持己見時：
+不正面反駁。換一個完全不同的視角再說一個故事或場景，讓她自己發現矛盾。絕對不說「但是你有沒有想過」這類句型。
+英文句子解析時：
+不逐字翻譯。先把這句話還原成一個生活場景或情境，讓她感受這句話在說什麼，再視對話走向決定要不要深入句型結構——不是每次都要解析，看她的反應決定。
+任何時候絕對不能做的事：
+∙ 重複使用固定句型收尾，例如「你覺得呢」「你有沒有遇過類似的狀況」「你有什麼想法」
+∙ 連續問超過一個問題
+∙ 給完整結論或標準答案
+∙ 語氣像老師、客服、或心理諮商師
+語氣基準：
+像一個很會講故事、偶爾會說「這件事其實沒那麼簡單」的朋友。有自己的觀點但不強迫你接受，不會一味同意你，但也不會為了反駁而反駁。`;
+
+let guidedHistory=[];let guidedArticleText='';
+
+function initGuidedPage(){
+  const noKey=document.getElementById('guided-no-key');
+  const content=document.getElementById('guided-content');
+  if(!ST.apiKey){noKey.style.display='';content.style.display='none';}
+  else{noKey.style.display='none';content.style.display='';}
+}
+
+function switchGuidedInput(mode){
+  document.querySelectorAll('#guided-input-card .sub-tab').forEach((t,i)=>{t.classList.toggle('active',['url','text','sentence'][i]===mode);});
+  document.querySelectorAll('#guided-input-card .sub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('guided-'+mode+'-panel').classList.add('active');
+}
+
+async function fetchGuidedURL(){
+  const rawUrl=document.getElementById('guided-url-inp').value.trim();if(!rawUrl)return;
+  const st=document.getElementById('guided-url-status');st.style.display='';
+  st.innerHTML='<div class="dots"><span></span><span></span><span></span></div> 抓取中…';
+  try{
+    const proxyUrl=`https://api.allorigins.win/get?url=${encodeURIComponent(rawUrl)}`;
+    const res=await fetch(proxyUrl);const data=await res.json();
+    if(!data.contents)throw new Error('無法取得內容');
+    const parser=new DOMParser();const doc=parser.parseFromString(data.contents,'text/html');
+    ['script','style','nav','header','footer','aside','iframe','noscript'].forEach(tag=>{doc.querySelectorAll(tag).forEach(el=>el.remove());});
+    const text=(doc.body?doc.body.innerText:'').replace(/\s+/g,' ').trim();
+    if(text.length<80)throw new Error('抓取內容太少，可能被網站擋了');
+    guidedArticleText=text.slice(0,3000);
+    st.innerHTML=`<span style="color:var(--ms)">✓ 抓取成功（約 ${guidedArticleText.length} 字）</span>`;
+    await startGuidedArticleFromText();
+  }catch(e){
+    st.innerHTML=`<span style="color:var(--mr)">⚠️ ${e.message}，請改用手動貼文</span><br><button class="btn btn-outline btn-sm" onclick="switchGuidedInput('text')" style="margin-top:6px">改用手動貼文 →</button>`;
+  }
+}
+
+async function startGuidedArticle(){
+  const text=document.getElementById('guided-text-inp').value.trim();if(!text)return;
+  guidedArticleText=text.slice(0,3000);await startGuidedArticleFromText();
+}
+
+async function startGuidedArticleFromText(){
+  if(!ST.apiKey)return;
+  document.getElementById('guided-article-card').style.display='';
+  document.getElementById('guided-article-preview').textContent=guidedArticleText.slice(0,300)+(guidedArticleText.length>300?'…':'');
+  guidedHistory=[];
+  const box=document.getElementById('guided-chat-box');
+  box.innerHTML+='<div class="chat-msg ai" id="guided-loading"><div class="chat-bubble"><div class="dots"><span></span><span></span><span></span></div></div></div>';
+  box.scrollTop=box.scrollHeight;
+  guidedHistory.push({role:'user',parts:[{text:'文章內容如下，請開始：\n\n'+guidedArticleText}]});
+  try{
+    const reply=await callGuidedAPI();
+    guidedHistory.push({role:'model',parts:[{text:reply}]});
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">${reply.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div></div>`;
+    box.scrollTop=box.scrollHeight;
+  }catch(e){
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">❌ ${e.message}</div></div>`;
+  }
+}
+
+async function analyzeGuidedSentence(){
+  const sentence=document.getElementById('guided-sentence-inp').value.trim();
+  if(!sentence||!ST.apiKey)return;
+  const box=document.getElementById('guided-chat-box');
+  box.innerHTML+=`<div class="chat-msg user"><div class="chat-bubble" style="font-family:'Verdana',sans-serif">${sentence.replace(/</g,'&lt;')}</div></div>`;
+  box.innerHTML+='<div class="chat-msg ai" id="guided-loading"><div class="chat-bubble"><div class="dots"><span></span><span></span><span></span></div></div></div>';
+  box.scrollTop=box.scrollHeight;
+  guidedHistory.push({role:'user',parts:[{text:'請解析這個英文句子：'+sentence}]});
+  try{
+    const reply=await callGuidedAPI();
+    guidedHistory.push({role:'model',parts:[{text:reply}]});
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">${reply.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div></div>`;
+    box.scrollTop=box.scrollHeight;
+    document.getElementById('guided-sentence-inp').value='';
+  }catch(e){
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">❌ ${e.message}</div></div>`;
+  }
+}
+
+async function sendGuidedChat(){
+  const input=document.getElementById('guided-chat-input');const msg=input.value.trim();
+  if(!msg||!ST.apiKey)return;
+  input.value='';
+  const box=document.getElementById('guided-chat-box');
+  box.innerHTML+=`<div class="chat-msg user"><div class="chat-bubble">${msg.replace(/</g,'&lt;')}</div></div>`;
+  box.innerHTML+='<div class="chat-msg ai" id="guided-loading"><div class="chat-bubble"><div class="dots"><span></span><span></span><span></span></div></div></div>';
+  box.scrollTop=box.scrollHeight;
+  guidedHistory.push({role:'user',parts:[{text:msg}]});
+  try{
+    const reply=await callGuidedAPI();
+    guidedHistory.push({role:'model',parts:[{text:reply}]});
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">${reply.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div></div>`;
+    box.scrollTop=box.scrollHeight;
+  }catch(e){
+    const ld=document.getElementById('guided-loading');if(ld)ld.remove();
+    box.innerHTML+=`<div class="chat-msg ai"><div class="chat-bubble">❌ ${e.message}</div></div>`;
+  }
+}
+
+async function callGuidedAPI(){
+  const contents=[
+    {role:'user',parts:[{text:GUIDED_SYSTEM}]},
+    {role:'model',parts:[{text:'好的，我明白了。'}]},
+    ...guidedHistory
+  ];
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${ST.apiKey}`;
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents})});
+  const data=await res.json();
+  if(data.error)throw new Error(data.error.message);
+  return data.candidates[0].content.parts[0].text;
+}
+
+function clearGuidedChat(){
+  guidedHistory=[];guidedArticleText='';
+  document.getElementById('guided-chat-box').innerHTML='<div class="chat-msg ai"><div class="chat-bubble">嗨，我準備好了。貼入文章 URL、直接貼文字，或輸入一個英文句子都行。</div></div>';
+  document.getElementById('guided-article-card').style.display='none';
+}
+
+function saveGuidedChat(){
+  const msgs=document.querySelectorAll('#guided-chat-box .chat-msg');if(msgs.length<=1)return;
+  const lines=['引導式學習 對話紀錄','儲存時間：'+new Date().toLocaleString('zh-TW'),''];
+  if(guidedArticleText){lines.push('【文章內容】',guidedArticleText,'','【對話】');}
+  msgs.forEach(m=>{
+    const isUser=m.classList.contains('user');
+    const text=m.querySelector('.chat-bubble')?.innerText||'';
+    if(text)lines.push((isUser?'你':'AI')+'：'+text,'');
+  });
+  const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='引導學習-'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+function toggleGuidedArticle(){
+  const prev=document.getElementById('guided-article-preview');
+  const tog=document.getElementById('guided-article-toggle');
+  const hidden=prev.style.display==='none';
+  prev.style.display=hidden?'':'none';
+  tog.textContent=hidden?'▲ 收起':'▼ 展開';
 }
 
 // ===== INIT =====
