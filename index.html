@@ -683,15 +683,21 @@ Chinese content:
 ${text}`;
 
   try {
-    const raw = await callGemini(prompt, [], 3000);
-    const m = raw.match(/\{[\s\S]*\}/);
-    if (!m) throw new Error('格式錯誤');
-    const data = JSON.parse(m[0]);
+    const raw = await callGemini(prompt, [], 4096);
+    let jsonStr = raw;
+    const fence = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
+    if (fence) jsonStr = fence[1].trim();
+    else {
+      const obj = raw.match(/\{[\s\S]*\}/);
+      if (!obj) throw new Error('AI 未回傳 JSON（' + raw.slice(0, 80) + '…）');
+      jsonStr = obj[0];
+    }
+    const data = JSON.parse(jsonStr);
     renderTopicOutput(data);
     document.getElementById('topic-output').style.display = 'block';
     document.getElementById('topic-status').textContent = '✓ 完成';
   } catch(e) {
-    document.getElementById('topic-status').textContent = '生成失敗，請再試一次';
+    document.getElementById('topic-status').textContent = '失敗：' + e.message;
     console.error(e);
   } finally {
     document.getElementById('topic-loading').style.display = 'none';
