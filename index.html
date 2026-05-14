@@ -127,6 +127,7 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
   <button class="nb active" data-page="home" onclick="showPage('home')">首頁</button>
   <button class="nb" data-page="interest" onclick="showPage('interest')">🎯 興趣</button>
   <button class="nb" data-page="material" onclick="showPage('material')">📋 素材</button>
+  <button class="nb" data-page="topic" onclick="showPage('topic')">📚 主題學習</button>
   <button class="nb" data-page="vault" onclick="showPage('vault')">💎 詞庫</button>
   <button class="nb" data-page="youtube" onclick="showPage('youtube')">🎬 影音</button>
   <button class="nb" data-page="chat" onclick="showPage('chat')">🤖 AI</button>
@@ -211,6 +212,59 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
     <div style="font-size:12px;color:var(--lt);margin-top:10px">AI 正在提取…</div>
   </div>
   <div id="mat-results"></div>
+</div>
+
+<!-- TOPIC LEARNING -->
+<div class="page" id="page-topic">
+  <div class="sec-title">📚 主題學習</div>
+  <div class="notice" id="topic-nokey" style="display:none">⚠️ 需要 Gemini API Key。<button class="btn btn-outline btn-sm" onclick="showPage('settings')" style="margin-left:8px">前往設定</button></div>
+  <div class="card">
+    <div style="font-size:12px;color:var(--mu);margin-bottom:10px">貼入任何中文內容，AI 幫你生成這個主題的完整英文學習包</div>
+    <textarea class="paste-area" id="topic-input" placeholder="貼上追星文章、武術筆記、五術說明……任何你感興趣的中文內容"></textarea>
+    <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button class="btn btn-lav" onclick="generateTopicLesson()" id="topic-btn">✨ 生成學習包</button>
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('topic-input').value=''">清除</button>
+      <span id="topic-status" style="font-size:11px;color:var(--lt)"></span>
+    </div>
+  </div>
+  <div id="topic-loading" style="display:none;text-align:center;padding:28px">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div style="font-size:12px;color:var(--lt);margin-top:12px">AI 正在生成學習包，約需 10–20 秒…</div>
+  </div>
+  <div id="topic-output" style="display:none">
+    <!-- 1. 詞彙 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:12px">📝 本次詞彙</div>
+      <div id="topic-vocab"></div>
+    </div>
+    <!-- 2. 短文 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:10px">📖 英文短文</div>
+      <div id="topic-passage" style="font-size:14px;line-height:2.1;color:var(--tx);background:var(--sf);border-radius:10px;padding:16px;font-family:'Georgia',Georgia,serif;white-space:pre-wrap"></div>
+    </div>
+    <!-- 3. 閱讀理解 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:12px">❓ 閱讀理解</div>
+      <div id="topic-comprehension"></div>
+    </div>
+    <!-- 4. 模仿範例句 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:10px">✏️ 模仿範例句</div>
+      <div style="font-size:11px;color:var(--lt);margin-bottom:10px">先聽再跟著說，感受句子的節奏</div>
+      <div id="topic-examples"></div>
+    </div>
+    <!-- 5. 知識補充 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:10px">💡 相關知識補充</div>
+      <div id="topic-knowledge" style="font-size:13px;color:var(--mu);line-height:1.9"></div>
+    </div>
+    <!-- 6. 寫作題目 -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;color:var(--mu);margin-bottom:10px">✍️ 寫作題目</div>
+      <div style="font-size:11px;color:var(--lt);margin-bottom:10px">參考上面的範例句，試著用英文回答其中一題</div>
+      <div id="topic-prompts"></div>
+    </div>
+  </div>
 </div>
 
 <!-- VAULT -->
@@ -308,6 +362,17 @@ nav{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 14px;displa
     </div>
     <div class="set-row">
       <div>
+        <div class="set-label">英文程度</div>
+        <div class="set-sub">影響主題學習包的詞彙和短文難度</div>
+      </div>
+      <select class="set-inp" id="set-level" style="width:auto">
+        <option value="A2">A2 初級</option>
+        <option value="B1">B1 中初級</option>
+        <option value="B2">B2 中級</option>
+      </select>
+    </div>
+    <div class="set-row">
+      <div>
         <div class="set-label">TTS 語速</div>
         <div class="set-sub">聽發音的速度</div>
       </div>
@@ -393,7 +458,7 @@ const THEMES = {
 
 // ─── STATE ──────────────────────────────────────────────────────────────────
 let vault = [];
-let settings = {geminiKey:'', ttsRate:0.85};
+let settings = {geminiKey:'', ttsRate:0.85, level:'A2'};
 let currentTheme = null;
 let currentPhrases = [];
 let currentIdx = 0;
@@ -413,6 +478,7 @@ function init() {
   } catch(e){}
   if (settings.geminiKey) document.getElementById('set-key').value = settings.geminiKey;
   document.getElementById('set-rate').value = settings.ttsRate || 0.85;
+  document.getElementById('set-level').value = settings.level || 'A2';
   updateHome();
   checkKey();
 }
@@ -428,6 +494,7 @@ function updateHome() {
 function checkKey() {
   const has = !!settings.geminiKey;
   document.getElementById('mat-nokey').style.display = has ? 'none' : 'block';
+  document.getElementById('topic-nokey').style.display = has ? 'none' : 'block';
   document.getElementById('chat-nokey').style.display = has ? 'none' : 'block';
   document.getElementById('chat-content').style.display = has ? 'block' : 'none';
 }
@@ -440,7 +507,7 @@ function showPage(id) {
   document.querySelector(`.nb[data-page="${id}"]`)?.classList.add('active');
   if (id === 'vault') renderVault();
   if (id === 'home') updateHome();
-  if (id === 'chat' || id === 'material') checkKey();
+  if (id === 'chat' || id === 'material' || id === 'topic') checkKey();
 }
 
 // ─── INTEREST LEARNING ───────────────────────────────────────────────────────
@@ -574,6 +641,125 @@ function toggleMatScene(i) {
 function saveMatPhrase(i) {
   const p = matPhrases[i];
   saveToVault(p.phrase, p.emoji, p.scene, p.tip || '', 'material');
+}
+
+// ─── TOPIC LEARNING ──────────────────────────────────────────────────────────
+let topicQuiz = [];
+
+async function generateTopicLesson() {
+  if (!settings.geminiKey) { showPage('settings'); return; }
+  const text = document.getElementById('topic-input').value.trim();
+  if (!text) return;
+  document.getElementById('topic-loading').style.display = 'block';
+  document.getElementById('topic-output').style.display = 'none';
+  document.getElementById('topic-btn').disabled = true;
+  document.getElementById('topic-status').textContent = '';
+  const lv = settings.level || 'A2';
+
+  const prompt = `You are an English teacher for a Taiwanese adult learner at ${lv} level.
+
+Based on the Chinese content below, generate a complete English learning package.
+
+Return ONLY valid JSON, no markdown:
+{
+  "vocab": [{"en":"word","zh":"中文意思","ph":"/pronunciation/","ex":"${lv}-level example sentence using this word."}],
+  "passage": "A natural English passage of 90-120 words at ${lv} level about this topic. NOT a translation — write it as an English native speaker would describe this topic.",
+  "comprehension": [
+    {"q":"Question strictly based on the passage?","opts":["A","B","C","D"],"a":0}
+  ],
+  "examples": ["${lv}-level model sentence 1 the learner can imitate for writing.","Model sentence 2.","Model sentence 3."],
+  "knowledge": "用中文補充這個主題的背景知識（3-5句，幫助學生更了解這個領域，不是翻譯原文）",
+  "prompts": ["Personal writing prompt 1 in English","Prompt 2","Prompt 3"]
+}
+
+Rules:
+- vocab: AI decides the count (6-15 words) based on content richness; all directly relevant to the topic
+- comprehension: 3-4 questions that can only be answered by reading the passage
+- examples: 3 sentences at ${lv} level showing how to write about this topic personally (use "I")
+- knowledge: background context in Chinese that enriches understanding
+- prompts: connect the topic to the learner's own life and feelings
+
+Chinese content:
+${text}`;
+
+  try {
+    const raw = await callGemini(prompt);
+    const m = raw.match(/\{[\s\S]*\}/);
+    if (!m) throw new Error('格式錯誤');
+    const data = JSON.parse(m[0]);
+    renderTopicOutput(data);
+    document.getElementById('topic-output').style.display = 'block';
+    document.getElementById('topic-status').textContent = '✓ 完成';
+  } catch(e) {
+    document.getElementById('topic-status').textContent = '生成失敗，請再試一次';
+    console.error(e);
+  } finally {
+    document.getElementById('topic-loading').style.display = 'none';
+    document.getElementById('topic-btn').disabled = false;
+  }
+}
+
+function renderTopicOutput(data) {
+  // 1. 詞彙
+  document.getElementById('topic-vocab').innerHTML = (data.vocab || []).map(v => `
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd);align-items:flex-start">
+      <div style="min-width:140px;flex-shrink:0">
+        <span style="font-size:15px;font-weight:700;color:var(--tx);font-family:'Georgia',Georgia,serif">${v.en}</span>
+        <span style="font-size:10px;color:var(--lt);margin-left:5px">${v.ph||''}</span>
+        <button style="background:none;border:none;cursor:pointer;font-size:12px;margin-left:3px;padding:0" onclick="speak('${esc(v.en)}')">🔊</button>
+      </div>
+      <div>
+        <div style="font-size:13px;color:var(--mu);font-weight:600">${v.zh}</div>
+        <div style="font-size:11px;color:var(--lt);font-style:italic;margin-top:3px;line-height:1.6">${v.ex}</div>
+      </div>
+    </div>`).join('');
+
+  // 2. 短文
+  document.getElementById('topic-passage').textContent = data.passage || '';
+
+  // 3. 閱讀理解
+  topicQuiz = data.comprehension || [];
+  document.getElementById('topic-comprehension').innerHTML = topicQuiz.map((q, qi) => `
+    <div style="margin-bottom:18px">
+      <div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:8px;line-height:1.6">${qi+1}. ${q.q}</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        ${q.opts.map((o, oi) => `
+          <button id="tq${qi}o${oi}" onclick="answerTopicQ(${qi},${oi})"
+            style="text-align:left;background:var(--cd);border:1.5px solid var(--bd);border-radius:8px;padding:9px 14px;font-size:12px;font-family:inherit;cursor:pointer;color:var(--tx);transition:border-color .15s">
+            ${String.fromCharCode(65+oi)}. ${o}
+          </button>`).join('')}
+      </div>
+    </div>`).join('');
+
+  // 4. 模仿範例句
+  document.getElementById('topic-examples').innerHTML = (data.examples || []).map((e, i) => `
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bd)">
+      <div style="font-size:13px;color:var(--tx);font-family:'Georgia',Georgia,serif;flex:1;line-height:1.8">${i+1}. ${e}</div>
+      <button style="background:var(--mb);border:none;border-radius:8px;padding:5px 9px;font-size:11px;cursor:pointer;flex-shrink:0;color:#1a4a5c" onclick="speak('${esc(e)}')">🔊</button>
+    </div>`).join('');
+
+  // 5. 知識補充
+  document.getElementById('topic-knowledge').innerHTML = (data.knowledge || '').replace(/\n/g, '<br>');
+
+  // 6. 寫作題目
+  document.getElementById('topic-prompts').innerHTML = (data.prompts || []).map((p, i) => `
+    <div style="background:var(--sf);border-radius:10px;padding:14px;margin-bottom:8px">
+      <div style="font-size:13px;color:var(--tx);font-family:'Georgia',Georgia,serif;line-height:1.7;margin-bottom:8px">${i+1}. ${p}</div>
+      <button style="background:none;border:1.5px solid var(--bd);border-radius:8px;padding:5px 12px;font-size:11px;cursor:pointer;color:var(--mu);font-family:inherit" onclick="speak('${esc(p)}')">🔊 聽題目</button>
+    </div>`).join('');
+}
+
+function answerTopicQ(qi, oi) {
+  const q = topicQuiz[qi];
+  if (!q) return;
+  q.opts.forEach((_, i) => {
+    const b = document.getElementById(`tq${qi}o${i}`);
+    if (b) b.disabled = true;
+  });
+  const sel = document.getElementById(`tq${qi}o${oi}`);
+  const cor = document.getElementById(`tq${qi}o${q.a}`);
+  if (sel) sel.style.background = oi === q.a ? 'var(--ms)' : 'var(--mr)';
+  if (oi !== q.a && cor) cor.style.background = 'var(--ms)';
 }
 
 // ─── VAULT ───────────────────────────────────────────────────────────────────
@@ -756,6 +942,7 @@ function addMsg(role, text) {
 function saveSettings() {
   settings.geminiKey = document.getElementById('set-key').value.trim();
   settings.ttsRate = document.getElementById('set-rate').value;
+  settings.level = document.getElementById('set-level').value;
   persist();
   checkKey();
   showToast('設定已儲存 ✓');
